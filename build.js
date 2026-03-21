@@ -246,9 +246,9 @@ async function build() {
     .lightbox {
       background: #fafafa;
       border-radius: 16px;
-      max-width: 1200px;
+      max-width: 95vw;
       width: 100%;
-      margin: 40px auto;
+      margin: 20px auto;
       overflow: hidden;
       position: relative;
       display: flex;
@@ -261,7 +261,7 @@ async function build() {
       width: 360px;
       flex-shrink: 0;
       overflow-y: auto;
-      max-height: 85vh;
+      max-height: 90vh;
     }
     .lightbox-close {
       position: absolute;
@@ -308,7 +308,7 @@ async function build() {
     }
     .lightbox-image {
       width: 100%;
-      max-height: 70vh;
+      max-height: 90vh;
       object-fit: contain;
       display: block;
     }
