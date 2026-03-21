@@ -469,6 +469,11 @@ async function build() {
       }
       <div class="slap-info">
         <div class="slap-title">${slap['slap_#'] ? `<span class="slap-label">SLAP</span> <span class="slap-num">${slap['slap_#']}</span>` : '<span class="slap-label">SLAP</span>'}</div>
+        <div class="slap-meta">
+          ${slap['width_(in)'] && slap['height_(in)'] ? `<span>${slap['width_(in)']}" x ${slap['height_(in)']}"</span>` : ''}
+          ${slap['#_of_slaps'] ? `<span>${slap['#_of_slaps']} sticker${slap['#_of_slaps'] !== '1' ? 's' : ''}</span>` : ''}
+          ${slap.percentile ? `<span>${slap.percentile} rarity</span>` : ''}
+        </div>
       </div>
     </div>
     `).join('')}
