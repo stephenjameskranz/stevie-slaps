@@ -83,8 +83,8 @@ async function build() {
     * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #1a1a1a;
-      color: #fff;
+      background: #f0f0f0;
+      color: #222;
       margin: 0;
       padding: 20px;
     }
@@ -92,16 +92,18 @@ async function build() {
       text-align: center;
       font-size: 2.5rem;
       margin-bottom: 10px;
+      color: #222;
     }
     .subtitle {
       text-align: center;
-      color: #888;
+      color: #666;
       margin-bottom: 10px;
     }
     .controls {
       max-width: 1400px;
       margin: 0 auto 20px;
-      background: #2a2a2a;
+      background: #fff;
+      border: 1px solid #ddd;
       border-radius: 12px;
       padding: 16px;
     }
@@ -119,14 +121,14 @@ async function build() {
     }
     .filter-group label {
       font-size: 0.75rem;
-      color: #888;
+      color: #666;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
     .filter-group select, .search-input {
-      background: #3a3a3a;
-      color: #fff;
-      border: 1px solid #555;
+      background: #fff;
+      color: #222;
+      border: 1px solid #ccc;
       border-radius: 6px;
       padding: 8px 12px;
       font-size: 0.9rem;
@@ -150,13 +152,13 @@ async function build() {
       width: 100%;
     }
     .result-count {
-      color: #888;
+      color: #666;
       font-size: 0.85rem;
       margin-left: auto;
     }
     .reset-btn {
-      background: #555;
-      color: #fff;
+      background: #ddd;
+      color: #333;
       border: none;
       border-radius: 6px;
       padding: 8px 16px;
@@ -164,7 +166,7 @@ async function build() {
       font-size: 0.85rem;
     }
     .reset-btn:hover {
-      background: #666;
+      background: #ccc;
     }
     .gallery {
       display: grid;
@@ -178,6 +180,7 @@ async function build() {
       border-radius: 12px;
       overflow: hidden;
       transition: transform 0.2s;
+      padding-top: 32px;
     }
     .slap-card:hover {
       transform: translateY(-4px);
@@ -223,8 +226,8 @@ async function build() {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #333;
-      color: #666;
+      background: #eee;
+      color: #999;
       aspect-ratio: 1;
     }
     .slap-card { cursor: pointer; }
@@ -241,7 +244,7 @@ async function build() {
     }
     .lightbox-overlay.active { display: flex; justify-content: center; align-items: flex-start; }
     .lightbox {
-      background: #2a2a2a;
+      background: #fafafa;
       border-radius: 16px;
       max-width: 900px;
       width: 100%;
@@ -289,7 +292,7 @@ async function build() {
     .lightbox-next { right: 12px; }
     .lightbox-image-wrap {
       position: relative;
-      background: #111;
+      background: #eee;
     }
     .lightbox-image {
       width: 100%;
@@ -303,8 +306,8 @@ async function build() {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #333;
-      color: #666;
+      background: #eee;
+      color: #999;
       font-size: 1.2rem;
     }
     .lightbox-details {
@@ -314,6 +317,7 @@ async function build() {
       font-size: 1.5rem;
       font-weight: 700;
       margin-bottom: 16px;
+      color: #222;
     }
     .lightbox-grid {
       display: grid;
@@ -321,23 +325,23 @@ async function build() {
       gap: 12px;
     }
     .lightbox-field {
-      background: #3a3a3a;
+      background: #eee;
       border-radius: 8px;
       padding: 10px 14px;
     }
     .lightbox-field-label {
       font-size: 0.7rem;
-      color: #888;
+      color: #666;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 4px;
     }
     .lightbox-field-value {
       font-size: 0.95rem;
-      color: #eee;
+      color: #222;
     }
     .lightbox-rarity {
-      color: #ffd700;
+      color: #b8860b;
       font-weight: 600;
     }
     .lightbox-notes {
