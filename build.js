@@ -458,7 +458,7 @@ async function build() {
       data-search="${[slap['slap_#'], slap.notes, slap.pattern, slap.substrate, slap.substrate_color, slap.shape, slap['2d_point_group_(entire_piece)']].join(' ').toLowerCase()}"
     >
       ${slap['800px_image_link'] || slap.image_link
-        ? `<img class="slap-image" src="${slap['800px_image_link'] || slap.image_link}" alt="SLAP ${slap['slap_#'] || ''}" loading="lazy" onerror="this.outerHTML='<div class=no-image>No image</div>'">`
+        ? `<img class="slap-image" src="${slap['800px_image_link'] || slap.image_link}" alt="SLAP ${slap['slap_#'] || ''}" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=no-image>No image</div>'">`
         : '<div class="no-image">No image</div>'
       }
       <div class="slap-info">
