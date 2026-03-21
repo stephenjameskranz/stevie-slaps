@@ -223,6 +223,7 @@ async function build() {
     }
     .slap-num {
       font-weight: 700;
+      font-variant-numeric: lining-nums;
     }
     .slap-meta {
       font-size: 0.8rem;
