@@ -221,10 +221,130 @@ async function build() {
       color: #666;
       aspect-ratio: 1;
     }
+    .slap-card { cursor: pointer; }
+
+    /* Lightbox */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .lightbox-overlay.active { display: flex; justify-content: center; align-items: flex-start; }
+    .lightbox {
+      background: #2a2a2a;
+      border-radius: 16px;
+      max-width: 900px;
+      width: 100%;
+      margin: 40px auto;
+      overflow: hidden;
+      position: relative;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      border: none;
+      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-close:hover { background: rgba(0,0,0,0.8); }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      border: none;
+      font-size: 1.5rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-nav:hover { background: rgba(0,0,0,0.8); }
+    .lightbox-prev { left: 12px; }
+    .lightbox-next { right: 12px; }
+    .lightbox-image-wrap {
+      position: relative;
+      background: #111;
+    }
+    .lightbox-image {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      display: block;
+    }
+    .lightbox-no-image {
+      width: 100%;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #333;
+      color: #666;
+      font-size: 1.2rem;
+    }
+    .lightbox-details {
+      padding: 24px;
+    }
+    .lightbox-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .lightbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .lightbox-field {
+      background: #3a3a3a;
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+    .lightbox-field-label {
+      font-size: 0.7rem;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .lightbox-field-value {
+      font-size: 0.95rem;
+      color: #eee;
+    }
+    .lightbox-rarity {
+      color: #ffd700;
+      font-weight: 600;
+    }
+    .lightbox-notes {
+      grid-column: 1 / -1;
+    }
+
     @media (max-width: 600px) {
       .filters { flex-direction: column; }
       .filter-group select { min-width: 100%; }
       h1 { font-size: 1.8rem; }
+      .lightbox { margin: 10px; }
+      .lightbox-title { font-size: 1.2rem; }
+      .lightbox-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -271,8 +391,9 @@ async function build() {
   </div>
 
   <div class="gallery" id="gallery">
-    ${slaps.map(slap => `
+    ${slaps.map((slap, i) => `
     <div class="slap-card"
+      data-index="${i}"
       data-slap_num="${slap['slap_#'] || ''}"
       data-#_of_slaps="${slap['#_of_slaps'] || ''}"
       data-2d_point_group="${slap['2d_point_group_(entire_piece)'] || ''}"
@@ -305,6 +426,64 @@ async function build() {
     </div>
     `).join('')}
   </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox">
+      <button class="lightbox-close" id="lightbox-close">&times;</button>
+      <div class="lightbox-image-wrap">
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev">&lsaquo;</button>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next">&rsaquo;</button>
+        <div id="lightbox-img-container"></div>
+      </div>
+      <div class="lightbox-details">
+        <div class="lightbox-title" id="lightbox-title"></div>
+        <div class="lightbox-grid" id="lightbox-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var slapData = ${JSON.stringify(slaps.map(s => {
+      const display = {};
+      const fieldLabels = {
+        'slap_#': 'SLAP #',
+        'width_(in)': 'Width (in)',
+        'height_(in)': 'Height (in)',
+        'substrate_orientation': 'Substrate Orientation',
+        'substrate': 'Substrate',
+        'substrate_color': 'Substrate Color',
+        'border_color': 'Border Color',
+        'laminate': 'Laminate',
+        '#_of_slaps': '# of Slaps',
+        'pattern': 'Pattern',
+        'pattern_orientation': 'Pattern Orientation',
+        'flag_orientation': 'Flag Orientation',
+        'spin': 'Spin',
+        'flag_version': 'Flag Version',
+        'pattern_mirror': 'Pattern Mirror',
+        'piece_mirror': 'Piece Mirror',
+        'point_symmetry': 'Point Symmetry',
+        '2d_point_group_(entire_piece)': '2D Point Group',
+        'shape': 'Shape',
+        'signature': 'Signature',
+        'date': 'Date',
+        'notes': 'Notes',
+        'rarity_index': 'Rarity Index',
+        'rank': 'Rank',
+        'percentile': 'Percentile',
+        'recipient': 'Recipient',
+        'transfer_date': 'Transfer Date',
+        'transfer_price': 'Transfer Price',
+        'transfer_note': 'Transfer Note',
+        'location': 'Location',
+      };
+      for (const [key, label] of Object.entries(fieldLabels)) {
+        if (s[key]) display[label] = s[key];
+      }
+      return { display, image: s.image_link || '', title: `SLAP #${s['slap_#'] || '?'} - ${s['width_(in)']}″ x ${s['height_(in)']}″ ${s.substrate || ''}` };
+    }))};
+  </script>
 
   <script>
     const gallery = document.getElementById('gallery');
@@ -388,6 +567,79 @@ async function build() {
     });
 
     update();
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxGrid = document.getElementById('lightbox-grid');
+    const lightboxImgContainer = document.getElementById('lightbox-img-container');
+    let currentIndex = -1;
+
+    function getVisibleCards() {
+      return cards.filter(c => !c.classList.contains('hidden'));
+    }
+
+    function openLightbox(index) {
+      const data = slapData[index];
+      if (!data) return;
+      currentIndex = index;
+
+      lightboxImgContainer.innerHTML = data.image
+        ? '<img class="lightbox-image" src="' + data.image + '" alt="' + data.title + '" onerror="this.outerHTML=\\'<div class=lightbox-no-image>No image</div>\\'">'
+        : '<div class="lightbox-no-image">No image</div>';
+
+      lightboxTitle.textContent = data.title;
+
+      var html = '';
+      for (var label in data.display) {
+        var val = data.display[label];
+        var cls = 'lightbox-field';
+        if (label === 'Notes') cls += ' lightbox-notes';
+        var valCls = 'lightbox-field-value';
+        if (label === 'Rarity Index') valCls += ' lightbox-rarity';
+        html += '<div class="' + cls + '"><div class="lightbox-field-label">' + label + '</div><div class="' + valCls + '">' + val + '</div></div>';
+      }
+      lightboxGrid.innerHTML = html;
+
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      currentIndex = -1;
+    }
+
+    function navigateLightbox(dir) {
+      var visible = getVisibleCards();
+      if (visible.length === 0) return;
+      var curPos = visible.findIndex(c => parseInt(c.dataset.index) === currentIndex);
+      var nextPos = curPos + dir;
+      if (nextPos < 0) nextPos = visible.length - 1;
+      if (nextPos >= visible.length) nextPos = 0;
+      openLightbox(parseInt(visible[nextPos].dataset.index));
+    }
+
+    gallery.addEventListener('click', function(e) {
+      var card = e.target.closest('.slap-card');
+      if (card) openLightbox(parseInt(card.dataset.index));
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    document.getElementById('lightbox-prev').addEventListener('click', function() { navigateLightbox(-1); });
+    document.getElementById('lightbox-next').addEventListener('click', function() { navigateLightbox(1); });
+
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
   </script>
 </body>
 </html>`;
