@@ -1,0 +1,30 @@
+name: Build SLAP Gallery
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Rebuilds every 6 hours
+  push:
+    branches: [main]
+  workflow_dispatch:  # Allows manual rebuild
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build the site
+        run: node build.js
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
