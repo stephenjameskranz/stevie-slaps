@@ -189,7 +189,7 @@ async function build() {
       width: 100%;
       aspect-ratio: 1;
       object-fit: contain;
-      object-position: top;
+      object-position: center;
       background: #2a2a2a;
     }
     .slap-info {
