@@ -81,7 +81,7 @@ async function build() {
   <title>SLAP Collection</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ysabeau:wght@1..1000&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
     body {
@@ -92,7 +92,7 @@ async function build() {
       padding: 20px;
     }
     h1 {
-      font-family: 'Literata', Georgia, serif;
+      font-family: 'Ysabeau', sans-serif;
       text-align: center;
       font-size: 2.8rem;
       font-weight: 700;
@@ -101,7 +101,7 @@ async function build() {
       letter-spacing: -0.5px;
     }
     .subtitle {
-      font-family: 'Literata', Georgia, serif;
+      font-family: 'Ysabeau', sans-serif;
       text-align: center;
       color: #888;
       font-size: 1rem;
@@ -207,17 +207,22 @@ async function build() {
       padding: 32px 12px 12px;
     }
     .slap-info {
-      padding: 8px 16px 16px;
+      padding: 2px 16px 12px;
       display: flex;
       flex-direction: column;
     }
     .slap-title {
-      font-family: 'Literata', Georgia, serif;
-      font-weight: 600;
+      font-family: 'Ysabeau', sans-serif;
       font-size: 2.1rem;
       color: #111;
       line-height: 1.2;
       text-align: right;
+    }
+    .slap-label {
+      font-weight: 200;
+    }
+    .slap-num {
+      font-weight: 700;
     }
     .slap-meta {
       font-size: 0.8rem;
@@ -237,7 +242,7 @@ async function build() {
       letter-spacing: 0.3px;
     }
     .rarity {
-      font-family: 'Literata', Georgia, serif;
+      font-family: 'Ysabeau', sans-serif;
       color: #b8860b;
       font-weight: 600;
       font-size: 0.95rem;
@@ -346,7 +351,7 @@ async function build() {
       padding: 24px;
     }
     .lightbox-title {
-      font-family: 'Literata', Georgia, serif;
+      font-family: 'Ysabeau', sans-serif;
       font-size: 1.6rem;
       font-weight: 600;
       margin-bottom: 20px;
@@ -373,13 +378,13 @@ async function build() {
       margin-bottom: 4px;
     }
     .lightbox-field-value {
-      font-family: 'Literata', Georgia, serif;
+      font-family: 'Ysabeau', sans-serif;
       font-size: 0.95rem;
       color: #222;
       font-weight: 400;
     }
     .lightbox-rarity {
-      font-family: 'Literata', Georgia, serif;
+      font-family: 'Ysabeau', sans-serif;
       color: #b8860b;
       font-weight: 600;
     }
@@ -462,7 +467,7 @@ async function build() {
         : '<div class="no-image">No image</div>'
       }
       <div class="slap-info">
-        <div class="slap-title">${slap['slap_#'] ? `SLAP ${slap['slap_#']}` : 'SLAP'}</div>
+        <div class="slap-title">${slap['slap_#'] ? `<span class="slap-label">SLAP</span> <span class="slap-num">${slap['slap_#']}</span>` : '<span class="slap-label">SLAP</span>'}</div>
       </div>
     </div>
     `).join('')}
