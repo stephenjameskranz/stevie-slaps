@@ -205,7 +205,7 @@ async function build() {
       object-position: center;
       background: rgb(200, 200, 200);
       padding: 32px 12px 12px;
-      border-radius: 2px;
+      border-radius: 6px;
     }
     .slap-info {
       padding: 2px 16px 12px;
@@ -227,9 +227,10 @@ async function build() {
       font-variant-numeric: lining-nums;
     }
     .slap-meta {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: #777;
       letter-spacing: 0.2px;
+      text-align: right;
     }
     .slap-meta span {
       display: inline-block;
@@ -238,10 +239,17 @@ async function build() {
       padding: 3px 9px;
       border-radius: 4px;
       margin: 2px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      text-transform: uppercase;
+      font-size: 0.85rem;
+      font-weight: 600;
       letter-spacing: 0.3px;
+    }
+    .meta-key {
+      font-weight: 300;
+      color: #777;
+    }
+    .meta-val {
+      font-weight: 700;
+      color: #333;
     }
     .rarity {
       font-family: 'Ysabeau', sans-serif;
@@ -471,9 +479,9 @@ async function build() {
       <div class="slap-info">
         <div class="slap-title">${slap['slap_#'] ? `<span class="slap-label">SLAP</span> <span class="slap-num">${slap['slap_#']}</span>` : '<span class="slap-label">SLAP</span>'}</div>
         <div class="slap-meta">
-          ${slap['width_(in)'] && slap['height_(in)'] ? `<span>${slap['width_(in)']}" x ${slap['height_(in)']}"</span>` : ''}
-          ${slap['#_of_slaps'] ? `<span>${slap['#_of_slaps']} sticker${slap['#_of_slaps'] !== '1' ? 's' : ''}</span>` : ''}
-          ${slap.percentile ? `<span>${slap.percentile} rarity</span>` : ''}
+          ${slap['width_(in)'] && slap['height_(in)'] ? `<span><span class="meta-key">size </span><span class="meta-val">${slap['width_(in)']}" x ${slap['height_(in)']}"</span></span>` : ''}
+          ${slap['#_of_slaps'] ? `<span><span class="meta-key">stickers </span><span class="meta-val">${slap['#_of_slaps']}</span></span>` : ''}
+          ${slap.percentile ? `<span><span class="meta-key">rarity </span><span class="meta-val">${slap.percentile}</span></span>` : ''}
         </div>
       </div>
     </div>
