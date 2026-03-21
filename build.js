@@ -207,17 +207,17 @@ async function build() {
       padding: 32px 12px 12px;
     }
     .slap-info {
-      padding: 16px;
+      padding: 8px 16px 16px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
     }
     .slap-title {
       font-family: 'Literata', Georgia, serif;
-      font-weight: 500;
-      font-size: 1.05rem;
+      font-weight: 600;
+      font-size: 2.1rem;
       color: #111;
-      line-height: 1.3;
+      line-height: 1.2;
+      text-align: right;
     }
     .slap-meta {
       font-size: 0.8rem;
