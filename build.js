@@ -257,14 +257,14 @@ async function build() {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(255,255,255,0.95);
+      background: rgba(120,120,120,0.95);
       z-index: 1000;
       overflow-y: auto;
       padding: 20px;
     }
     .lightbox-overlay.active { display: flex; justify-content: center; align-items: flex-start; }
     .lightbox {
-      background: #fafafa;
+      background: rgb(140, 140, 140);
       border-radius: 16px;
       max-width: 95vw;
       width: 100%;
@@ -323,7 +323,7 @@ async function build() {
     .lightbox-next { right: 12px; }
     .lightbox-image-wrap {
       position: relative;
-      background: #eee;
+      background: rgb(140, 140, 140);
       padding: 32px 0;
     }
     .lightbox-image {
@@ -338,8 +338,8 @@ async function build() {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #eee;
-      color: #999;
+      background: rgb(140, 140, 140);
+      color: #ddd;
       font-size: 1.2rem;
     }
     .lightbox-details {
@@ -350,7 +350,7 @@ async function build() {
       font-size: 1.6rem;
       font-weight: 600;
       margin-bottom: 20px;
-      color: #111;
+      color: #fff;
       line-height: 1.3;
       letter-spacing: -0.3px;
     }
@@ -360,13 +360,13 @@ async function build() {
       gap: 12px;
     }
     .lightbox-field {
-      background: #eee;
+      background: rgb(120, 120, 120);
       border-radius: 8px;
       padding: 10px 14px;
     }
     .lightbox-field-label {
       font-size: 0.65rem;
-      color: #999;
+      color: #ccc;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       font-weight: 500;
@@ -375,7 +375,7 @@ async function build() {
     .lightbox-field-value {
       font-family: 'Literata', Georgia, serif;
       font-size: 0.95rem;
-      color: #222;
+      color: #fff;
       font-weight: 400;
     }
     .lightbox-rarity {
