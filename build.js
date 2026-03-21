@@ -191,6 +191,7 @@ async function build() {
       object-fit: contain;
       object-position: center;
       background: #2a2a2a;
+      padding: 12px;
     }
     .slap-info {
       padding: 16px;
