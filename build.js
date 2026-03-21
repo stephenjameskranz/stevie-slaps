@@ -83,39 +83,61 @@ async function build() {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ysabeau:wght@1..1000&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --font-display: 'Ysabeau', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --color-bg: rgb(180, 180, 180);
+      --color-card: rgb(200, 200, 200);
+      --color-field: rgb(180, 180, 180);
+      --color-text: #222;
+      --color-text-light: #111;
+      --color-muted: #666;
+      --color-subtle: #999;
+      --color-accent: #b8860b;
+      --color-tag-bg: #eee;
+      --color-tag-text: #555;
+      --radius: 12px;
+      --radius-sm: 6px;
+      --radius-xs: 4px;
+      --spacing-sm: 8px;
+      --spacing-md: 16px;
+      --spacing-lg: 32px;
+    }
     * { box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: rgb(180, 180, 180);
-      color: #222;
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
       margin: 0;
       padding: 20px;
     }
     h1 {
-      font-family: 'Ysabeau', sans-serif;
+      font-family: var(--font-display);
       text-align: center;
       font-size: 2.8rem;
       font-weight: 700;
       margin-bottom: 6px;
-      color: #222;
+      color: var(--color-text);
       letter-spacing: -0.5px;
     }
     .subtitle {
-      font-family: 'Ysabeau', sans-serif;
+      font-family: var(--font-display);
       text-align: center;
-      color: #888;
+      color: var(--color-subtle);
       font-size: 1rem;
       font-weight: 300;
       font-style: italic;
-      margin-bottom: 16px;
+      margin-bottom: var(--spacing-md);
     }
+
+    /* Controls */
     .controls {
       max-width: 1400px;
       margin: 0 auto 20px;
       background: #fff;
       border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 16px;
+      border-radius: var(--radius);
+      padding: var(--spacing-md);
     }
     .filters {
       display: flex;
@@ -131,15 +153,15 @@ async function build() {
     }
     .filter-group label {
       font-size: 0.75rem;
-      color: #666;
+      color: var(--color-muted);
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
     .filter-group select, .search-input {
       background: #fff;
-      color: #222;
+      color: var(--color-text);
       border: 1px solid #ccc;
-      border-radius: 6px;
+      border-radius: var(--radius-sm);
       padding: 8px 12px;
       font-size: 0.9rem;
       min-width: 140px;
@@ -154,15 +176,10 @@ async function build() {
       gap: 10px;
       align-items: center;
     }
-    .search-group {
-      flex: 1;
-      min-width: 200px;
-    }
-    .search-input {
-      width: 100%;
-    }
+    .search-group { flex: 1; min-width: 200px; }
+    .search-input { width: 100%; }
     .result-count {
-      color: #666;
+      color: var(--color-muted);
       font-size: 0.85rem;
       margin-left: auto;
     }
@@ -170,77 +187,32 @@ async function build() {
       background: #ddd;
       color: #333;
       border: none;
-      border-radius: 6px;
+      border-radius: var(--radius-sm);
       padding: 8px 16px;
       cursor: pointer;
       font-size: 0.85rem;
     }
-    .reset-btn:hover {
-      background: #ccc;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .slap-card {
-      background: rgb(200, 200, 200);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: transform 0.2s;
-      padding-top: 32px;
-    }
-    .slap-card:hover {
-      transform: translateY(-4px);
-    }
-    .slap-card.hidden {
-      display: none;
-    }
-    .slap-image {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: contain;
-      object-position: center;
-      background: rgb(200, 200, 200);
-      padding: 32px 12px 12px;
-      border-radius: 6px;
-    }
-    .slap-info {
-      padding: 2px 16px 12px;
-      display: flex;
-      flex-direction: column;
-    }
-    .slap-title {
-      font-family: 'Ysabeau', sans-serif;
-      font-size: 2.1rem;
-      color: #111;
+    .reset-btn:hover { background: #ccc; }
+
+    /* Shared typography */
+    .title-display {
+      font-family: var(--font-display);
+      color: var(--color-text-light);
       line-height: 1.2;
-      text-align: right;
     }
-    .slap-label {
-      font-weight: 200;
-    }
-    .slap-num {
+    .label-light { font-weight: 200; }
+    .num-bold {
       font-weight: 700;
       font-variant-numeric: lining-nums;
     }
-    .slap-meta {
-      font-size: 0.85rem;
-      color: #777;
-      letter-spacing: 0.2px;
-      text-align: right;
-    }
-    .slap-meta span {
+    .meta-tag {
       display: inline-block;
-      background: #eee;
-      color: #555;
+      background: var(--color-tag-bg);
+      color: var(--color-tag-text);
       padding: 3px 9px;
-      border-radius: 4px;
+      border-radius: var(--radius-xs);
       margin: 2px;
       font-size: 0.85rem;
-      font-weight: 600;
       letter-spacing: 0.3px;
     }
     .meta-key {
@@ -251,21 +223,76 @@ async function build() {
       font-weight: 700;
       color: #333;
     }
-    .rarity {
-      font-family: 'Ysabeau', sans-serif;
-      color: #b8860b;
-      font-weight: 600;
+    .field-label {
+      font-size: 0.65rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .field-value {
+      font-family: var(--font-display);
       font-size: 0.95rem;
+      color: var(--color-text);
+      font-weight: 400;
+    }
+    .field-value-accent {
+      font-family: var(--font-display);
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .slap-card {
+      background: var(--color-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.2s;
+      padding-top: var(--spacing-lg);
+      cursor: pointer;
+    }
+    .slap-card:hover { transform: translateY(-4px); }
+    .slap-card.hidden { display: none; }
+    .slap-image {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      object-position: center;
+      background: var(--color-card);
+      padding: var(--spacing-lg) 12px 12px;
+      border-radius: var(--radius-sm);
+    }
+    .slap-info {
+      padding: 2px var(--spacing-md) 12px;
+      display: flex;
+      flex-direction: column;
+    }
+    .slap-title {
+      font-size: 2.1rem;
+      text-align: right;
+    }
+    .slap-meta {
+      font-size: 0.85rem;
+      color: #777;
+      letter-spacing: 0.2px;
+      text-align: right;
     }
     .no-image {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #eee;
-      color: #999;
+      background: var(--color-tag-bg);
+      color: var(--color-subtle);
       aspect-ratio: 1;
     }
-    .slap-card { cursor: pointer; }
 
     /* Lightbox */
     .lightbox-overlay {
@@ -279,8 +306,8 @@ async function build() {
     }
     .lightbox-overlay.active { display: flex; justify-content: center; align-items: flex-start; }
     .lightbox {
-      background: rgb(200, 200, 200);
-      border-radius: 16px;
+      background: var(--color-card);
+      border-radius: var(--radius);
       max-width: 95vw;
       width: 100%;
       margin: 20px auto;
@@ -288,10 +315,7 @@ async function build() {
       position: relative;
       display: flex;
     }
-    .lightbox-image-side {
-      flex: 1;
-      min-width: 0;
-    }
+    .lightbox-image-side { flex: 1; min-width: 0; }
     .lightbox-details-side {
       width: 360px;
       flex-shrink: 0;
@@ -338,8 +362,8 @@ async function build() {
     .lightbox-next { right: 12px; }
     .lightbox-image-wrap {
       position: relative;
-      background: rgb(200, 200, 200);
-      padding: 32px 0;
+      background: var(--color-card);
+      padding: var(--spacing-lg) 0;
     }
     .lightbox-image {
       width: 100%;
@@ -353,21 +377,15 @@ async function build() {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgb(200, 200, 200);
-      color: #666;
+      background: var(--color-card);
+      color: var(--color-muted);
       font-size: 1.2rem;
     }
-    .lightbox-details {
-      padding: 24px;
-    }
+    .lightbox-details { padding: 24px; }
     .lightbox-title {
-      font-family: 'Ysabeau', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 600;
+      font-size: 2.1rem;
+      text-align: right;
       margin-bottom: 20px;
-      color: #222;
-      line-height: 1.3;
-      letter-spacing: -0.3px;
     }
     .lightbox-grid {
       display: grid;
@@ -375,32 +393,11 @@ async function build() {
       gap: 12px;
     }
     .lightbox-field {
-      background: rgb(180, 180, 180);
-      border-radius: 8px;
+      background: var(--color-field);
+      border-radius: var(--radius-sm);
       padding: 10px 14px;
     }
-    .lightbox-field-label {
-      font-size: 0.65rem;
-      color: #666;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-    .lightbox-field-value {
-      font-family: 'Ysabeau', sans-serif;
-      font-size: 0.95rem;
-      color: #222;
-      font-weight: 400;
-    }
-    .lightbox-rarity {
-      font-family: 'Ysabeau', sans-serif;
-      color: #b8860b;
-      font-weight: 600;
-    }
-    .lightbox-notes {
-      grid-column: 1 / -1;
-    }
+    .lightbox-notes { grid-column: 1 / -1; }
 
     @media (max-width: 768px) {
       .filters { flex-direction: column; }
@@ -477,7 +474,7 @@ async function build() {
         : '<div class="no-image">No image</div>'
       }
       <div class="slap-info">
-        <div class="slap-title">${slap['slap_#'] ? `<span class="slap-label">SLAP</span> <span class="slap-num">${slap['slap_#']}</span>` : '<span class="slap-label">SLAP</span>'}</div>
+        <div class="slap-title title-display">${slap['slap_#'] ? `<span class="label-light">SLAP</span> <span class="num-bold">${slap['slap_#']}</span>` : '<span class="label-light">SLAP</span>'}</div>
         <div class="slap-meta">
           ${slap['width_(in)'] && slap['height_(in)'] ? `<span><span class="meta-key">size </span><span class="meta-val">${slap['width_(in)']}" x ${slap['height_(in)']}"</span></span>` : ''}
           ${slap['#_of_slaps'] ? `<span><span class="meta-key">stickers </span><span class="meta-val">${slap['#_of_slaps']}</span></span>` : ''}
@@ -501,7 +498,7 @@ async function build() {
       </div>
       <div class="lightbox-details-side">
         <div class="lightbox-details">
-          <div class="lightbox-title" id="lightbox-title"></div>
+          <div class="lightbox-title title-display" id="lightbox-title"></div>
           <div class="lightbox-grid" id="lightbox-grid"></div>
         </div>
       </div>
@@ -546,7 +543,7 @@ async function build() {
       for (const [key, label] of Object.entries(fieldLabels)) {
         if (s[key]) display[label] = s[key];
       }
-      return { display, image: s.image_link || '', title: `SLAP #${s['slap_#'] || '?'} - ${s['width_(in)']}″ x ${s['height_(in)']}″ ${s.substrate || ''}` };
+      return { display, image: s.image_link || '', slapNum: s['slap_#'] || '?', subtitle: `${s['width_(in)']}″ x ${s['height_(in)']}″ ${s.substrate || ''}`.trim() };
     }))};
   </script>
 
@@ -653,16 +650,16 @@ async function build() {
         ? '<img class="lightbox-image" src="' + data.image + '" alt="' + data.title + '" onerror="this.outerHTML=\\'<div class=lightbox-no-image>No image</div>\\'">'
         : '<div class="lightbox-no-image">No image</div>';
 
-      lightboxTitle.textContent = data.title;
+      lightboxTitle.innerHTML = '<span class="label-light">SLAP</span> <span class="num-bold">' + (data.slapNum || '?') + '</span> <span class="label-light" style="font-size:0.6em">' + data.subtitle + '</span>';
 
       var html = '';
       for (var label in data.display) {
         var val = data.display[label];
         var cls = 'lightbox-field';
         if (label === 'Notes') cls += ' lightbox-notes';
-        var valCls = 'lightbox-field-value';
-        if (label === 'Rarity Index') valCls += ' lightbox-rarity';
-        html += '<div class="' + cls + '"><div class="lightbox-field-label">' + label + '</div><div class="' + valCls + '">' + val + '</div></div>';
+        var valCls = 'field-value';
+        if (label === 'Rarity Index') valCls += ' field-value-accent';
+        html += '<div class="' + cls + '"><div class="field-label">' + label + '</div><div class="' + valCls + '">' + val + '</div></div>';
       }
       lightboxGrid.innerHTML = html;
 
