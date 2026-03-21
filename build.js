@@ -205,6 +205,7 @@ async function build() {
       object-position: center;
       background: rgb(200, 200, 200);
       padding: 32px 12px 12px;
+      border-radius: 2px;
     }
     .slap-info {
       padding: 2px 16px 12px;
