@@ -1,0 +1,28 @@
+{
+  "name": "stevie-slaps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "lint": "eslint build.js ci-test.js",
+    "validate": "html-validate index.html",
+    "smoke": "node ci-test.js",
+    "test": "npm run build && npm run lint && npm run validate && npm run smoke"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paigesaez/stevie-slaps.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paigesaez/stevie-slaps/issues"
+  },
+  "homepage": "https://github.com/paigesaez/stevie-slaps#readme",
+  "devDependencies": {
+    "eslint": "^10.1.0",
+    "html-validate": "^10.11.2"
+  }
+}
