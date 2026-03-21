@@ -174,7 +174,7 @@ async function build() {
       margin: 0 auto;
     }
     .slap-card {
-      background: #2a2a2a;
+      background: #fafafa;
       border-radius: 12px;
       overflow: hidden;
       transition: transform 0.2s;
@@ -190,7 +190,7 @@ async function build() {
       aspect-ratio: 1;
       object-fit: contain;
       object-position: center;
-      background: #2a2a2a;
+      background: #fafafa;
       padding: 12px;
     }
     .slap-info {
@@ -201,20 +201,22 @@ async function build() {
     }
     .slap-title {
       font-weight: 600;
+      color: #222;
     }
     .slap-meta {
       font-size: 0.85rem;
-      color: #aaa;
+      color: #666;
     }
     .slap-meta span {
       display: inline-block;
-      background: #3a3a3a;
+      background: #eee;
+      color: #444;
       padding: 2px 8px;
       border-radius: 4px;
       margin: 2px;
     }
     .rarity {
-      color: #ffd700;
+      color: #b8860b;
       font-weight: 600;
     }
     .no-image {
