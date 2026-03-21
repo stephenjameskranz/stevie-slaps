@@ -293,6 +293,7 @@ async function build() {
     .lightbox-image-wrap {
       position: relative;
       background: #eee;
+      padding-top: 32px;
     }
     .lightbox-image {
       width: 100%;
