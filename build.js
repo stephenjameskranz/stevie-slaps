@@ -246,11 +246,22 @@ async function build() {
     .lightbox {
       background: #fafafa;
       border-radius: 16px;
-      max-width: 900px;
+      max-width: 1200px;
       width: 100%;
       margin: 40px auto;
       overflow: hidden;
       position: relative;
+      display: flex;
+    }
+    .lightbox-image-side {
+      flex: 1;
+      min-width: 0;
+    }
+    .lightbox-details-side {
+      width: 360px;
+      flex-shrink: 0;
+      overflow-y: auto;
+      max-height: 85vh;
     }
     .lightbox-close {
       position: absolute;
@@ -349,11 +360,12 @@ async function build() {
       grid-column: 1 / -1;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .filters { flex-direction: column; }
       .filter-group select { min-width: 100%; }
       h1 { font-size: 1.8rem; }
-      .lightbox { margin: 10px; }
+      .lightbox { flex-direction: column; margin: 10px; }
+      .lightbox-details-side { width: 100%; max-height: none; }
       .lightbox-title { font-size: 1.2rem; }
       .lightbox-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -442,14 +454,18 @@ async function build() {
   <div class="lightbox-overlay" id="lightbox">
     <div class="lightbox">
       <button type="button" class="lightbox-close" id="lightbox-close">&times;</button>
-      <div class="lightbox-image-wrap">
-        <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev">&lsaquo;</button>
-        <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next">&rsaquo;</button>
-        <div id="lightbox-img-container"></div>
+      <div class="lightbox-image-side">
+        <div class="lightbox-image-wrap">
+          <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev">&lsaquo;</button>
+          <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next">&rsaquo;</button>
+          <div id="lightbox-img-container"></div>
+        </div>
       </div>
-      <div class="lightbox-details">
-        <div class="lightbox-title" id="lightbox-title"></div>
-        <div class="lightbox-grid" id="lightbox-grid"></div>
+      <div class="lightbox-details-side">
+        <div class="lightbox-details">
+          <div class="lightbox-title" id="lightbox-title"></div>
+          <div class="lightbox-grid" id="lightbox-grid"></div>
+        </div>
       </div>
     </div>
   </div>
