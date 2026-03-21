@@ -193,11 +193,13 @@ async function build() {
       background: #2a2a2a;
     }
     .slap-info {
-      padding: 15px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
     .slap-title {
       font-weight: 600;
-      margin-bottom: 8px;
     }
     .slap-meta {
       font-size: 0.85rem;
