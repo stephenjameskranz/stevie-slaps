@@ -189,7 +189,7 @@ async function build() {
       width: 100%;
       aspect-ratio: 1;
       object-fit: contain;
-      background: #111;
+      background: #2a2a2a;
     }
     .slap-info {
       padding: 15px;
