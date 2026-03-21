@@ -188,8 +188,8 @@ async function build() {
     .slap-image {
       width: 100%;
       aspect-ratio: 1;
-      object-fit: cover;
-      background: #333;
+      object-fit: contain;
+      background: #111;
     }
     .slap-info {
       padding: 15px;
