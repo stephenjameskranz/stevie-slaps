@@ -462,16 +462,7 @@ async function build() {
         : '<div class="no-image">No image</div>'
       }
       <div class="slap-info">
-        <div class="slap-title">${slap['slap_#'] ? `#${slap['slap_#']} - ` : ''}${slap['width_(in)']}" x ${slap['height_(in)']}" ${slap.substrate || ''}</div>
-        <div class="slap-meta">
-          ${slap['#_of_slaps'] ? `<span>${slap['#_of_slaps']} slap${slap['#_of_slaps'] !== '1' ? 's' : ''}</span>` : ''}
-          ${slap['2d_point_group_(entire_piece)'] ? `<span>${slap['2d_point_group_(entire_piece)']}</span>` : ''}
-          ${slap.pattern ? `<span>${slap.pattern}</span>` : ''}
-          ${slap.substrate_color ? `<span>${slap.substrate_color}</span>` : ''}
-          ${slap.shape ? `<span>${slap.shape}</span>` : ''}
-        </div>
-        ${slap.rarity_index ? `<div class="rarity">Rarity: ${slap.rarity_index}</div>` : ''}
-        ${slap.date ? `<div class="slap-meta">${slap.date}</div>` : ''}
+        <div class="slap-title">${slap['slap_#'] ? `SLAP ${slap['slap_#']}` : 'SLAP'}</div>
       </div>
     </div>
     `).join('')}
