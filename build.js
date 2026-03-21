@@ -186,7 +186,7 @@ async function build() {
       margin: 0 auto;
     }
     .slap-card {
-      background: #fafafa;
+      background: rgb(155, 155, 155);
       border-radius: 12px;
       overflow: hidden;
       transition: transform 0.2s;
@@ -203,7 +203,7 @@ async function build() {
       aspect-ratio: 1;
       object-fit: contain;
       object-position: center;
-      background: #fafafa;
+      background: rgb(155, 155, 155);
       padding: 32px 12px 12px;
     }
     .slap-info {
