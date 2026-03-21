@@ -237,7 +237,7 @@ async function build() {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.9);
+      background: rgba(255,255,255,0.95);
       z-index: 1000;
       overflow-y: auto;
       padding: 20px;
@@ -256,7 +256,7 @@ async function build() {
       position: absolute;
       top: 12px;
       right: 16px;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.5);
       color: #fff;
       border: none;
       font-size: 1.5rem;
@@ -269,12 +269,12 @@ async function build() {
       align-items: center;
       justify-content: center;
     }
-    .lightbox-close:hover { background: rgba(0,0,0,0.8); }
+    .lightbox-close:hover { background: rgba(0,0,0,0.7); }
     .lightbox-nav {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.5);
       color: #fff;
       border: none;
       font-size: 1.5rem;
@@ -287,7 +287,7 @@ async function build() {
       align-items: center;
       justify-content: center;
     }
-    .lightbox-nav:hover { background: rgba(0,0,0,0.8); }
+    .lightbox-nav:hover { background: rgba(0,0,0,0.7); }
     .lightbox-prev { left: 12px; }
     .lightbox-next { right: 12px; }
     .lightbox-image-wrap {
