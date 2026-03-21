@@ -86,8 +86,8 @@ async function build() {
     * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f0f0f0;
-      color: #222;
+      background: rgb(120, 120, 120);
+      color: #eee;
       margin: 0;
       padding: 20px;
     }
@@ -97,7 +97,7 @@ async function build() {
       font-size: 2.8rem;
       font-weight: 700;
       margin-bottom: 6px;
-      color: #111;
+      color: #fff;
       letter-spacing: -0.5px;
     }
     .subtitle {
@@ -186,7 +186,7 @@ async function build() {
       margin: 0 auto;
     }
     .slap-card {
-      background: rgb(155, 155, 155);
+      background: rgb(140, 140, 140);
       border-radius: 12px;
       overflow: hidden;
       transition: transform 0.2s;
@@ -203,7 +203,7 @@ async function build() {
       aspect-ratio: 1;
       object-fit: contain;
       object-position: center;
-      background: rgb(155, 155, 155);
+      background: rgb(140, 140, 140);
       padding: 32px 12px 12px;
     }
     .slap-info {
