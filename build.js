@@ -79,6 +79,9 @@ async function build() {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SLAP Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
     body {
@@ -89,15 +92,22 @@ async function build() {
       padding: 20px;
     }
     h1 {
+      font-family: 'Literata', Georgia, serif;
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      color: #222;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #111;
+      letter-spacing: -0.5px;
     }
     .subtitle {
+      font-family: 'Literata', Georgia, serif;
       text-align: center;
-      color: #666;
-      margin-bottom: 10px;
+      color: #888;
+      font-size: 1rem;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 16px;
     }
     .controls {
       max-width: 1400px;
@@ -203,24 +213,34 @@ async function build() {
       gap: 8px;
     }
     .slap-title {
-      font-weight: 600;
-      color: #222;
+      font-family: 'Literata', Georgia, serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: #111;
+      line-height: 1.3;
     }
     .slap-meta {
-      font-size: 0.85rem;
-      color: #666;
+      font-size: 0.8rem;
+      color: #777;
+      letter-spacing: 0.2px;
     }
     .slap-meta span {
       display: inline-block;
       background: #eee;
-      color: #444;
-      padding: 2px 8px;
+      color: #555;
+      padding: 3px 9px;
       border-radius: 4px;
       margin: 2px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
     }
     .rarity {
+      font-family: 'Literata', Georgia, serif;
       color: #b8860b;
       font-weight: 600;
+      font-size: 0.95rem;
     }
     .no-image {
       display: flex;
@@ -326,10 +346,13 @@ async function build() {
       padding: 24px;
     }
     .lightbox-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: #222;
+      font-family: 'Literata', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #111;
+      line-height: 1.3;
+      letter-spacing: -0.3px;
     }
     .lightbox-grid {
       display: grid;
@@ -342,17 +365,21 @@ async function build() {
       padding: 10px 14px;
     }
     .lightbox-field-label {
-      font-size: 0.7rem;
-      color: #666;
+      font-size: 0.65rem;
+      color: #999;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
+      font-weight: 500;
       margin-bottom: 4px;
     }
     .lightbox-field-value {
+      font-family: 'Literata', Georgia, serif;
       font-size: 0.95rem;
       color: #222;
+      font-weight: 400;
     }
     .lightbox-rarity {
+      font-family: 'Literata', Georgia, serif;
       color: #b8860b;
       font-weight: 600;
     }
