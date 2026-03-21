@@ -86,8 +86,8 @@ async function build() {
     * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: rgb(120, 120, 120);
-      color: #eee;
+      background: rgb(180, 180, 180);
+      color: #222;
       margin: 0;
       padding: 20px;
     }
@@ -97,7 +97,7 @@ async function build() {
       font-size: 2.8rem;
       font-weight: 700;
       margin-bottom: 6px;
-      color: #fff;
+      color: #222;
       letter-spacing: -0.5px;
     }
     .subtitle {
@@ -186,7 +186,7 @@ async function build() {
       margin: 0 auto;
     }
     .slap-card {
-      background: rgb(140, 140, 140);
+      background: rgb(200, 200, 200);
       border-radius: 12px;
       overflow: hidden;
       transition: transform 0.2s;
@@ -203,7 +203,7 @@ async function build() {
       aspect-ratio: 1;
       object-fit: contain;
       object-position: center;
-      background: rgb(140, 140, 140);
+      background: rgb(200, 200, 200);
       padding: 32px 12px 12px;
     }
     .slap-info {
@@ -257,14 +257,14 @@ async function build() {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(120,120,120,0.95);
+      background: rgba(180,180,180,0.95);
       z-index: 1000;
       overflow-y: auto;
       padding: 20px;
     }
     .lightbox-overlay.active { display: flex; justify-content: center; align-items: flex-start; }
     .lightbox {
-      background: rgb(140, 140, 140);
+      background: rgb(200, 200, 200);
       border-radius: 16px;
       max-width: 95vw;
       width: 100%;
@@ -323,7 +323,7 @@ async function build() {
     .lightbox-next { right: 12px; }
     .lightbox-image-wrap {
       position: relative;
-      background: rgb(140, 140, 140);
+      background: rgb(200, 200, 200);
       padding: 32px 0;
     }
     .lightbox-image {
@@ -338,8 +338,8 @@ async function build() {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgb(140, 140, 140);
-      color: #ddd;
+      background: rgb(200, 200, 200);
+      color: #666;
       font-size: 1.2rem;
     }
     .lightbox-details {
@@ -350,7 +350,7 @@ async function build() {
       font-size: 1.6rem;
       font-weight: 600;
       margin-bottom: 20px;
-      color: #fff;
+      color: #222;
       line-height: 1.3;
       letter-spacing: -0.3px;
     }
@@ -360,13 +360,13 @@ async function build() {
       gap: 12px;
     }
     .lightbox-field {
-      background: rgb(120, 120, 120);
+      background: rgb(180, 180, 180);
       border-radius: 8px;
       padding: 10px 14px;
     }
     .lightbox-field-label {
       font-size: 0.65rem;
-      color: #ccc;
+      color: #666;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       font-weight: 500;
@@ -375,7 +375,7 @@ async function build() {
     .lightbox-field-value {
       font-family: 'Literata', Georgia, serif;
       font-size: 0.95rem;
-      color: #fff;
+      color: #222;
       font-weight: 400;
     }
     .lightbox-rarity {
