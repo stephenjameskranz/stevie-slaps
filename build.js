@@ -385,7 +385,7 @@ async function build() {
         <label>Search</label>
         <input type="text" class="search-input" id="search-input" placeholder="Search SLAP #, notes...">
       </div>
-      <button class="reset-btn" id="reset-btn">Reset</button>
+      <button type="button" class="reset-btn" id="reset-btn">Reset</button>
       <span class="result-count" id="result-count"></span>
     </div>
   </div>
@@ -430,10 +430,10 @@ async function build() {
   <!-- Lightbox -->
   <div class="lightbox-overlay" id="lightbox">
     <div class="lightbox">
-      <button class="lightbox-close" id="lightbox-close">&times;</button>
+      <button type="button" class="lightbox-close" id="lightbox-close">&times;</button>
       <div class="lightbox-image-wrap">
-        <button class="lightbox-nav lightbox-prev" id="lightbox-prev">&lsaquo;</button>
-        <button class="lightbox-nav lightbox-next" id="lightbox-next">&rsaquo;</button>
+        <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev">&lsaquo;</button>
+        <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next">&rsaquo;</button>
         <div id="lightbox-img-container"></div>
       </div>
       <div class="lightbox-details">
