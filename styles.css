@@ -288,6 +288,7 @@ h1 {
 }
 .loupe-cat { display: none; }
 .has-cat .loupe-cat {
+  display: block;
   position: absolute;
   font-size: 20px;
   top: 50%;
