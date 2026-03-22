@@ -269,6 +269,7 @@ async function build() {
       background: var(--color-card);
       padding: var(--spacing-lg) 12px 12px;
       border-radius: var(--radius-sm);
+      border: 1px solid red;
     }
     .slap-info {
       padding: 2px var(--spacing-md) 12px;
