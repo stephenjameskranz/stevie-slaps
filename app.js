@@ -105,11 +105,9 @@ function openLightbox(index) {
   var html = '';
   for (var label in data.display) {
     var val = data.display[label];
-    var cls = 'lightbox-field';
+    var cls = 'meta-tag lightbox-field';
     if (label === 'Notes') cls += ' lightbox-notes';
-    var valCls = 'field-value';
-    if (label === 'Rarity Index') valCls += ' field-value-accent';
-    html += '<div class="' + cls + '"><div class="field-label">' + label + '</div><div class="' + valCls + '">' + val + '</div></div>';
+    html += '<div class="' + cls + '"><span class="meta-key">' + label + ' </span><span class="meta-val">' + val + '</span></div>';
   }
   lightboxGrid.innerHTML = html;
 
