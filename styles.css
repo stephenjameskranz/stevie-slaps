@@ -324,7 +324,7 @@ h1 {
 
 @media (max-width: 1024px) {
   .lightbox-overlay.active { align-items: flex-start; }
-  .lightbox { flex-direction: column; max-height: none; overflow: visible; background: var(--color-bg); }
+  .lightbox { flex-direction: column; max-height: none; overflow: visible; }
   .lightbox-image-side { overflow: visible; }
   .lightbox-image-wrap { height: auto; }
   .lightbox-image { max-height: 60vh; }
