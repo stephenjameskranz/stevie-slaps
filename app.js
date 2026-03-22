@@ -102,18 +102,30 @@ function openLightbox(index) {
 
   lightboxTitle.innerHTML = '<span class="label-light">SLAP</span> <span class="num-bold">' + (data.slapNum || '?') + '</span>';
 
+  var sections = [
+    { title: null, fields: ['Date', 'Signature'] },
+    { title: 'Substrate', fields: ['Size', 'Orientation', 'Material', 'Color', 'Border', 'Laminate'] },
+    { title: 'Design', fields: ['Stickers', 'Pattern', 'Pattern Orientation', 'Flag Orientation', 'Spin', '2D Point Group', 'Shape', 'Flag Version'] },
+    { title: 'Rarity', fields: ['Rank', 'Rarity Percentile', 'Rarity Index'] },
+    { title: null, fields: ['Notes'] },
+  ];
+
   var html = '';
-  var primaryFields = ['SLAP #', 'Size', 'Stickers', 'Rarity Percentile'];
-  var passedPrimary = false;
-  for (var label in data.display) {
-    if (!passedPrimary && primaryFields.indexOf(label) === -1) {
-      html += '<div class="chip-divider"></div>';
-      passedPrimary = true;
+  for (var s = 0; s < sections.length; s++) {
+    var section = sections[s];
+    var sectionHtml = '';
+    for (var f = 0; f < section.fields.length; f++) {
+      var label = section.fields[f];
+      var val = data.display[label];
+      if (!val) continue;
+      var cls = 'meta-tag';
+      if (label === 'Notes') cls += ' lightbox-notes';
+      sectionHtml += '<div class="' + cls + '"><span class="meta-key">' + label + ' </span><span class="meta-val">' + val + '</span></div>';
     }
-    var val = data.display[label];
-    var cls = 'meta-tag lightbox-field';
-    if (label === 'Notes') cls += ' lightbox-notes';
-    html += '<div class="' + cls + '"><span class="meta-key">' + label + ' </span><span class="meta-val">' + val + '</span></div>';
+    if (!sectionHtml) continue;
+    if (s > 0) html += '<div class="chip-divider"></div>';
+    if (section.title) html += '<div class="chip-section-title">' + section.title + '</div>';
+    html += sectionHtml;
   }
   lightboxGrid.innerHTML = html;
 

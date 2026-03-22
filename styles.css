@@ -295,8 +295,18 @@ h1 {
 .lightbox-details { padding: 24px; }
 .lightbox-title {
   font-size: 2.1rem;
-  text-align: right;
+  text-align: left;
   margin-bottom: 20px;
+}
+.chip-section-title {
+  flex-basis: 100%;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-muted);
+  margin: 16px 0 4px;
 }
 .lightbox-grid {
   display: flex;
