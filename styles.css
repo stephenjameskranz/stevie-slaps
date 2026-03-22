@@ -294,6 +294,17 @@ h1 {
   transition: opacity 0.15s ease;
 }
 .lightbox-fade { opacity: 0; }
+.magnifier-lens {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid var(--color-border-dark);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  pointer-events: none;
+  z-index: 10;
+  background-repeat: no-repeat;
+  cursor: none;
+}
+#lightbox-img-container { position: relative; cursor: crosshair; }
 .lightbox-image {
   width: 100%;
   max-height: calc(90vh - 2 * var(--spacing-lg));

@@ -197,6 +197,49 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowRight') navigateLightbox(1);
 });
 
+// Magnifier (desktop only)
+(function() {
+  var lens = document.createElement('div');
+  lens.className = 'magnifier-lens';
+  var ZOOM = 2.5;
+  var SIZE = 180;
+
+  function isTouchDevice() {
+    return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  }
+
+  lightboxImgContainer.addEventListener('mouseenter', function() {
+    if (isTouchDevice()) return;
+    var img = lightboxImgContainer.querySelector('.lightbox-image');
+    if (!img) return;
+    lens.style.width = SIZE + 'px';
+    lens.style.height = SIZE + 'px';
+    lens.style.backgroundImage = 'url(' + img.src + ')';
+    lightboxImgContainer.appendChild(lens);
+  });
+
+  lightboxImgContainer.addEventListener('mousemove', function(e) {
+    var img = lightboxImgContainer.querySelector('.lightbox-image');
+    if (!img || !lens.parentNode) return;
+    var rect = img.getBoundingClientRect();
+    var x = (e.clientX - rect.left) / rect.width;
+    var y = (e.clientY - rect.top) / rect.height;
+    if (x < 0 || x > 1 || y < 0 || y > 1) {
+      lens.style.display = 'none';
+      return;
+    }
+    lens.style.display = 'block';
+    lens.style.left = e.clientX - lightboxImgContainer.getBoundingClientRect().left - SIZE / 2 + 'px';
+    lens.style.top = e.clientY - lightboxImgContainer.getBoundingClientRect().top - SIZE / 2 + 'px';
+    lens.style.backgroundSize = (rect.width * ZOOM) + 'px ' + (rect.height * ZOOM) + 'px';
+    lens.style.backgroundPosition = -(x * rect.width * ZOOM - SIZE / 2) + 'px ' + -(y * rect.height * ZOOM - SIZE / 2) + 'px';
+  });
+
+  lightboxImgContainer.addEventListener('mouseleave', function() {
+    if (lens.parentNode) lens.parentNode.removeChild(lens);
+  });
+})();
+
 // Restore lightbox from URL hash on page load
 (function() {
   var hash = window.location.hash;
