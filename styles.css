@@ -132,7 +132,7 @@ h1 {
 }
 .meta-key {
   display: block;
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   color: var(--color-muted);
   text-transform: uppercase;
   letter-spacing: 0.8px;
