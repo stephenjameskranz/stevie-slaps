@@ -305,7 +305,7 @@ h1 {
   color: var(--color-muted);
   font-size: 1.2rem;
 }
-.lightbox-details { padding: 24px 24px 32px; }
+.lightbox-details { padding: var(--spacing-lg) 24px 32px; }
 .lightbox-title {
   font-size: 2.5rem;
   text-align: left;
