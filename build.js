@@ -199,8 +199,6 @@ async function build() {
         'flag_orientation': 'Flag Orientation',
         'spin': 'Spin',
         'flag_version': 'Flag Version',
-        'pattern_mirror': 'Pattern Mirror',
-        'piece_mirror': 'Piece Mirror',
         'point_symmetry': 'Point Symmetry',
         '2d_point_group_(entire_piece)': '2D Point Group',
         'shape': 'Shape',
