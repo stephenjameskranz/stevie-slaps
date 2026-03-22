@@ -143,10 +143,12 @@ async function build() {
       data-height="${slap['height_(in)'] || ''}"
       data-search="${[slap['slap_#'], slap.notes, slap.pattern, slap.substrate, slap.substrate_color, slap.shape, slap['2d_point_group_(entire_piece)']].join(' ').toLowerCase()}"
     >
+      <div class="slap-image-wrap">
       ${slap['800px_image_link'] || slap.image_link
         ? `<img class="slap-image" src="${slap['800px_image_link'] || slap.image_link}" alt="SLAP ${slap['slap_#'] || ''}" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=no-image>No image</div>'">`
         : '<div class="no-image">No image</div>'
       }
+      </div>
       <div class="slap-info">
         <div class="slap-title title-display">${slap['slap_#'] ? `<span class="label-light">SLAP</span> <span class="num-bold">${slap['slap_#']}</span>` : '<span class="label-light">SLAP</span>'}</div>
         <div class="slap-meta">
