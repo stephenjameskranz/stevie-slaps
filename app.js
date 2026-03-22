@@ -199,6 +199,10 @@ document.addEventListener('keydown', function(e) {
 (function() {
   var lens = document.createElement('div');
   lens.className = 'magnifier-lens';
+  var cat = document.createElement('span');
+  cat.className = 'loupe-cat';
+  cat.textContent = '\uD83D\uDC08\u200D\u2B1B';
+  lens.appendChild(cat);
   var ZOOM = 2.5;
   var SIZE = 260;
   var cachedImg = null;
