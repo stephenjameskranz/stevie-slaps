@@ -96,7 +96,7 @@ function openLightbox(index) {
   if (!data) return;
   var isNav = currentIndex !== -1;
   currentIndex = index;
-  window.location.hash = 'slap-' + index;
+  window.location.hash = 'slap-' + (data.slapNum || index);
 
   if (isNav) {
     lightboxImgContainer.style.opacity = '0';
@@ -201,7 +201,9 @@ document.addEventListener('keydown', function(e) {
 (function() {
   var hash = window.location.hash;
   if (hash && hash.startsWith('#slap-')) {
-    var index = parseInt(hash.replace('#slap-', ''));
-    if (!isNaN(index) && slapData[index]) openLightbox(index);
+    var num = hash.replace('#slap-', '');
+    var index = slapData.findIndex(function(s) { return s.slapNum === num; });
+    if (index === -1) index = parseInt(num);
+    if (index >= 0 && slapData[index]) openLightbox(index);
   }
 })();
