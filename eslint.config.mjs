@@ -1,3 +1,5 @@
+import globals from "globals";
+
 export default [
   {
     files: ["build.js", "ci-test.js"],
@@ -11,12 +13,8 @@ export default [
       ecmaVersion: 2022,
       sourceType: "commonjs",
       globals: {
-        require: "readonly",
-        module: "readonly",
-        process: "readonly",
-        console: "readonly",
+        ...globals.node,
         fetch: "readonly",
-        __dirname: "readonly",
       },
     },
   },
@@ -32,18 +30,8 @@ export default [
       ecmaVersion: 2022,
       sourceType: "script",
       globals: {
-        document: "readonly",
+        ...globals.browser,
         slapData: "readonly",
-        console: "readonly",
-        parseInt: "readonly",
-        parseFloat: "readonly",
-        Date: "readonly",
-        Array: "readonly",
-        Image: "readonly",
-        requestAnimationFrame: "readonly",
-        window: "readonly",
-        history: "readonly",
-        isNaN: "readonly",
       },
     },
   },

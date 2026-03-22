@@ -99,8 +99,8 @@ function openLightbox(index) {
   window.location.hash = 'slap-' + (data.slapNum || index);
 
   if (isNav) {
-    lightboxImgContainer.style.opacity = '0';
-    lightboxGrid.style.opacity = '0';
+    lightboxImgContainer.classList.add('lightbox-fade');
+    lightboxGrid.classList.add('lightbox-fade');
   }
 
   var imgHtml = data.image
@@ -111,16 +111,16 @@ function openLightbox(index) {
     var preload = new Image();
     preload.onload = function() {
       lightboxImgContainer.innerHTML = imgHtml;
-      requestAnimationFrame(function() { lightboxImgContainer.style.opacity = '1'; });
+      requestAnimationFrame(function() { lightboxImgContainer.classList.remove('lightbox-fade'); });
     };
     preload.onerror = function() {
       lightboxImgContainer.innerHTML = imgHtml;
-      requestAnimationFrame(function() { lightboxImgContainer.style.opacity = '1'; });
+      requestAnimationFrame(function() { lightboxImgContainer.classList.remove('lightbox-fade'); });
     };
     preload.src = data.image;
   } else {
     lightboxImgContainer.innerHTML = imgHtml;
-    if (isNav) requestAnimationFrame(function() { lightboxImgContainer.style.opacity = '1'; });
+    if (isNav) requestAnimationFrame(function() { lightboxImgContainer.classList.remove('lightbox-fade'); });
   }
 
   lightboxTitle.innerHTML = '<span class="label-light">SLAP</span> <span class="num-bold">' + (data.slapNum || '?') + '</span>';
@@ -153,7 +153,7 @@ function openLightbox(index) {
     html += sectionHtml;
   }
   lightboxGrid.innerHTML = html;
-  if (isNav) requestAnimationFrame(function() { lightboxGrid.style.opacity = '1'; });
+  if (isNav) requestAnimationFrame(function() { lightboxGrid.classList.remove('lightbox-fade'); });
 
   lightbox.classList.add('active');
   document.body.style.overflow = 'hidden';

@@ -3,7 +3,6 @@
   --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --color-bg: rgb(180, 180, 180);
   --color-card: rgb(200, 200, 200);
-  --color-field: rgb(180, 180, 180);
   --color-text: #222;
   --color-text-light: #111;
   --color-muted: #666;
@@ -11,6 +10,12 @@
   --color-accent: #b8860b;
   --color-tag-bg: #eee;
   --color-tag-text: #555;
+  --color-white: #fff;
+  --color-border: #ddd;
+  --color-border-dark: #ccc;
+  --color-border-focus: #888;
+  --color-overlay: rgba(0,0,0,0.5);
+  --color-overlay-hover: rgba(0,0,0,0.7);
   --radius: 12px;
   --radius-sm: 6px;
   --radius-xs: 4px;
@@ -49,8 +54,8 @@ h1 {
 .controls {
   max-width: 1400px;
   margin: 0 auto 20px;
-  background: #fff;
-  border: 1px solid #ddd;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: var(--spacing-md);
 }
@@ -74,9 +79,9 @@ h1 {
   letter-spacing: 0.5px;
 }
 .filter-group select, .search-input {
-  background: #fff;
+  background: var(--color-white);
   color: var(--color-text);
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-border-dark);
   border-radius: var(--radius-sm);
   padding: 8px 12px;
   font-size: 0.9rem;
@@ -84,7 +89,7 @@ h1 {
 }
 .filter-group select:focus, .search-input:focus {
   outline: none;
-  border-color: #888;
+  border-color: var(--color-border-focus);
 }
 .sort-row {
   display: flex;
@@ -101,15 +106,15 @@ h1 {
   margin-left: auto;
 }
 .reset-btn {
-  background: #ddd;
-  color: #333;
+  background: var(--color-border);
+  color: var(--color-text);
   border: none;
   border-radius: var(--radius-sm);
   padding: 8px 16px;
   cursor: pointer;
   font-size: 0.85rem;
 }
-.reset-btn:hover { background: #ccc; }
+.reset-btn:hover { background: var(--color-border-dark); }
 
 /* Shared typography */
 .title-display {
@@ -120,7 +125,6 @@ h1 {
 .label-light { font-weight: 400; }
 .num-bold {
   font-weight: 700;
-  font-variant-numeric: lining-nums;
 }
 .meta-tag {
   display: inline-flex;
@@ -145,7 +149,6 @@ h1 {
   font-size: 1rem;
   color: var(--color-text);
   font-weight: 600;
-  font-variant-numeric: lining-nums;
   text-transform: capitalize;
 }
 .meta-val.no-capitalize {
@@ -154,7 +157,7 @@ h1 {
 .chip-divider {
   flex-basis: 100%;
   height: 1px;
-  background: #bbb;
+  background: var(--color-border-focus);
   margin: 12px 0;
 }
 
@@ -242,7 +245,7 @@ h1 {
   position: absolute;
   top: 12px;
   right: 16px;
-  background: rgba(0,0,0,0.5);
+  background: var(--color-overlay);
   color: #fff;
   border: none;
   font-size: 1.5rem;
@@ -255,12 +258,12 @@ h1 {
   align-items: center;
   justify-content: center;
 }
-.lightbox-close:hover { background: rgba(0,0,0,0.7); }
+.lightbox-close:hover { background: var(--color-overlay-hover); }
 .lightbox-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
+  background: var(--color-overlay);
   color: #fff;
   border: none;
   font-size: 1.5rem;
@@ -273,7 +276,7 @@ h1 {
   align-items: center;
   justify-content: center;
 }
-.lightbox-nav:hover { background: rgba(0,0,0,0.7); }
+.lightbox-nav:hover { background: var(--color-overlay-hover); }
 .lightbox-prev { left: 12px; }
 .lightbox-next { right: 12px; }
 .lightbox-image-wrap {
@@ -286,9 +289,11 @@ h1 {
   align-items: center;
   justify-content: center;
 }
-#lightbox-img-container {
+#lightbox-img-container,
+.lightbox-grid {
   transition: opacity 0.15s ease;
 }
+.lightbox-fade { opacity: 0; }
 .lightbox-image {
   width: 100%;
   max-height: calc(90vh - 2 * var(--spacing-lg));
@@ -326,7 +331,6 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  transition: opacity 0.15s ease;
 }
 .lightbox-notes { width: 100%; }
 
