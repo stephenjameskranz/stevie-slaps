@@ -20,4 +20,26 @@ export default [
       },
     },
   },
+  {
+    files: ["app.js"],
+    rules: {
+      "no-undef": "error",
+      "no-unused-vars": "warn",
+      "no-unreachable": "error",
+      "eqeqeq": "warn",
+    },
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "script",
+      globals: {
+        document: "readonly",
+        slapData: "readonly",
+        console: "readonly",
+        parseInt: "readonly",
+        parseFloat: "readonly",
+        Date: "readonly",
+        Array: "readonly",
+      },
+    },
+  },
 ];
