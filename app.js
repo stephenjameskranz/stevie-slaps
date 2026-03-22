@@ -96,6 +96,7 @@ function openLightbox(index) {
   if (!data) return;
   var isNav = currentIndex !== -1;
   currentIndex = index;
+  history.replaceState(null, '', '#slap-' + index);
 
   if (isNav) {
     lightboxImgContainer.style.opacity = '0';
@@ -161,6 +162,7 @@ function openLightbox(index) {
 function closeLightbox() {
   lightbox.classList.remove('active');
   document.body.style.overflow = '';
+  history.replaceState(null, '', window.location.pathname);
   currentIndex = -1;
 }
 
@@ -193,3 +195,12 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowLeft') navigateLightbox(-1);
   if (e.key === 'ArrowRight') navigateLightbox(1);
 });
+
+// Restore lightbox from URL hash on page load
+(function() {
+  var hash = window.location.hash;
+  if (hash && hash.startsWith('#slap-')) {
+    var index = parseInt(hash.replace('#slap-', ''));
+    if (!isNaN(index) && slapData[index]) openLightbox(index);
+  }
+})();

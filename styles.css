@@ -232,7 +232,7 @@ h1 {
   position: relative;
   display: flex;
 }
-.lightbox-image-side { flex: 1; min-width: 0; display: flex; align-items: center; overflow: hidden; }
+.lightbox-image-side { flex: 1; min-width: 0; overflow: hidden; }
 .lightbox-details-side {
   width: 420px;
   flex-shrink: 0;
@@ -281,6 +281,10 @@ h1 {
   background: var(--color-card);
   padding: var(--spacing-lg);
   width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #lightbox-img-container {
   transition: opacity 0.15s ease;
