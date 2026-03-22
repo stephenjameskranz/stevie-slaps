@@ -58,13 +58,14 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  align-items: center;
+  align-items: flex-end;
   margin-bottom: 12px;
 }
 .filter-group {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  flex: 1 1 140px;
 }
 .filter-group label {
   font-size: 0.75rem;
@@ -79,7 +80,7 @@ h1 {
   border-radius: var(--radius-sm);
   padding: 8px 12px;
   font-size: 0.9rem;
-  min-width: 140px;
+  width: 100%;
 }
 .filter-group select:focus, .search-input:focus {
   outline: none;
@@ -89,9 +90,10 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  align-items: center;
+  align-items: flex-end;
 }
-.search-group { flex: 1; min-width: 200px; }
+.sort-row .filter-group { flex: 0 1 140px; }
+.search-group { flex: 1 1 200px; }
 .search-input { width: 100%; }
 .result-count {
   color: var(--color-muted);
@@ -322,11 +324,19 @@ h1 {
 }
 .lightbox-notes { width: 100%; }
 
-@media (max-width: 768px) {
-  .filters { flex-direction: column; }
-  .filter-group select { min-width: 100%; }
-  h1 { font-size: 1.8rem; }
-  .lightbox { flex-direction: column; margin: 10px; }
+@media (max-width: 1024px) {
+  .lightbox { flex-direction: column; }
   .lightbox-details-side { width: 100%; max-height: none; }
-  .lightbox-title { font-size: 1.2rem; }
+  .lightbox-title { font-size: 2rem; }
+}
+@media (max-width: 768px) {
+  body { padding: 12px; }
+  h1 { font-size: 1.8rem; }
+  .controls { padding: 12px; }
+  .filter-group { flex: 1 1 100%; }
+  .sort-row .filter-group { flex: 1 1 calc(50% - 5px); }
+  .search-group { flex: 1 1 100%; }
+  .lightbox { margin: 10px; }
+  .lightbox-title { font-size: 1.5rem; }
+  .lightbox-nav { width: 36px; height: 36px; font-size: 1.2rem; }
 }
