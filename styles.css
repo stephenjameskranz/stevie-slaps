@@ -146,6 +146,7 @@ h1 {
   color: var(--color-text);
   font-weight: 600;
   font-variant-numeric: lining-nums;
+  text-transform: capitalize;
 }
 
 /* Gallery */
