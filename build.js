@@ -154,7 +154,7 @@ async function build() {
         <div class="slap-meta">
           ${slap['width_(in)'] && slap['height_(in)'] ? `<span class="meta-tag"><span class="meta-key">size </span><span class="meta-val">${slap['width_(in)']}" x ${slap['height_(in)']}"</span></span>` : ''}
           ${slap['#_of_slaps'] ? `<span class="meta-tag"><span class="meta-key">stickers </span><span class="meta-val">${slap['#_of_slaps']}</span></span>` : ''}
-          ${slap.percentile ? `<span class="meta-tag"><span class="meta-key">rarity </span><span class="meta-val">${slap.percentile}</span></span>` : ''}
+          ${slap.percentile ? `<span class="meta-tag"><span class="meta-key">rarity percentile </span><span class="meta-val">${slap.percentile}</span></span>` : ''}
         </div>
       </div>
     </div>
