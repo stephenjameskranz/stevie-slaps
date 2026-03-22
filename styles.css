@@ -232,7 +232,7 @@ h1 {
   position: relative;
   display: flex;
 }
-.lightbox-image-side { flex: 1; min-width: 0; overflow: hidden; }
+.lightbox-image-side { flex: 1; min-width: 0; display: flex; align-items: center; overflow: hidden; }
 .lightbox-details-side {
   width: 420px;
   flex-shrink: 0;
@@ -279,14 +279,15 @@ h1 {
 .lightbox-image-wrap {
   position: relative;
   background: var(--color-card);
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-lg);
+  width: 100%;
 }
 #lightbox-img-container {
   transition: opacity 0.15s ease;
 }
 .lightbox-image {
   width: 100%;
-  max-height: 90vh;
+  max-height: calc(90vh - 2 * var(--spacing-lg));
   object-fit: contain;
   display: block;
 }
