@@ -96,7 +96,7 @@ function openLightbox(index) {
   if (!data) return;
   var isNav = currentIndex !== -1;
   currentIndex = index;
-  history.replaceState(null, '', '#slap-' + index);
+  window.location.hash = 'slap-' + index;
 
   if (isNav) {
     lightboxImgContainer.style.opacity = '0';
@@ -162,6 +162,7 @@ function openLightbox(index) {
 function closeLightbox() {
   lightbox.classList.remove('active');
   document.body.style.overflow = '';
+  window.location.hash = '';
   history.replaceState(null, '', window.location.pathname);
   currentIndex = -1;
 }
