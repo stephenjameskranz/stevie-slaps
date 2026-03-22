@@ -144,6 +144,7 @@ h1 {
   color: var(--color-text);
   font-weight: 600;
   font-variant-numeric: lining-nums;
+  text-transform: capitalize;
 }
 .chip-divider {
   flex-basis: 100%;
@@ -293,7 +294,7 @@ h1 {
 }
 .lightbox-details { padding: 24px; }
 .lightbox-title {
-  font-size: 2.1rem;
+  font-size: 2.5rem;
   text-align: left;
   margin-bottom: 20px;
 }
