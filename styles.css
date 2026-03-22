@@ -286,7 +286,8 @@ h1 {
   background-repeat: no-repeat;
   overflow: visible;
 }
-.loupe-cat {
+.loupe-cat { display: none; }
+.has-cat .loupe-cat {
   position: absolute;
   font-size: 20px;
   top: 50%;

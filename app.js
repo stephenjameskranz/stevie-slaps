@@ -97,6 +97,8 @@ function openLightbox(index) {
   var isNav = currentIndex !== -1;
   currentIndex = index;
   window.location.hash = 'slap-' + (data.slapNum || index);
+  var notes = (data.display['Notes'] || '').toLowerCase();
+  lightboxImgContainer.classList.toggle('has-cat', /hubert|cat/.test(notes));
 
   if (isNav) {
     lightboxImgContainer.classList.add('lightbox-fade');
