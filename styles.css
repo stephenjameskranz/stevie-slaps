@@ -38,7 +38,7 @@ h1 {
 .subtitle {
   font-family: var(--font-display);
   text-align: center;
-  color: var(--color-subtle);
+  color: var(--color-text);
   font-size: 1rem;
   font-weight: 400;
   font-style: italic;
