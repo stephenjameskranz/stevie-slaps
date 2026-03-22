@@ -294,11 +294,10 @@ h1 {
   margin-bottom: 20px;
 }
 .lightbox-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
 }
-.lightbox-notes { grid-column: 1 / -1; }
+.lightbox-notes { width: 100%; }
 
 @media (max-width: 768px) {
   .filters { flex-direction: column; }
