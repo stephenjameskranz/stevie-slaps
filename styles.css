@@ -234,7 +234,7 @@ h1 {
 }
 .lightbox-image-side { flex: 1; min-width: 0; overflow: hidden; }
 .lightbox-details-side {
-  width: 420px;
+  width: 372px;
   flex-shrink: 0;
   overflow-y: auto;
 }
