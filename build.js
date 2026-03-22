@@ -186,6 +186,7 @@ async function build() {
       const display = {};
       const fieldLabels = {
         'slap_#': 'SLAP #',
+        'date': 'Date',
         'width_(in)': 'Width (in)',
         'height_(in)': 'Height (in)',
         'substrate_orientation': 'Substrate Orientation',
@@ -199,12 +200,9 @@ async function build() {
         'flag_orientation': 'Flag Orientation',
         'spin': 'Spin',
         'flag_version': 'Flag Version',
-        'point_symmetry': 'Point Symmetry',
         '2d_point_group_(entire_piece)': '2D Point Group',
         'shape': 'Shape',
         'signature': 'Signature',
-        'date': 'Date',
-        'notes': 'Notes',
         'rarity_index': 'Rarity Index',
         'rank': 'Rank',
         'percentile': 'Percentile',
@@ -212,12 +210,12 @@ async function build() {
         'transfer_date': 'Transfer Date',
         'transfer_price': 'Transfer Price',
         'transfer_note': 'Transfer Note',
-        'location': 'Location',
+        'notes': 'Notes',
       };
       for (const [key, label] of Object.entries(fieldLabels)) {
         if (s[key]) display[label] = s[key];
       }
-      return { display, image: s.image_link || '', slapNum: s['slap_#'] || '?', subtitle: `${s['width_(in)']}″ x ${s['height_(in)']}″ ${s.substrate || ''}`.trim() };
+      return { display, image: s.image_link || '', slapNum: s['slap_#'] || '?' };
     }))};
   </script>
 

@@ -100,7 +100,7 @@ function openLightbox(index) {
     ? '<img class="lightbox-image" src="' + data.image + '" alt="' + data.title + '" onerror="this.outerHTML=\'<div class=lightbox-no-image>No image</div>\'">'
     : '<div class="lightbox-no-image">No image</div>';
 
-  lightboxTitle.innerHTML = '<span class="label-light">SLAP</span> <span class="num-bold">' + (data.slapNum || '?') + '</span> <span class="label-light" style="font-size:0.6em">' + data.subtitle + '</span>';
+  lightboxTitle.innerHTML = '<span class="label-light">SLAP</span> <span class="num-bold">' + (data.slapNum || '?') + '</span>';
 
   var html = '';
   for (var label in data.display) {
