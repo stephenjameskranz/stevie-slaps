@@ -103,7 +103,13 @@ function openLightbox(index) {
   lightboxTitle.innerHTML = '<span class="label-light">SLAP</span> <span class="num-bold">' + (data.slapNum || '?') + '</span>';
 
   var html = '';
+  var primaryFields = ['SLAP #', 'Size', 'Stickers', 'Rarity Percentile'];
+  var passedPrimary = false;
   for (var label in data.display) {
+    if (!passedPrimary && primaryFields.indexOf(label) === -1) {
+      html += '<div class="chip-divider"></div>';
+      passedPrimary = true;
+    }
     var val = data.display[label];
     var cls = 'meta-tag lightbox-field';
     if (label === 'Notes') cls += ' lightbox-notes';
