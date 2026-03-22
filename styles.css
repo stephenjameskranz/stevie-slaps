@@ -121,25 +121,28 @@ h1 {
   font-variant-numeric: lining-nums;
 }
 .meta-tag {
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: column;
   background: var(--color-tag-bg);
   color: var(--color-tag-text);
   padding: 6px 14px;
   border-radius: var(--radius-sm);
   margin: 3px;
-  font-size: 1rem;
   letter-spacing: 0.3px;
 }
 .meta-key {
-  font-size: 0.75rem;
+  display: block;
+  font-size: 0.65rem;
   color: var(--color-muted);
   text-transform: uppercase;
   letter-spacing: 0.8px;
   font-weight: 400;
+  margin-bottom: 2px;
 }
 .meta-val {
+  display: block;
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--color-text);
   font-weight: 600;
   font-variant-numeric: lining-nums;
