@@ -219,19 +219,18 @@ h1 {
 .lightbox {
   background: var(--color-card);
   border-radius: var(--radius);
-  max-width: 95vw;
+  max-width: 900px;
   width: 100%;
   margin: 20px auto;
   overflow: hidden;
   position: relative;
   display: flex;
+  flex-direction: column;
 }
-.lightbox-image-side { flex: 1; min-width: 0; }
+.lightbox-image-side { width: 100%; }
 .lightbox-details-side {
-  width: 360px;
-  flex-shrink: 0;
+  width: 100%;
   overflow-y: auto;
-  max-height: 90vh;
 }
 .lightbox-close {
   position: absolute;
@@ -308,8 +307,6 @@ h1 {
   .filters { flex-direction: column; }
   .filter-group select { min-width: 100%; }
   h1 { font-size: 1.8rem; }
-  .lightbox { flex-direction: column; margin: 10px; }
-  .lightbox-details-side { width: 100%; max-height: none; }
+  .lightbox { margin: 10px; }
   .lightbox-title { font-size: 1.2rem; }
-  .lightbox-grid { grid-template-columns: 1fr 1fr; }
 }
