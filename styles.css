@@ -301,6 +301,7 @@ h1 {
 .lightbox-grid {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 .lightbox-notes { width: 100%; }
 
