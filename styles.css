@@ -335,9 +335,12 @@ h1 {
 .lightbox-notes { width: 100%; }
 
 @media (max-width: 1024px) {
-  .lightbox { flex-direction: column; max-height: 90vh; }
-  .lightbox-image-side { flex-shrink: 1; }
-  .lightbox-details-side { width: 100%; overflow-y: auto; }
+  .lightbox-overlay.active { align-items: flex-start; }
+  .lightbox { flex-direction: column; max-height: none; overflow: visible; }
+  .lightbox-image-side { overflow: visible; }
+  .lightbox-image-wrap { height: auto; }
+  .lightbox-image { max-height: 60vh; }
+  .lightbox-details-side { width: 100%; }
   .lightbox-title { font-size: 2rem; }
 }
 @media (max-width: 768px) {
@@ -348,6 +351,7 @@ h1 {
   .sort-row .filter-group { flex: 1 1 calc(50% - 5px); }
   .search-group { flex: 1 1 100%; }
   .lightbox { margin: 10px; }
+  .lightbox-image { max-height: 50vh; }
   .lightbox-title { font-size: 1.5rem; }
   .lightbox-nav { width: 36px; height: 36px; font-size: 1.2rem; }
 }
