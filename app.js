@@ -109,14 +109,12 @@ function openLightbox(index) {
 
   if (data.image && isNav) {
     var preload = new Image();
-    preload.onload = function() {
+    var onImageReady = function() {
       lightboxImgContainer.innerHTML = imgHtml;
       requestAnimationFrame(function() { lightboxImgContainer.classList.remove('lightbox-fade'); });
     };
-    preload.onerror = function() {
-      lightboxImgContainer.innerHTML = imgHtml;
-      requestAnimationFrame(function() { lightboxImgContainer.classList.remove('lightbox-fade'); });
-    };
+    preload.onload = onImageReady;
+    preload.onerror = onImageReady;
     preload.src = data.image;
   } else {
     lightboxImgContainer.innerHTML = imgHtml;
@@ -203,6 +201,7 @@ document.addEventListener('keydown', function(e) {
   lens.className = 'magnifier-lens';
   var ZOOM = 2.5;
   var SIZE = 180;
+  var cachedImg = null;
 
   function isTouchDevice() {
     return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -210,18 +209,18 @@ document.addEventListener('keydown', function(e) {
 
   lightboxImgContainer.addEventListener('mouseenter', function() {
     if (isTouchDevice()) return;
-    var img = lightboxImgContainer.querySelector('.lightbox-image');
-    if (!img) return;
+    cachedImg = lightboxImgContainer.querySelector('.lightbox-image');
+    if (!cachedImg) return;
     lens.style.width = SIZE + 'px';
     lens.style.height = SIZE + 'px';
-    lens.style.backgroundImage = 'url(' + img.src + ')';
+    lens.style.backgroundImage = 'url(' + cachedImg.src + ')';
     lightboxImgContainer.appendChild(lens);
   });
 
   lightboxImgContainer.addEventListener('mousemove', function(e) {
-    var img = lightboxImgContainer.querySelector('.lightbox-image');
-    if (!img || !lens.parentNode) return;
-    var rect = img.getBoundingClientRect();
+    if (!cachedImg || !lens.parentNode) return;
+    var rect = cachedImg.getBoundingClientRect();
+    var containerRect = lightboxImgContainer.getBoundingClientRect();
     var x = (e.clientX - rect.left) / rect.width;
     var y = (e.clientY - rect.top) / rect.height;
     if (x < 0 || x > 1 || y < 0 || y > 1) {
@@ -229,14 +228,15 @@ document.addEventListener('keydown', function(e) {
       return;
     }
     lens.style.display = 'block';
-    lens.style.left = e.clientX - lightboxImgContainer.getBoundingClientRect().left - SIZE / 2 + 'px';
-    lens.style.top = e.clientY - lightboxImgContainer.getBoundingClientRect().top - SIZE / 2 + 'px';
+    lens.style.left = e.clientX - containerRect.left - SIZE / 2 + 'px';
+    lens.style.top = e.clientY - containerRect.top - SIZE / 2 + 'px';
     lens.style.backgroundSize = (rect.width * ZOOM) + 'px ' + (rect.height * ZOOM) + 'px';
     lens.style.backgroundPosition = -(x * rect.width * ZOOM - SIZE / 2) + 'px ' + -(y * rect.height * ZOOM - SIZE / 2) + 'px';
   });
 
   lightboxImgContainer.addEventListener('mouseleave', function() {
     if (lens.parentNode) lens.parentNode.removeChild(lens);
+    cachedImg = null;
   });
 })();
 

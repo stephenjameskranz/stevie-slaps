@@ -23,9 +23,7 @@
   "homepage": "https://github.com/paigesaez/stevie-slaps#readme",
   "devDependencies": {
     "eslint": "^10.1.0",
+    "globals": "^17.4.0",
     "html-validate": "^10.11.2"
-  },
-  "dependencies": {
-    "globals": "^17.4.0"
   }
 }
