@@ -209,15 +209,15 @@ async function build() {
       display: inline-block;
       background: var(--color-tag-bg);
       color: var(--color-tag-text);
-      padding: 3px 9px;
-      border-radius: var(--radius-xs);
-      margin: 2px;
-      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin: 3px;
+      font-size: 1rem;
       letter-spacing: 0.3px;
     }
     .meta-key {
-      font-weight: 300;
-      color: #777;
+      font-weight: 500;
+      color: #555;
     }
     .meta-val {
       font-weight: 700;
@@ -476,9 +476,9 @@ async function build() {
       <div class="slap-info">
         <div class="slap-title title-display">${slap['slap_#'] ? `<span class="label-light">SLAP</span> <span class="num-bold">${slap['slap_#']}</span>` : '<span class="label-light">SLAP</span>'}</div>
         <div class="slap-meta">
-          ${slap['width_(in)'] && slap['height_(in)'] ? `<span><span class="meta-key">size </span><span class="meta-val">${slap['width_(in)']}" x ${slap['height_(in)']}"</span></span>` : ''}
-          ${slap['#_of_slaps'] ? `<span><span class="meta-key">stickers </span><span class="meta-val">${slap['#_of_slaps']}</span></span>` : ''}
-          ${slap.percentile ? `<span><span class="meta-key">rarity </span><span class="meta-val">${slap.percentile}</span></span>` : ''}
+          ${slap['width_(in)'] && slap['height_(in)'] ? `<span class="meta-tag"><span class="meta-key">size </span><span class="meta-val">${slap['width_(in)']}" x ${slap['height_(in)']}"</span></span>` : ''}
+          ${slap['#_of_slaps'] ? `<span class="meta-tag"><span class="meta-key">stickers </span><span class="meta-val">${slap['#_of_slaps']}</span></span>` : ''}
+          ${slap.percentile ? `<span class="meta-tag"><span class="meta-key">rarity </span><span class="meta-val">${slap.percentile}</span></span>` : ''}
         </div>
       </div>
     </div>
