@@ -34,3 +34,31 @@ Gallery site for 638+ hand-stamped art pieces (SLAPs). Static HTML generated fro
 ### Deploy
 - GitHub Actions CI builds then deploys to GitHub Pages
 - Deploy copies `index.html`, `styles.css`, and `app.js` to `_site/`
+
+## Updating the Spreadsheet
+
+The site pulls data from [this Google Sheet](https://docs.google.com/spreadsheets/d/1uFnL7PCsyQNYdPjWsYxMRKCf41ELH67EIc7Zvfb7ElM/edit#gid=906223522). To update content:
+
+1. **Edit the spreadsheet** — add/edit rows, update images, notes, etc.
+2. **Trigger a rebuild** — pick one:
+   - **Automatic**: the site rebuilds every 6 hours via cron
+   - **Manual**: go to [Actions → Build SLAP Gallery](https://github.com/stephenjameskranz/stevie-slaps/actions/workflows/build.yml), click **Run workflow**
+   - **Local**: run `npm run build` to regenerate `index.html` from the latest spreadsheet data
+3. **Verify the build** — check that the GitHub Actions run passes (green check):
+   - CI runs: lint → build → HTML validate → smoke tests
+   - Smoke tests confirm: cards rendered, correct count, gallery/lightbox/filters present, images found, slapData embedded
+4. **Check the live site** — after deploy completes (~30s), hard-refresh the site to see updated data
+
+### Testing spreadsheet changes locally
+
+```sh
+npm run build          # fetches latest CSV, generates index.html
+open index.html        # preview in browser
+npm run smoke          # verify structure (638+ cards, images, slapData)
+npm test               # full CI: lint + build + validate + smoke
+```
+
+### Common spreadsheet issues
+- **New SLAP not showing?** — it needs a `width_(in)` or `height_(in)` value; rows without both are filtered out
+- **Image not loading?** — check the `image_link` and `800px_image_link` columns have valid URLs
+- **Filter option missing?** — filter dropdowns are auto-generated from unique values in the spreadsheet; add the value to the relevant column and rebuild
