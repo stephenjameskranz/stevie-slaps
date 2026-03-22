@@ -206,4 +206,5 @@ document.addEventListener('keydown', function(e) {
     if (index === -1) index = parseInt(num);
     if (index >= 0 && slapData[index]) openLightbox(index);
   }
+  document.body.style.visibility = '';
 })();

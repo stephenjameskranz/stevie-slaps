@@ -85,6 +85,7 @@ async function build() {
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <script>if(window.location.hash.startsWith('#slap-'))document.body.style.visibility='hidden';</script>
   <h1>SLAP Collection</h1>
   <p class="subtitle">${slaps.length} hand-stamped art pieces</p>
 
