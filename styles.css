@@ -236,11 +236,12 @@ h1 {
   position: relative;
   display: flex;
 }
-.lightbox-image-side { flex: 1; min-width: 0; overflow: hidden; }
+.lightbox-image-side { flex: 1; min-width: 0; overflow: hidden; background: var(--color-card); }
 .lightbox-details-side {
   width: 372px;
   flex-shrink: 0;
   overflow-y: auto;
+  background: var(--color-card);
 }
 .lightbox-close, .lightbox-nav {
   position: absolute;
