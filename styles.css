@@ -176,14 +176,13 @@ h1 {
 }
 .slap-card:hover { transform: translateY(-4px); }
 .slap-card.hidden { display: none; }
-.slap-image-wrap {
-  padding: var(--spacing-lg) 12px 12px;
-}
 .slap-image {
   width: 100%;
   aspect-ratio: 1;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  background: var(--color-card);
+  padding: var(--spacing-lg) 12px 12px;
   border-radius: var(--radius-sm);
   border: 1px solid red;
 }
