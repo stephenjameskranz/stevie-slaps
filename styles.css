@@ -219,7 +219,7 @@ h1 {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgb(180 180 180 / 0.95);
+  background: var(--color-bg);
   z-index: 1000;
   overflow-y: auto;
   padding: 20px;
@@ -323,7 +323,6 @@ h1 {
 .lightbox-notes { width: 100%; }
 
 @media (max-width: 1024px) {
-  .lightbox-overlay { background: var(--color-bg); }
   .lightbox-overlay.active { align-items: flex-start; }
   .lightbox { flex-direction: column; max-height: none; overflow: visible; background: var(--color-bg); }
   .lightbox-image-side { overflow: visible; }
