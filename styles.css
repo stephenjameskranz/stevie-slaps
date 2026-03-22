@@ -361,8 +361,13 @@ h1 {
   .filter-group { flex: 1 1 100%; }
   .sort-row .filter-group { flex: 1 1 calc(50% - 5px); }
   .search-group { flex: 1 1 100%; }
-  .lightbox { margin: 10px; }
+  .lightbox-overlay { padding: 0; }
+  .lightbox-overlay.active { align-items: stretch; }
+  .lightbox { margin: 0; border-radius: 0; min-height: 100vh; max-width: 100vw; }
   .lightbox-image { max-height: 50vh; }
-  .lightbox-title { font-size: 1.5rem; }
+  .lightbox-image-wrap { padding: var(--spacing-md); }
+  .lightbox-details { padding: 16px 16px 24px; }
+  .lightbox-title { font-size: 1.5rem; margin-top: 16px; }
   .lightbox-nav { width: 36px; height: 36px; font-size: 1.2rem; }
+  .lightbox-close { top: 8px; right: 8px; }
 }
