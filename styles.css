@@ -122,7 +122,8 @@ h1 {
 }
 .meta-tag {
   display: inline-flex;
-  flex-direction: column;
+  align-items: baseline;
+  gap: 6px;
   background: var(--color-tag-bg);
   color: var(--color-tag-text);
   padding: 6px 14px;
@@ -131,16 +132,13 @@ h1 {
   letter-spacing: 0.3px;
 }
 .meta-key {
-  display: block;
   font-size: 0.8rem;
   color: var(--color-muted);
   text-transform: uppercase;
   letter-spacing: 0.8px;
   font-weight: 400;
-  margin-bottom: 2px;
 }
 .meta-val {
-  display: block;
   font-family: var(--font-display);
   font-size: 1rem;
   color: var(--color-text);
