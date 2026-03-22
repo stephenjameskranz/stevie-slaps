@@ -40,7 +40,7 @@ h1 {
   text-align: center;
   color: var(--color-subtle);
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
   font-style: italic;
   margin-bottom: var(--spacing-md);
 }
@@ -115,7 +115,7 @@ h1 {
   color: var(--color-text-light);
   line-height: 1.2;
 }
-.label-light { font-weight: 200; }
+.label-light { font-weight: 400; }
 .num-bold {
   font-weight: 700;
   font-variant-numeric: lining-nums;
