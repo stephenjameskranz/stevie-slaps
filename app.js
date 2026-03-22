@@ -94,11 +94,33 @@ function getVisibleCards() {
 function openLightbox(index) {
   const data = slapData[index];
   if (!data) return;
+  var isNav = currentIndex !== -1;
   currentIndex = index;
 
-  lightboxImgContainer.innerHTML = data.image
-    ? '<img class="lightbox-image" src="' + data.image + '" alt="' + data.title + '" onerror="this.outerHTML=\'<div class=lightbox-no-image>No image</div>\'">'
+  if (isNav) {
+    lightboxImgContainer.style.opacity = '0';
+    lightboxGrid.style.opacity = '0';
+  }
+
+  var imgHtml = data.image
+    ? '<img class="lightbox-image" src="' + data.image + '" alt="SLAP ' + data.slapNum + '" onerror="this.outerHTML=\'<div class=lightbox-no-image>No image</div>\'">'
     : '<div class="lightbox-no-image">No image</div>';
+
+  if (data.image && isNav) {
+    var preload = new Image();
+    preload.onload = function() {
+      lightboxImgContainer.innerHTML = imgHtml;
+      requestAnimationFrame(function() { lightboxImgContainer.style.opacity = '1'; });
+    };
+    preload.onerror = function() {
+      lightboxImgContainer.innerHTML = imgHtml;
+      requestAnimationFrame(function() { lightboxImgContainer.style.opacity = '1'; });
+    };
+    preload.src = data.image;
+  } else {
+    lightboxImgContainer.innerHTML = imgHtml;
+    if (isNav) requestAnimationFrame(function() { lightboxImgContainer.style.opacity = '1'; });
+  }
 
   lightboxTitle.innerHTML = '<span class="label-light">SLAP</span> <span class="num-bold">' + (data.slapNum || '?') + '</span>';
 
@@ -120,7 +142,9 @@ function openLightbox(index) {
       if (!val) continue;
       var cls = 'meta-tag';
       if (label === 'Notes') cls += ' lightbox-notes';
-      sectionHtml += '<div class="' + cls + '"><span class="meta-key">' + label + ' </span><span class="meta-val">' + val + '</span></div>';
+      var valCls = 'meta-val';
+      if (label === '2D Point Group' || label === 'Notes') valCls += ' no-capitalize';
+      sectionHtml += '<div class="' + cls + '"><span class="meta-key">' + label + ' </span><span class="' + valCls + '">' + val + '</span></div>';
     }
     if (!sectionHtml) continue;
     if (s > 0) html += '<div class="chip-divider"></div>';
@@ -128,6 +152,7 @@ function openLightbox(index) {
     html += sectionHtml;
   }
   lightboxGrid.innerHTML = html;
+  if (isNav) requestAnimationFrame(function() { lightboxGrid.style.opacity = '1'; });
 
   lightbox.classList.add('active');
   document.body.style.overflow = 'hidden';
