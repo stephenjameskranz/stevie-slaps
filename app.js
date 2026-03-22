@@ -200,7 +200,7 @@ document.addEventListener('keydown', function(e) {
   var lens = document.createElement('div');
   lens.className = 'magnifier-lens';
   var ZOOM = 2.5;
-  var SIZE = 180;
+  var SIZE = 260;
   var cachedImg = null;
 
   function isTouchDevice() {
