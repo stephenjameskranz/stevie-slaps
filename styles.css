@@ -184,6 +184,7 @@ h1 {
   background: var(--color-card);
   padding: var(--spacing-lg) 12px 12px;
   border-radius: var(--radius-sm);
+  filter: drop-shadow(0 0 1px red);
 }
 .slap-info {
   padding: 2px var(--spacing-md) 12px;
