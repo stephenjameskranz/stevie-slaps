@@ -184,17 +184,19 @@ async function build() {
   <script>
     var slapData = ${JSON.stringify(slaps.map(s => {
       const display = {};
+      if (s['width_(in)'] && s['height_(in)']) {
+        s._size = s['width_(in)'] + '" x ' + s['height_(in)'] + '"';
+      }
       const fieldLabels = {
         'slap_#': 'SLAP #',
         'date': 'Date',
-        'width_(in)': 'Width (in)',
-        'height_(in)': 'Height (in)',
-        'substrate_orientation': 'Substrate Orientation',
+        '_size': 'Size',
+        'substrate_orientation': 'Orientation',
         'substrate': 'Substrate',
-        'substrate_color': 'Substrate Color',
-        'border_color': 'Border Color',
+        'substrate_color': 'Color',
+        'border_color': 'Border',
         'laminate': 'Laminate',
-        '#_of_slaps': '# of Slaps',
+        '#_of_slaps': 'Stickers',
         'pattern': 'Pattern',
         'pattern_orientation': 'Pattern Orientation',
         'flag_orientation': 'Flag Orientation',
@@ -205,7 +207,7 @@ async function build() {
         'signature': 'Signature',
         'rarity_index': 'Rarity Index',
         'rank': 'Rank',
-        'percentile': 'Percentile',
+        'percentile': 'Rarity Percentile',
         'recipient': 'Recipient',
         'transfer_date': 'Transfer Date',
         'transfer_price': 'Transfer Price',
