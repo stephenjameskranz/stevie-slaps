@@ -54,12 +54,13 @@ async function build() {
   console.log(`Found ${slaps.length} SLAPs`);
 
   // Extract unique values for filter dropdowns
-  function uniqueValues(key) {
-    return [...new Set(slaps.map(s => s[key]).filter(Boolean))].sort();
+  function uniqueValues(key, numeric = false) {
+    const vals = [...new Set(slaps.map(s => s[key]).filter(Boolean))];
+    return numeric ? vals.sort((a, b) => Number(a) - Number(b)) : vals.sort();
   }
 
   const filterFields = [
-    { key: '#_of_slaps', label: '# of Slaps' },
+    { key: '#_of_slaps', label: 'Number of stickers' },
     { key: '2d_point_group_(entire_piece)', label: '2D Point Group' },
     { key: 'substrate', label: 'Substrate' },
     { key: 'substrate_color', label: 'Color' },
@@ -69,7 +70,7 @@ async function build() {
 
   const filterOptions = {};
   filterFields.forEach(f => {
-    filterOptions[f.key] = uniqueValues(f.key);
+    filterOptions[f.key] = uniqueValues(f.key, f.key === '#_of_slaps');
   });
 
   // Build the HTML gallery
