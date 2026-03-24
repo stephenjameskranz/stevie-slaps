@@ -152,7 +152,7 @@ async function build() {
       data-date="${slap['date_(mdy)'] || slap.date || ''}"
       data-width="${slap['width_(in)'] || ''}"
       data-height="${slap['height_(in)'] || ''}"
-      data-search="${[slap['slap_#'], slap.notes, slap.pattern, slap.substrate, slap.substrate_color, slap.shape, slap['2d_point_group_(entire_piece)']].join(' ').toLowerCase()}"
+      data-search="${[slap['slap_#'], slap.notes, slap.pattern, slap.substrate, slap.substrate_color, slap.shape, slap['2d_point_group_(entire_piece)'], slap.recipient].join(' ').toLowerCase()}"
     >
       <div class="slap-image-wrap">
       ${slap['800px_image_link'] || slap.image_link
