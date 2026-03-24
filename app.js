@@ -14,6 +14,7 @@ const filterMap = {
   'substrate_color': 'data-substrate_color',
   'pattern': 'data-pattern',
   'shape': 'data-shape',
+  'recipient': 'data-recipient',
 };
 
 function applyFilters() {
@@ -28,7 +29,13 @@ function applyFilters() {
     let show = true;
     for (const [key, val] of Object.entries(activeFilters)) {
       const attr = filterMap[key];
-      if (card.getAttribute(attr) !== val) { show = false; break; }
+      if (key === 'recipient') {
+        const hasRecipient = !!card.getAttribute('data-recipient');
+        if (val === 'has' && !hasRecipient) { show = false; break; }
+        if (val === 'no' && hasRecipient) { show = false; break; }
+      } else {
+        if (card.getAttribute(attr) !== val) { show = false; break; }
+      }
     }
     if (show && query) {
       show = card.getAttribute('data-search').includes(query);
@@ -127,6 +134,7 @@ function openLightbox(index) {
 
   var sections = [
     { title: null, fields: ['Date', 'Signature'] },
+    { title: 'Recipient', fields: ['Recipient', 'Transfer Date', 'Transfer Price', 'Note'], condition: function(d) { return !!d.display['Recipient']; } },
     { title: 'Substrate', fields: ['Size', 'Orientation', 'Material', 'Color', 'Border', 'Laminate'] },
     { title: 'Design', fields: ['Stickers', 'Pattern', 'Pattern Orientation', 'Flag Orientation', 'Spin', '2D Point Group', 'Shape', 'Flag Version'] },
     { title: 'Rarity', fields: ['Rank', 'Rarity Percentile', 'Rarity Index'] },
@@ -136,6 +144,7 @@ function openLightbox(index) {
   var html = '';
   for (var s = 0; s < sections.length; s++) {
     var section = sections[s];
+    if (section.condition && !section.condition(data)) continue;
     var sectionHtml = '';
     for (var f = 0; f < section.fields.length; f++) {
       var label = section.fields[f];

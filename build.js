@@ -101,6 +101,14 @@ async function build() {
         </select>
       </div>
       `).join('')}
+      <div class="filter-group">
+        <label>Recipient</label>
+        <select data-filter="recipient">
+          <option value="">All</option>
+          <option value="has">Has recipient</option>
+          <option value="no">No recipient</option>
+        </select>
+      </div>
     </div>
     <div class="sort-row">
       <div class="filter-group">
@@ -139,6 +147,7 @@ async function build() {
       data-substrate_color="${slap.substrate_color || ''}"
       data-pattern="${slap.pattern || ''}"
       data-shape="${slap.shape || ''}"
+      data-recipient="${slap.recipient || ''}"
       data-rarity="${slap.rarity_index || ''}"
       data-date="${slap['date_(mdy)'] || slap.date || ''}"
       data-width="${slap['width_(in)'] || ''}"
@@ -210,6 +219,10 @@ async function build() {
         'percentile': 'Rarity Percentile',
         'rarity_index': 'Rarity Index',
         'notes': 'Notes',
+        'recipient': 'Recipient',
+        'transfer_date': 'Transfer Date',
+        'transfer_price': 'Transfer Price',
+        'transfer_note': 'Note',
       };
       for (const [key, label] of Object.entries(fieldLabels)) {
         if (s[key]) display[label] = s[key];
