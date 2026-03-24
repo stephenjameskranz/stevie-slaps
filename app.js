@@ -156,10 +156,12 @@ function openLightbox(index) {
       if (label === 'Symmetry' || label === 'Notes' || label === 'Signature') valCls += ' no-capitalize';
       var pctHtml = '';
       if (section.title === 'Design' && fieldStats[label] && fieldStats[label][val] != null) {
-        var p = fieldStats[label][val];
+        var count = fieldStats[label][val];
+        var total = slapData.length;
+        var p = count / total * 100;
         var pStr = p.toPrecision(2);
         if (pStr.indexOf('e') >= 0) pStr = Math.round(p).toString();
-        pctHtml = '<span class="meta-pct"> ' + pStr + '%</span>';
+        pctHtml = '<span class="meta-pct">' + count + '/' + total + '  ' + pStr + '%</span>';
       }
       sectionHtml += '<div class="' + cls + '"><span class="meta-key">' + label + ' </span><span class="' + valCls + '">' + val + '</span>' + pctHtml + '</div>';
     }

@@ -96,7 +96,7 @@ async function build() {
   const fieldStats = {};
   Object.entries(designKeyToLabel).forEach(([k, label]) => {
     fieldStats[label] = {};
-    Object.entries(rawCounts[k]).forEach(([v, n]) => { fieldStats[label][v] = n / slaps.length * 100; });
+    Object.entries(rawCounts[k]).forEach(([v, n]) => { fieldStats[label][v] = n; });
   });
 
   const filterOptions = {};

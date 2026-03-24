@@ -128,6 +128,7 @@ h1 {
 .meta-tag {
   display: inline-flex;
   align-items: baseline;
+  flex-wrap: wrap;
   gap: 6px;
   background: var(--color-tag-bg);
   color: var(--color-tag-text);
@@ -154,9 +155,11 @@ h1 {
   text-transform: none;
 }
 .meta-pct {
-  font-size: 0.85rem;
+  flex-basis: 100%;
+  font-size: 0.8rem;
   color: var(--color-subtle);
   font-family: var(--font-body);
+  margin-top: 2px;
 }
 .meta-tag--recipient {
   background: var(--color-text);
