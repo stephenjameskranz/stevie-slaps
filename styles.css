@@ -79,7 +79,7 @@ h1 {
   letter-spacing: 0.5px;
 }
 .filter-group select, .search-input {
-  background: var(--color-white);
+  background: rgb(213, 213, 213);
   color: var(--color-text);
   border: 1px solid var(--color-border-dark);
   border-radius: var(--radius-sm);
