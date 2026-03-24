@@ -104,10 +104,7 @@ async function build() {
         <label>${f.label}</label>
         <select data-filter="${f.key}">
           <option value="">All</option>
-          ${filterOptions[f.key].map(v => {
-            const count = f.key === '#_of_slaps' ? stickerCounts[v] : null;
-            return `<option value="${v}">${v}${count != null ? ' (' + count + ')' : ''}</option>`;
-          }).join('')}
+          ${filterOptions[f.key].map(v => `<option value="${v}">${v}</option>`).join('')}
         </select>
       </div>
       `).join('')}
