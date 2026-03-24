@@ -78,7 +78,7 @@ async function build() {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SLAP Collection</title>
+  <title>SLAP Art Collection</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ysabeau:wght@1..1000&display=swap" rel="stylesheet">
@@ -86,8 +86,8 @@ async function build() {
 </head>
 <body>
   <script>if(window.location.hash.startsWith('#slap-')){document.body.style.visibility='hidden';setTimeout(function(){document.body.style.visibility='';},2000);}</script>
-  <h1>SLAP Collection</h1>
-  <p class="subtitle">${slaps.length} hand-stamped art pieces</p>
+  <h1>SLAP Art Collection</h1>
+  <p class="subtitle">${slaps.length} hand-made art pieces featuring the Magical Flag of Peace</p>
 
   <div class="controls">
     <div class="filters">
