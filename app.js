@@ -154,7 +154,14 @@ function openLightbox(index) {
       if (label === 'Notes') cls += ' lightbox-notes';
       var valCls = 'meta-val';
       if (label === 'Symmetry' || label === 'Notes' || label === 'Signature') valCls += ' no-capitalize';
-      sectionHtml += '<div class="' + cls + '"><span class="meta-key">' + label + ' </span><span class="' + valCls + '">' + val + '</span></div>';
+      var pctHtml = '';
+      if (section.title === 'Design' && fieldStats[label] && fieldStats[label][val] != null) {
+        var p = fieldStats[label][val];
+        var pStr = p.toPrecision(2);
+        if (pStr.indexOf('e') >= 0) pStr = Math.round(p).toString();
+        pctHtml = '<span class="meta-pct"> ' + pStr + '%</span>';
+      }
+      sectionHtml += '<div class="' + cls + '"><span class="meta-key">' + label + ' </span><span class="' + valCls + '">' + val + '</span>' + pctHtml + '</div>';
     }
     if (!sectionHtml) continue;
     if (s > 0) html += '<div class="chip-divider"></div>';

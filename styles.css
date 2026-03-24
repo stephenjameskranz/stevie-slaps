@@ -153,6 +153,11 @@ h1 {
 .meta-val.no-capitalize {
   text-transform: none;
 }
+.meta-pct {
+  font-size: 0.85rem;
+  color: var(--color-subtle);
+  font-family: var(--font-body);
+}
 .meta-tag--recipient {
   background: var(--color-text);
 }

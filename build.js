@@ -74,6 +74,31 @@ async function build() {
   const stickerCounts = {};
   slaps.forEach(s => { if (s['#_of_slaps']) stickerCounts[s['#_of_slaps']] = (stickerCounts[s['#_of_slaps']] || 0) + 1; });
 
+  const designKeyToLabel = {
+    '#_of_slaps': 'Stickers',
+    '2d_point_group_(entire_piece)': 'Symmetry',
+    'pattern': 'Pattern',
+    'pattern_orientation': 'Pattern Orientation',
+    'flag_orientation': 'Flag Orientation',
+    'spin': 'Spin',
+    'shape': 'Shape',
+    'flag_version': 'Flag Version',
+  };
+  const rawCounts = {};
+  Object.keys(designKeyToLabel).forEach(k => { rawCounts[k] = {}; });
+  slaps.forEach(s => {
+    Object.keys(designKeyToLabel).forEach(k => {
+      let v = s[k]; if (!v) return;
+      if (k === '2d_point_group_(entire_piece)') v = mapSymmetry(v);
+      rawCounts[k][v] = (rawCounts[k][v] || 0) + 1;
+    });
+  });
+  const fieldStats = {};
+  Object.entries(designKeyToLabel).forEach(([k, label]) => {
+    fieldStats[label] = {};
+    Object.entries(rawCounts[k]).forEach(([v, n]) => { fieldStats[label][v] = n / slaps.length * 100; });
+  });
+
   const filterOptions = {};
   filterFields.forEach(f => {
     const vals = uniqueValues(f.key, f.key === '#_of_slaps');
@@ -242,6 +267,7 @@ async function build() {
       }
       return { display, image: s.image_link || '', slapNum: s['slap_#'] || '?' };
     }))};
+    var fieldStats = ${JSON.stringify(fieldStats)};
   </script>
 
   <script src="app.js"></script>
