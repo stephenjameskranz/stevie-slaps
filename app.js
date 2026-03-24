@@ -136,8 +136,8 @@ function openLightbox(index) {
     { title: null, fields: ['Date', 'Signature'] },
     { title: 'Recipient', fields: ['Recipient', 'Transfer Date', 'Transfer Price', 'Note'], condition: function(d) { return !!d.display['Recipient']; } },
     { title: 'Substrate', fields: ['Size', 'Orientation', 'Material', 'Color', 'Border', 'Laminate'] },
-    { title: 'Design', fields: ['Stickers', 'Pattern', 'Pattern Orientation', 'Flag Orientation', 'Spin', '2D Point Group', 'Shape', 'Flag Version'] },
-    { title: 'Rarity', fields: ['Rank', 'Rarity Percentile', 'Rarity Index'] },
+    { title: 'Design', fields: ['Stickers', 'Symmetry', 'Pattern', 'Pattern Orientation', 'Flag Orientation', 'Spin', 'Shape', 'Flag Version'] },
+    { title: 'Rarity', fields: ['Rank', 'Rarity Percentile'] },
     { title: null, fields: ['Notes'] },
   ];
 
