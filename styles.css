@@ -153,6 +153,15 @@ h1 {
 .meta-val.no-capitalize {
   text-transform: none;
 }
+.meta-tag--recipient {
+  background: var(--color-text);
+}
+.meta-tag--recipient .meta-key {
+  color: rgba(255,255,255,0.6);
+}
+.meta-tag--recipient .meta-val {
+  color: #fff;
+}
 .chip-divider {
   flex-basis: 100%;
   height: 1px;
