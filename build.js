@@ -71,6 +71,9 @@ async function build() {
     { key: 'shape', label: 'Shape' },
   ];
 
+  const stickerCounts = {};
+  slaps.forEach(s => { if (s['#_of_slaps']) stickerCounts[s['#_of_slaps']] = (stickerCounts[s['#_of_slaps']] || 0) + 1; });
+
   const filterOptions = {};
   filterFields.forEach(f => {
     const vals = uniqueValues(f.key, f.key === '#_of_slaps');
@@ -101,7 +104,10 @@ async function build() {
         <label>${f.label}</label>
         <select data-filter="${f.key}">
           <option value="">All</option>
-          ${filterOptions[f.key].map(v => `<option value="${v}">${v}</option>`).join('')}
+          ${filterOptions[f.key].map(v => {
+            const count = f.key === '#_of_slaps' ? stickerCounts[v] : null;
+            return `<option value="${v}">${v}${count != null ? ' (' + count + ')' : ''}</option>`;
+          }).join('')}
         </select>
       </div>
       `).join('')}
