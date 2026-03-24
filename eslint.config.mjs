@@ -32,6 +32,7 @@ export default [
       globals: {
         ...globals.browser,
         slapData: "readonly",
+        fieldStats: "readonly",
       },
     },
   },
