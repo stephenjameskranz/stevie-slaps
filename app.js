@@ -153,7 +153,7 @@ function openLightbox(index) {
       var cls = 'meta-tag';
       if (label === 'Notes') cls += ' lightbox-notes';
       var valCls = 'meta-val';
-      if (label === '2D Point Group' || label === 'Notes') valCls += ' no-capitalize';
+      if (label === 'Symmetry' || label === 'Notes') valCls += ' no-capitalize';
       sectionHtml += '<div class="' + cls + '"><span class="meta-key">' + label + ' </span><span class="' + valCls + '">' + val + '</span></div>';
     }
     if (!sectionHtml) continue;

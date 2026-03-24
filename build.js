@@ -59,9 +59,12 @@ async function build() {
     return numeric ? vals.sort((a, b) => Number(a) - Number(b)) : vals.sort();
   }
 
+  const symmetryMap = { 'm': '1 mirror', 'A2-2m': '2 mirrors', 'A1': '360°', 'A2': '180°' };
+  function mapSymmetry(val) { return symmetryMap[val] || val; }
+
   const filterFields = [
     { key: '#_of_slaps', label: 'Number of stickers' },
-    { key: '2d_point_group_(entire_piece)', label: '2D Point Group' },
+    { key: '2d_point_group_(entire_piece)', label: 'Symmetry' },
     { key: 'substrate', label: 'Substrate' },
     { key: 'substrate_color', label: 'Color' },
     { key: 'pattern', label: 'Pattern' },
@@ -70,7 +73,8 @@ async function build() {
 
   const filterOptions = {};
   filterFields.forEach(f => {
-    filterOptions[f.key] = uniqueValues(f.key, f.key === '#_of_slaps');
+    const vals = uniqueValues(f.key, f.key === '#_of_slaps');
+    filterOptions[f.key] = f.key === '2d_point_group_(entire_piece)' ? vals.map(mapSymmetry) : vals;
   });
 
   // Build the HTML gallery
@@ -142,7 +146,7 @@ async function build() {
       data-index="${i}"
       data-slap_num="${slap['slap_#'] || ''}"
       data-#_of_slaps="${slap['#_of_slaps'] || ''}"
-      data-2d_point_group="${slap['2d_point_group_(entire_piece)'] || ''}"
+      data-2d_point_group="${mapSymmetry(slap['2d_point_group_(entire_piece)'] || '')}"
       data-substrate="${slap.substrate || ''}"
       data-substrate_color="${slap.substrate_color || ''}"
       data-pattern="${slap.pattern || ''}"
@@ -213,7 +217,7 @@ async function build() {
         'pattern_orientation': 'Pattern Orientation',
         'flag_orientation': 'Flag Orientation',
         'spin': 'Spin',
-        '2d_point_group_(entire_piece)': '2D Point Group',
+        '2d_point_group_(entire_piece)': 'Symmetry',
         'shape': 'Shape',
         'flag_version': 'Flag Version',
         'rank': 'Rank',
@@ -231,7 +235,7 @@ async function build() {
         return (p.length === 3 && p[2].length === 4) ? p[2] + ' ' + p[1] + ' ' + p[0] : val;
       }
       for (const [key, label] of Object.entries(fieldLabels)) {
-        if (s[key]) display[label] = dateKeys.has(key) ? fmtDate(s[key]) : s[key];
+        if (s[key]) display[label] = dateKeys.has(key) ? fmtDate(s[key]) : key === '2d_point_group_(entire_piece)' ? mapSymmetry(s[key]) : s[key];
       }
       return { display, image: s.image_link || '', slapNum: s['slap_#'] || '?' };
     }))};
