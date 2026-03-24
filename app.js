@@ -155,7 +155,7 @@ function openLightbox(index) {
       var valCls = 'meta-val';
       if (label === 'Symmetry' || label === 'Notes' || label === 'Signature') valCls += ' no-capitalize';
       var pctHtml = '';
-      if (section.title === 'Design' && fieldStats[label] && fieldStats[label][val] != null) {
+      if (false && section.title === 'Design' && fieldStats[label] && fieldStats[label][val] != null) {
         var count = fieldStats[label][val];
         var total = slapData.length;
         var p = count / total * 100;
