@@ -59,7 +59,7 @@ async function build() {
     return numeric ? vals.sort((a, b) => Number(a) - Number(b)) : vals.sort();
   }
 
-  const symmetryMap = { 'm': '1 mirror', 'A2-2m': '2 mirrors', 'A1': '360°', 'A2': '180°' };
+  const symmetryMap = { 'm': '1 Mirror', 'A2-2m': '2 Mirrors', 'A1': '360°', 'A2': '180°' };
   function mapSymmetry(val) { return symmetryMap[val] || val; }
 
   const filterFields = [
