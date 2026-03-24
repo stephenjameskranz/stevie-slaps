@@ -225,8 +225,13 @@ async function build() {
         'transfer_price': 'Transfer Price',
         'transfer_note': 'Note',
       };
+      const dateKeys = new Set(['date', 'transfer_date']);
+      function fmtDate(val) {
+        const p = val.trim().split(/\s+/);
+        return (p.length === 3 && p[2].length === 4) ? p[2] + ' ' + p[1] + ' ' + p[0] : val;
+      }
       for (const [key, label] of Object.entries(fieldLabels)) {
-        if (s[key]) display[label] = s[key];
+        if (s[key]) display[label] = dateKeys.has(key) ? fmtDate(s[key]) : s[key];
       }
       return { display, image: s.image_link || '', slapNum: s['slap_#'] || '?' };
     }))};
