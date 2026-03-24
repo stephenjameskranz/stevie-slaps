@@ -54,7 +54,7 @@ h1 {
 .controls {
   max-width: 1400px;
   margin: 0 auto 20px;
-  background: rgb(193, 193, 193);
+  background: rgb(225, 225, 225);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: var(--spacing-md);
@@ -79,7 +79,7 @@ h1 {
   letter-spacing: 0.5px;
 }
 .filter-group select, .search-input {
-  background: rgb(213, 213, 213);
+  background: rgb(225, 225, 225);
   color: var(--color-text);
   border: 1px solid var(--color-border-dark);
   border-radius: var(--radius-sm);
