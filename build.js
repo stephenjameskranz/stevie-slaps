@@ -3,6 +3,12 @@ const fs = require('fs');
 // Your SLAP spreadsheet
 const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1uFnL7PCsyQNYdPjWsYxMRKCf41ELH67EIc7Zvfb7ElM/export?format=csv&gid=906223522';
 
+// Cloudflare R2 image hosting
+const R2_BASE = 'https://pub-245baa57632c4b8ab5ef3d7765e564f6.r2.dev';
+function r2img(slapNum, size) {
+  return slapNum ? `${R2_BASE}/${size}/SLAP_${slapNum}.jpg` : null;
+}
+
 async function build() {
   console.log('Fetching spreadsheet data...');
   const response = await fetch(SHEET_URL);
@@ -187,8 +193,8 @@ async function build() {
       data-search="${[slap['slap_#'], slap.notes, slap.pattern, slap.substrate, slap.substrate_color, slap.shape, slap['2d_point_group_(entire_piece)'], slap.recipient].join(' ').toLowerCase()}"
     >
       <div class="slap-image-wrap">
-      ${slap['800px_image_link'] || slap.image_link
-        ? `<img class="slap-image" src="${slap['800px_image_link'] || slap.image_link}" alt="SLAP ${slap['slap_#'] || ''}" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=no-image>No image</div>'">`
+      ${r2img(slap['slap_#'], 'small') || slap['800px_image_link'] || slap.image_link
+        ? `<img class="slap-image" src="${r2img(slap['slap_#'], 'small') || slap['800px_image_link'] || slap.image_link}" alt="SLAP ${slap['slap_#'] || ''}" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=no-image>No image</div>'">`
         : '<div class="no-image">No image</div>'
       }
       </div>
@@ -265,7 +271,7 @@ async function build() {
       for (const [key, label] of Object.entries(fieldLabels)) {
         if (s[key]) display[label] = dateKeys.has(key) ? fmtDate(s[key]) : key === '2d_point_group_(entire_piece)' ? mapSymmetry(s[key]) : s[key];
       }
-      return { display, image: s.image_link || '', slapNum: s['slap_#'] || '?' };
+      return { display, image: r2img(s['slap_#'], 'large') || s.image_link || '', slapNum: s['slap_#'] || '?' };
     }))};
     var fieldStats = ${JSON.stringify(fieldStats)};
   </script>
