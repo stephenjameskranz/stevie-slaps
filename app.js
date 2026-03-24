@@ -161,7 +161,7 @@ function openLightbox(index) {
         var p = count / total * 100;
         var pStr = p.toPrecision(2);
         if (pStr.indexOf('e') >= 0) pStr = Math.round(p).toString();
-        pctHtml = '<span class="meta-pct">' + count + '/' + total + '  ' + pStr + '%</span>';
+        pctHtml = '<span class="meta-pct">count: ' + count + '  ' + pStr + '%</span>';
       }
       sectionHtml += '<div class="' + cls + '"><span class="meta-key">' + label + ' </span><span class="' + valCls + '">' + val + '</span>' + pctHtml + '</div>';
     }

@@ -129,10 +129,10 @@ h1 {
   display: inline-flex;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
   background: var(--color-tag-bg);
   color: var(--color-tag-text);
-  padding: 6px 14px;
+  padding: 5px 10px;
   border-radius: var(--radius-sm);
   margin: 3px;
   letter-spacing: 0.3px;
@@ -156,10 +156,9 @@ h1 {
 }
 .meta-pct {
   flex-basis: 100%;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--color-subtle);
   font-family: var(--font-body);
-  margin-top: 2px;
 }
 .meta-tag--recipient {
   background: var(--color-text);
