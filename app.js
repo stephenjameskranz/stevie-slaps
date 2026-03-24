@@ -162,8 +162,12 @@ function openLightbox(index) {
         var pStr = p.toPrecision(2);
         if (pStr.indexOf('e') >= 0) pStr = Math.round(p).toString();
         pctHtml = '<span class="meta-pct">count: ' + count + '  ' + pStr + '%</span>';
+        cls += ' meta-tag--stats';
       }
-      sectionHtml += '<div class="' + cls + '"><span class="meta-key">' + label + ' </span><span class="' + valCls + '">' + val + '</span>' + pctHtml + '</div>';
+      var inner = pctHtml
+        ? '<div><span class="meta-key">' + label + ' </span><span class="' + valCls + '">' + val + '</span></div>' + pctHtml
+        : '<span class="meta-key">' + label + ' </span><span class="' + valCls + '">' + val + '</span>';
+      sectionHtml += '<div class="' + cls + '">' + inner + '</div>';
     }
     if (!sectionHtml) continue;
     if (s > 0) html += '<div class="chip-divider"></div>';
