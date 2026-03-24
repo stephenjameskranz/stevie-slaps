@@ -137,7 +137,7 @@ function openLightbox(index) {
     { title: 'Recipient', fields: ['Recipient', 'Transfer Date', 'Transfer Price', 'Note'], condition: function(d) { return !!d.display['Recipient']; } },
     { title: 'Substrate', fields: ['Size', 'Orientation', 'Material', 'Color', 'Border', 'Laminate'] },
     { title: 'Design', fields: ['Stickers', 'Symmetry', 'Pattern', 'Pattern Orientation', 'Flag Orientation', 'Spin', 'Shape', 'Flag Version'] },
-    { title: 'Rarity', fields: ['Rank', 'Rarity Percentile'] },
+    { title: 'Rarity', fields: ['Rank', 'Percentile'] },
     { title: null, fields: ['Notes'] },
   ];
 
@@ -153,7 +153,7 @@ function openLightbox(index) {
       var cls = 'meta-tag';
       if (label === 'Notes') cls += ' lightbox-notes';
       var valCls = 'meta-val';
-      if (label === 'Symmetry' || label === 'Notes') valCls += ' no-capitalize';
+      if (label === 'Symmetry' || label === 'Notes' || label === 'Signature') valCls += ' no-capitalize';
       sectionHtml += '<div class="' + cls + '"><span class="meta-key">' + label + ' </span><span class="' + valCls + '">' + val + '</span></div>';
     }
     if (!sectionHtml) continue;

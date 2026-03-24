@@ -221,7 +221,7 @@ async function build() {
         'shape': 'Shape',
         'flag_version': 'Flag Version',
         'rank': 'Rank',
-        'percentile': 'Rarity Percentile',
+        'percentile': 'Percentile',
         'rarity_index': 'Rarity Index',
         'notes': 'Notes',
         'recipient': 'Recipient',
