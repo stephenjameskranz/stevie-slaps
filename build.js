@@ -67,6 +67,14 @@ async function build() {
 
   const symmetryMap = { 'm': '1 Mirror', 'A2-2m': '2 Mirrors', 'A1': '360°', 'A2': '180°' };
   function mapSymmetry(val) { return symmetryMap[val] || val; }
+  function mapSpin(val) { return val === 'und' ? 'Undefined' : val; }
+  function sortSpin(vals) {
+    return vals.sort((a, b) => {
+      if (a === 'Undefined') return 1;
+      if (b === 'Undefined') return -1;
+      return Number(b) - Number(a);
+    });
+  }
   function esc(val) { return String(val).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
   const filterSections = [
@@ -135,7 +143,9 @@ async function build() {
   filterFields.forEach(f => {
     if (f.special || f.key === '_size') return;
     const vals = uniqueValues(f.key, f.numeric);
-    filterOptions[f.key] = f.key === '2d_point_group_(entire_piece)' ? vals.map(mapSymmetry) : vals;
+    filterOptions[f.key] = f.key === '2d_point_group_(entire_piece)' ? vals.map(mapSymmetry)
+      : f.key === 'spin' ? sortSpin(vals.map(mapSpin))
+      : vals;
   });
   filterOptions['_size'] = [...new Set(slaps
     .filter(s => s['width_(in)'] && s['height_(in)'])
@@ -228,7 +238,7 @@ async function build() {
       data-pattern="${slap.pattern || ''}"
       data-pattern_orientation="${slap.pattern_orientation || ''}"
       data-flag_orientation="${slap.flag_orientation || ''}"
-      data-spin="${slap.spin || ''}"
+      data-spin="${mapSpin(slap.spin || '')}"
       data-shape="${slap.shape || ''}"
       data-flag_version="${slap.flag_version || ''}"
       data-recipient="${slap.recipient || ''}"
@@ -315,7 +325,7 @@ async function build() {
         return (p.length === 3 && p[2].length === 4) ? p[2] + ' ' + p[1] + ' ' + p[0] : val;
       }
       for (const [key, label] of Object.entries(fieldLabels)) {
-        if (s[key]) display[label] = dateKeys.has(key) ? fmtDate(s[key]) : key === '2d_point_group_(entire_piece)' ? mapSymmetry(s[key]) : s[key];
+        if (s[key]) display[label] = dateKeys.has(key) ? fmtDate(s[key]) : key === '2d_point_group_(entire_piece)' ? mapSymmetry(s[key]) : key === 'spin' ? mapSpin(s[key]) : s[key];
       }
       return { display, image: r2img(s['slap_#'], 'large') || s.image_link || '', slapNum: s['slap_#'] || '?' };
     }))};
