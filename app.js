@@ -51,7 +51,8 @@ function applyFilters() {
     card.classList.toggle('hidden', !show);
     if (show) visible++;
   });
-  resultCount.innerHTML = '<span class="count-num">' + visible + '</span><span class="count-label"> of ' + cards.length + '</span>';
+  var pct = cards.length ? parseFloat((visible / cards.length * 100).toPrecision(2)) : 0;
+  resultCount.innerHTML = '<span class="count-num">' + visible + '</span><span class="count-label"> of ' + cards.length + '</span> <span class="count-num">(' + pct + '%)</span>';
 }
 
 function applySort() {
