@@ -68,6 +68,10 @@ async function build() {
   const symmetryMap = { 'm': '1 Mirror', 'A2-2m': '2 Mirrors', 'A1': '360°', 'A2': '180°' };
   function mapSymmetry(val) { return symmetryMap[val] || val; }
   function mapSpin(val) { return val === 'und' ? 'Undefined' : val; }
+  function fmtDate(val) {
+    const p = (val || '').trim().split(/\s+/);
+    return (p.length === 3 && p[2].length === 4) ? p[2] + ' ' + p[1] + ' ' + p[0] : val;
+  }
   function sortSpin(vals) {
     return vals.sort((a, b) => {
       if (a === 'Undefined') return 1;
@@ -258,9 +262,13 @@ async function build() {
         <div class="slap-title title-display">${slap['slap_#'] ? `<span class="label-light">SLAP</span> <span class="num-bold">${slap['slap_#']}</span>` : '<span class="label-light">SLAP</span>'}</div>
         <div class="slap-meta">
           ${slap.recipient ? `<span class="meta-tag meta-tag--recipient"><span class="meta-key">recipient </span><span class="meta-val">${slap.recipient}</span></span>` : ''}
-          ${slap['width_(in)'] && slap['height_(in)'] ? `<span class="meta-tag"><span class="meta-key">size </span><span class="meta-val">${slap['width_(in)']}" x ${slap['height_(in)']}"</span></span>` : ''}
-          ${slap['#_of_slaps'] ? `<span class="meta-tag"><span class="meta-key">stickers </span><span class="meta-val">${slap['#_of_slaps']}</span></span>` : ''}
-          ${slap.percentile ? `<span class="meta-tag"><span class="meta-key">rarity percentile </span><span class="meta-val">${slap.percentile}</span></span>` : ''}
+          ${slap.recipient
+            ? `${slap.transfer_date ? `<span class="meta-tag meta-tag--recipient"><span class="meta-key">sent </span><span class="meta-val">${fmtDate(slap.transfer_date)}</span></span>` : ''}
+               ${slap.transfer_note ? `<span class="meta-tag meta-tag--recipient"><span class="meta-key">note </span><span class="meta-val">${slap.transfer_note}</span></span>` : ''}`
+            : `${slap['width_(in)'] && slap['height_(in)'] ? `<span class="meta-tag"><span class="meta-key">size </span><span class="meta-val">${slap['width_(in)']}" x ${slap['height_(in)']}"</span></span>` : ''}
+               ${slap['#_of_slaps'] ? `<span class="meta-tag"><span class="meta-key">stickers </span><span class="meta-val">${slap['#_of_slaps']}</span></span>` : ''}
+               ${slap.percentile ? `<span class="meta-tag"><span class="meta-key">rarity percentile </span><span class="meta-val">${slap.percentile}</span></span>` : ''}`
+          }
         </div>
       </div>
     </div>
@@ -320,10 +328,6 @@ async function build() {
         'transfer_note': 'Note',
       };
       const dateKeys = new Set(['date', 'transfer_date']);
-      function fmtDate(val) {
-        const p = val.trim().split(/\s+/);
-        return (p.length === 3 && p[2].length === 4) ? p[2] + ' ' + p[1] + ' ' + p[0] : val;
-      }
       for (const [key, label] of Object.entries(fieldLabels)) {
         if (s[key]) display[label] = dateKeys.has(key) ? fmtDate(s[key]) : key === '2d_point_group_(entire_piece)' ? mapSymmetry(s[key]) : key === 'spin' ? mapSpin(s[key]) : s[key];
       }
