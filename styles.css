@@ -58,7 +58,7 @@ h1 {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: var(--spacing-md);
-  font-size: 1.08em;
+  zoom: 1.08;
 }
 .filters {
   display: flex;
