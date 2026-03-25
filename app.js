@@ -145,19 +145,10 @@ function openLightbox(index) {
   }
 
   lightboxTitle.innerHTML = '<span class="label-light">SLAP</span> <span class="num-bold">' + (data.slapNum || '?') + '</span>';
-  var existingBanner = document.getElementById('recipient-banner');
-  if (existingBanner) existingBanner.remove();
-  if (data.display['Recipient']) {
-    var banner = document.createElement('div');
-    banner.id = 'recipient-banner';
-    banner.className = 'recipient-banner';
-    banner.textContent = 'Belongs to ' + data.display['Recipient'];
-    lightboxTitle.insertAdjacentElement('afterend', banner);
-  }
 
   var sections = [
+    { title: 'Recipient', fields: ['Recipient', 'Transfer Date', 'Transfer Price', 'Note'], condition: function(d) { return !!d.display['Recipient']; }, dark: true },
     { title: null, fields: ['Date', 'Signature'] },
-    { title: 'Recipient', fields: ['Recipient', 'Transfer Date', 'Transfer Price', 'Note'], condition: function(d) { return !!d.display['Recipient']; } },
     { title: 'Substrate', fields: ['Size', 'Orientation', 'Material', 'Color', 'Border', 'Laminate'] },
     { title: 'Design', fields: ['Stickers', 'Symmetry', 'Pattern', 'Pattern Orientation', 'Flag Orientation', 'Spin', 'Shape', 'Flag Version'] },
     { title: 'Rarity', fields: ['Rank', 'Percentile'] },
@@ -174,6 +165,7 @@ function openLightbox(index) {
       var val = data.display[label];
       if (!val) continue;
       var cls = 'meta-tag';
+      if (section.dark) cls += ' meta-tag--recipient';
       if (label === 'Notes') cls += ' lightbox-notes';
       var valCls = 'meta-val';
       if (label === 'Symmetry' || label === 'Notes' || label === 'Signature') valCls += ' no-capitalize';

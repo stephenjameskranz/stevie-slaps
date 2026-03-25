@@ -208,18 +208,8 @@ h1 {
 .meta-tag--recipient .meta-val {
   color: #fff;
 }
-.has-recipient {
-  background: rgba(180, 150, 100, 0.12);
-}
-.recipient-banner {
-  font-size: 0.85rem;
-  font-family: var(--font-body);
-  background: var(--color-text);
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: var(--radius-sm);
-  margin-bottom: 10px;
-  letter-spacing: 0.03em;
+.slap-card.has-recipient {
+  background: rgb(225, 215, 200);
 }
 .chip-divider {
   flex-basis: 100%;
