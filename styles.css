@@ -267,6 +267,7 @@ h1 {
 .slap-meta {
   color: var(--color-muted);
   text-align: center;
+  margin-top: 8px;
 }
 .no-image, .lightbox-no-image {
   display: flex;
