@@ -217,6 +217,7 @@ h1 {
 .slap-card.has-recipient {
   border: 4px solid rgb(80, 80, 80);
   background: rgb(225, 225, 225);
+  box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.5);
 }
 .chip-divider {
   flex-basis: 100%;
