@@ -10,10 +10,17 @@ const resultCount = document.getElementById('result-count');
 const filterMap = {
   '#_of_slaps': 'data-#_of_slaps',
   '2d_point_group_(entire_piece)': 'data-2d_point_group',
+  'substrate_orientation': 'data-substrate_orientation',
   'substrate': 'data-substrate',
   'substrate_color': 'data-substrate_color',
+  'border_color': 'data-border_color',
+  'laminate': 'data-laminate',
   'pattern': 'data-pattern',
+  'pattern_orientation': 'data-pattern_orientation',
+  'flag_orientation': 'data-flag_orientation',
+  'spin': 'data-spin',
   'shape': 'data-shape',
+  'flag_version': 'data-flag_version',
   'recipient': 'data-recipient',
 };
 

@@ -68,14 +68,38 @@ async function build() {
   const symmetryMap = { 'm': '1 Mirror', 'A2-2m': '2 Mirrors', 'A1': '360°', 'A2': '180°' };
   function mapSymmetry(val) { return symmetryMap[val] || val; }
 
-  const filterFields = [
-    { key: '#_of_slaps', label: 'Number of stickers' },
-    { key: '2d_point_group_(entire_piece)', label: 'Symmetry' },
-    { key: 'substrate', label: 'Substrate' },
-    { key: 'substrate_color', label: 'Color' },
-    { key: 'pattern', label: 'Pattern' },
-    { key: 'shape', label: 'Shape' },
+  const filterSections = [
+    {
+      title: 'Substrate',
+      fields: [
+        { key: 'substrate_orientation', label: 'Orientation' },
+        { key: 'substrate', label: 'Material' },
+        { key: 'substrate_color', label: 'Color' },
+        { key: 'border_color', label: 'Border' },
+        { key: 'laminate', label: 'Laminate' },
+      ]
+    },
+    {
+      title: 'Design',
+      fields: [
+        { key: '#_of_slaps', label: 'Stickers', numeric: true },
+        { key: '2d_point_group_(entire_piece)', label: 'Symmetry' },
+        { key: 'pattern', label: 'Pattern' },
+        { key: 'pattern_orientation', label: 'Pattern Orientation' },
+        { key: 'flag_orientation', label: 'Flag Orientation' },
+        { key: 'spin', label: 'Spin' },
+        { key: 'shape', label: 'Shape' },
+        { key: 'flag_version', label: 'Flag Version' },
+      ]
+    },
+    {
+      title: 'Recipient',
+      fields: [
+        { key: 'recipient', label: 'Recipient', special: 'recipient' },
+      ]
+    },
   ];
+  const filterFields = filterSections.flatMap(s => s.fields);
 
   const stickerCounts = {};
   slaps.forEach(s => { if (s['#_of_slaps']) stickerCounts[s['#_of_slaps']] = (stickerCounts[s['#_of_slaps']] || 0) + 1; });
@@ -107,7 +131,8 @@ async function build() {
 
   const filterOptions = {};
   filterFields.forEach(f => {
-    const vals = uniqueValues(f.key, f.key === '#_of_slaps');
+    if (f.special) return;
+    const vals = uniqueValues(f.key, f.numeric);
     filterOptions[f.key] = f.key === '2d_point_group_(entire_piece)' ? vals.map(mapSymmetry) : vals;
   });
 
@@ -130,23 +155,26 @@ async function build() {
 
   <div class="controls">
     <div class="filters">
-      ${filterFields.map(f => `
-      <div class="filter-group">
-        <label>${f.label}</label>
-        <select data-filter="${f.key}">
-          <option value="">All</option>
-          ${filterOptions[f.key].map(v => `<option value="${v}">${v}</option>`).join('')}
-        </select>
-      </div>
-      `).join('')}
-      <div class="filter-group">
-        <label>Recipient</label>
-        <select data-filter="recipient">
-          <option value="">All</option>
-          <option value="has">Has recipient</option>
-          <option value="no">No recipient</option>
-        </select>
-      </div>
+      ${filterSections.map(section => `
+      <div class="filter-section">
+        <div class="filter-section-title">${section.title}</div>
+        <div class="filter-section-fields">
+          ${section.fields.map(f => `
+          <div class="filter-group">
+            <label>${f.label}</label>
+            ${f.special === 'recipient' ? `
+            <select data-filter="recipient">
+              <option value="">All</option>
+              <option value="has">Has recipient</option>
+              <option value="no">No recipient</option>
+            </select>` : `
+            <select data-filter="${f.key}">
+              <option value="">All</option>
+              ${filterOptions[f.key].map(v => `<option value="${v}">${v}</option>`).join('')}
+            </select>`}
+          </div>`).join('')}
+        </div>
+      </div>`).join('')}
     </div>
     <div class="sort-row">
       <div class="filter-group">
@@ -181,10 +209,17 @@ async function build() {
       data-slap_num="${slap['slap_#'] || ''}"
       data-#_of_slaps="${slap['#_of_slaps'] || ''}"
       data-2d_point_group="${mapSymmetry(slap['2d_point_group_(entire_piece)'] || '')}"
+      data-substrate_orientation="${slap.substrate_orientation || ''}"
       data-substrate="${slap.substrate || ''}"
       data-substrate_color="${slap.substrate_color || ''}"
+      data-border_color="${slap.border_color || ''}"
+      data-laminate="${slap.laminate || ''}"
       data-pattern="${slap.pattern || ''}"
+      data-pattern_orientation="${slap.pattern_orientation || ''}"
+      data-flag_orientation="${slap.flag_orientation || ''}"
+      data-spin="${slap.spin || ''}"
       data-shape="${slap.shape || ''}"
+      data-flag_version="${slap.flag_version || ''}"
       data-recipient="${slap.recipient || ''}"
       data-rarity="${slap.rarity_index || ''}"
       data-date="${slap['date_(mdy)'] || slap.date || ''}"
