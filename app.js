@@ -54,7 +54,7 @@ function applyFilters() {
     if (show) visible++;
   });
   var pct = cards.length ? parseFloat((visible / cards.length * 100).toPrecision(2)) : 0;
-  resultCount.innerHTML = '<span class="count-num">' + visible + '</span><span class="count-label"> of ' + cards.length + ' (' + pct + '%)</span>';
+  resultCount.innerHTML = '<span class="count-num">' + visible + '</span><span class="count-label"> of ' + cards.length + ' (</span><span class="count-num">' + pct + '%</span><span class="count-label">)</span>';
 }
 
 function updateOptionAvailability() {
