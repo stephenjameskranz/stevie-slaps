@@ -51,7 +51,7 @@ function applyFilters() {
     card.classList.toggle('hidden', !show);
     if (show) visible++;
   });
-  resultCount.textContent = visible + ' of ' + cards.length;
+  resultCount.innerHTML = '<span class="count-num">' + visible + '</span><span class="count-label"> of ' + cards.length + '</span>';
 }
 
 function applySort() {

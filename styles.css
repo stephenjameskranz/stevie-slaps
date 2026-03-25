@@ -135,9 +135,15 @@ h1 {
 .sort-row .filter-group { flex: 0 1 140px; }
 .search-group { flex: 1 1 200px; }
 .result-count {
-  color: var(--color-muted);
-  font-size: 0.85rem;
+  font-size: 1.1rem;
   margin-left: auto;
+}
+.count-num {
+  font-weight: 700;
+  color: var(--color-text);
+}
+.count-label {
+  color: var(--color-muted);
 }
 .reset-btn {
   background: var(--color-border);
