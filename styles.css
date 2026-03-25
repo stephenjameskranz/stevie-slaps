@@ -261,12 +261,12 @@ h1 {
   flex-direction: column;
 }
 .slap-title {
-  font-size: 2.1rem;
-  text-align: right;
+  font-size: 2.415rem;
+  text-align: center;
 }
 .slap-meta {
   color: var(--color-muted);
-  text-align: right;
+  text-align: center;
 }
 .no-image, .lightbox-no-image {
   display: flex;
