@@ -25,6 +25,21 @@ const filterMap = {
   'recipient': 'data-recipient',
 };
 
+function cardMatches(card, filters, query) {
+  for (const [key, val] of Object.entries(filters)) {
+    const attr = filterMap[key];
+    if (key === 'recipient') {
+      const hasRecipient = !!card.getAttribute('data-recipient');
+      if (val === 'has' && !hasRecipient) return false;
+      if (val === 'no' && hasRecipient) return false;
+    } else {
+      if (card.getAttribute(attr) !== val) return false;
+    }
+  }
+  if (query && !card.getAttribute('data-search').includes(query)) return false;
+  return true;
+}
+
 function applyFilters() {
   const activeFilters = {};
   filterSelects.forEach(sel => {
@@ -34,25 +49,29 @@ function applyFilters() {
 
   let visible = 0;
   cards.forEach(card => {
-    let show = true;
-    for (const [key, val] of Object.entries(activeFilters)) {
-      const attr = filterMap[key];
-      if (key === 'recipient') {
-        const hasRecipient = !!card.getAttribute('data-recipient');
-        if (val === 'has' && !hasRecipient) { show = false; break; }
-        if (val === 'no' && hasRecipient) { show = false; break; }
-      } else {
-        if (card.getAttribute(attr) !== val) { show = false; break; }
-      }
-    }
-    if (show && query) {
-      show = card.getAttribute('data-search').includes(query);
-    }
+    const show = cardMatches(card, activeFilters, query);
     card.classList.toggle('hidden', !show);
     if (show) visible++;
   });
   var pct = cards.length ? parseFloat((visible / cards.length * 100).toPrecision(2)) : 0;
-  resultCount.innerHTML = '<span class="count-num">' + visible + '</span><span class="count-label"> of ' + cards.length + '</span> <span class="count-num">(' + pct + '%)</span>';
+  resultCount.innerHTML = '<span class="count-num">' + visible + '</span><span class="count-label"> of ' + cards.length + ' (' + pct + '%)</span>';
+}
+
+function updateOptionAvailability() {
+  const activeFilters = {};
+  filterSelects.forEach(sel => {
+    if (sel.value) activeFilters[sel.dataset.filter] = sel.value;
+  });
+  const query = searchInput.value.toLowerCase().trim();
+  filterSelects.forEach(sel => {
+    const key = sel.dataset.filter;
+    Array.from(sel.options).forEach(opt => {
+      if (!opt.value) return;
+      const testFilters = Object.assign({}, activeFilters, { [key]: opt.value });
+      const count = cards.filter(c => cardMatches(c, testFilters, query)).length;
+      opt.disabled = count === 0;
+    });
+  });
 }
 
 function applySort() {
@@ -80,7 +99,7 @@ function applySort() {
   sorted.forEach(card => gallery.appendChild(card));
 }
 
-function update() { applyFilters(); applySort(); }
+function update() { applyFilters(); applySort(); updateOptionAvailability(); }
 
 function updateSelectStyles() {
   const anyActive = Array.from(filterSelects).some(sel => sel.value !== '');
