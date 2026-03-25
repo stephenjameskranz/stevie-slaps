@@ -153,7 +153,7 @@ async function build() {
   )].sort((a, b) => {
     const [aw, ah] = a.match(/[\d.]+/g).map(Number);
     const [bw, bh] = b.match(/[\d.]+/g).map(Number);
-    return (aw * ah) - (bw * bh);
+    return aw !== bw ? aw - bw : ah - bh;
   });
 
   // Build the HTML gallery
