@@ -224,7 +224,7 @@ async function build() {
 
   <div class="gallery" id="gallery">
     ${slaps.map((slap, i) => `
-    <div class="slap-card"
+    <div class="slap-card${slap.recipient ? ' has-recipient' : ''}"
       data-index="${i}"
       data-slap_num="${slap['slap_#'] || ''}"
       data-#_of_slaps="${slap['#_of_slaps'] || ''}"

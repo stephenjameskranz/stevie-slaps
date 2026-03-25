@@ -145,6 +145,15 @@ function openLightbox(index) {
   }
 
   lightboxTitle.innerHTML = '<span class="label-light">SLAP</span> <span class="num-bold">' + (data.slapNum || '?') + '</span>';
+  var existingBanner = document.getElementById('recipient-banner');
+  if (existingBanner) existingBanner.remove();
+  if (data.display['Recipient']) {
+    var banner = document.createElement('div');
+    banner.id = 'recipient-banner';
+    banner.className = 'recipient-banner';
+    banner.textContent = 'Belongs to ' + data.display['Recipient'];
+    lightboxTitle.insertAdjacentElement('afterend', banner);
+  }
 
   var sections = [
     { title: null, fields: ['Date', 'Signature'] },

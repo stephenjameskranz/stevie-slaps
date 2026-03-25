@@ -149,7 +149,7 @@ h1 {
   font-size: 0.85rem;
 }
 .reset-btn:hover { background: var(--color-border-dark); }
-.reset-btn.filter-active { background: rgb(185, 185, 185); font-weight: 600; }
+.reset-btn.filter-active { background: rgb(185, 185, 185); font-weight: 600; border: 1px solid rgb(120, 120, 120); }
 
 /* Shared typography */
 .title-display {
@@ -207,6 +207,19 @@ h1 {
 }
 .meta-tag--recipient .meta-val {
   color: #fff;
+}
+.has-recipient {
+  background: rgba(180, 150, 100, 0.12);
+}
+.recipient-banner {
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  background: var(--color-text);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
 }
 .chip-divider {
   flex-basis: 100%;
