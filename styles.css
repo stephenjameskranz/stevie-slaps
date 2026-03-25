@@ -149,6 +149,7 @@ h1 {
   font-size: 0.85rem;
 }
 .reset-btn:hover { background: var(--color-border-dark); }
+.reset-btn.filter-active { background: rgb(185, 185, 185); font-weight: 600; }
 
 /* Shared typography */
 .title-display {

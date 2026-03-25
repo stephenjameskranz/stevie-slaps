@@ -82,7 +82,9 @@ function applySort() {
 function update() { applyFilters(); applySort(); }
 
 function updateSelectStyles() {
+  const anyActive = Array.from(filterSelects).some(sel => sel.value !== '');
   filterSelects.forEach(sel => sel.classList.toggle('filter-active', sel.value !== ''));
+  resetBtn.classList.toggle('filter-active', anyActive);
 }
 filterSelects.forEach(sel => sel.addEventListener('change', () => { updateSelectStyles(); update(); }));
 sortSelect.addEventListener('change', update);
@@ -90,6 +92,7 @@ sortOrder.addEventListener('change', update);
 searchInput.addEventListener('input', update);
 resetBtn.addEventListener('click', () => {
   filterSelects.forEach(sel => { sel.value = ''; sel.classList.remove('filter-active'); });
+  resetBtn.classList.remove('filter-active');
   searchInput.value = '';
   sortSelect.value = 'slap_#';
   sortOrder.value = 'asc';
