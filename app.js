@@ -169,7 +169,7 @@ function openLightbox(index) {
   var sections = [
     { title: 'Recipient', fields: ['Recipient', 'Transfer Date', 'Transfer Price', 'Note'], condition: function(d) { return !!d.display['Recipient']; }, dark: true },
     { title: null, fields: ['Date', 'Signature'] },
-    { title: 'Substrate', fields: ['Size', 'Orientation', 'Material', 'Color', 'Border', 'Laminate'] },
+    { title: 'Surface', fields: ['Size', 'Orientation', 'Material', 'Color', 'Border', 'Laminate'] },
     { title: 'Design', fields: ['Stickers', 'Symmetry', 'Pattern', 'Pattern Orientation', 'Flag Orientation', 'Spin', 'Shape', 'Flag Version'] },
     { title: 'Rarity', fields: ['Rank', 'Percentile'] },
     { title: null, fields: ['Notes'] },
