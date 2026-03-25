@@ -67,6 +67,7 @@ async function build() {
 
   const symmetryMap = { 'm': '1 Mirror', 'A2-2m': '2 Mirrors', 'A1': '360°', 'A2': '180°' };
   function mapSymmetry(val) { return symmetryMap[val] || val; }
+  function esc(val) { return String(val).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
   const filterSections = [
     {
@@ -170,7 +171,7 @@ async function build() {
             </select>` : `
             <select data-filter="${f.key}">
               <option value="">All</option>
-              ${filterOptions[f.key].map(v => `<option value="${v}">${v}</option>`).join('')}
+              ${filterOptions[f.key].map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join('')}
             </select>`}
           </div>`).join('')}
         </div>
