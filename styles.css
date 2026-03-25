@@ -112,6 +112,10 @@ h1 {
   outline: none;
   border-color: var(--color-border-focus);
 }
+.filter-group select.filter-active {
+  background: rgb(185, 185, 185);
+  font-weight: 600;
+}
 .filter-section-fields .filter-group {
   flex: 0 0 auto;
 }
