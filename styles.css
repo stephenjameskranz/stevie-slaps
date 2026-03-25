@@ -104,19 +104,29 @@ h1 {
   color: var(--color-text);
   border: 1px solid var(--color-border-dark);
   border-radius: var(--radius-sm);
-  padding: 8px 12px;
-  font-size: 0.9rem;
+  padding: 6px 8px;
+  font-size: 0.85rem;
   width: 100%;
 }
 .filter-group select:focus, .search-input:focus {
   outline: none;
   border-color: var(--color-border-focus);
 }
+.filter-section-fields .filter-group {
+  flex: 0 0 auto;
+}
+.filter-section-fields select {
+  width: auto;
+  min-width: 80px;
+}
 .sort-row {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   align-items: flex-end;
+  border-top: 1px solid var(--color-border-dark);
+  padding-top: 12px;
+  margin-top: 4px;
 }
 .sort-row .filter-group { flex: 0 1 140px; }
 .search-group { flex: 1 1 200px; }

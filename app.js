@@ -8,6 +8,7 @@ const resetBtn = document.getElementById('reset-btn');
 const resultCount = document.getElementById('result-count');
 
 const filterMap = {
+  '_size': 'data-size_display',
   '#_of_slaps': 'data-#_of_slaps',
   '2d_point_group_(entire_piece)': 'data-2d_point_group',
   'substrate_orientation': 'data-substrate_orientation',

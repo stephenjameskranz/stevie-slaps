@@ -71,8 +71,9 @@ async function build() {
 
   const filterSections = [
     {
-      title: 'Substrate',
+      title: 'Surface',
       fields: [
+        { key: '_size', label: 'Size' },
         { key: 'substrate_orientation', label: 'Orientation' },
         { key: 'substrate', label: 'Material' },
         { key: 'substrate_color', label: 'Color' },
@@ -132,9 +133,17 @@ async function build() {
 
   const filterOptions = {};
   filterFields.forEach(f => {
-    if (f.special) return;
+    if (f.special || f.key === '_size') return;
     const vals = uniqueValues(f.key, f.numeric);
     filterOptions[f.key] = f.key === '2d_point_group_(entire_piece)' ? vals.map(mapSymmetry) : vals;
+  });
+  filterOptions['_size'] = [...new Set(slaps
+    .filter(s => s['width_(in)'] && s['height_(in)'])
+    .map(s => s['width_(in)'] + '" x ' + s['height_(in)'] + '"')
+  )].sort((a, b) => {
+    const [aw, ah] = a.match(/[\d.]+/g).map(Number);
+    const [bw, bh] = b.match(/[\d.]+/g).map(Number);
+    return (aw * ah) - (bw * bh);
   });
 
   // Build the HTML gallery
@@ -210,6 +219,7 @@ async function build() {
       data-slap_num="${slap['slap_#'] || ''}"
       data-#_of_slaps="${slap['#_of_slaps'] || ''}"
       data-2d_point_group="${mapSymmetry(slap['2d_point_group_(entire_piece)'] || '')}"
+      data-size_display="${esc((slap['width_(in)'] && slap['height_(in)']) ? slap['width_(in)'] + '" x ' + slap['height_(in)'] + '"' : '')}"
       data-substrate_orientation="${slap.substrate_orientation || ''}"
       data-substrate="${slap.substrate || ''}"
       data-substrate_color="${slap.substrate_color || ''}"
