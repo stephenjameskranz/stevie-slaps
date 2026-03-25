@@ -287,8 +287,8 @@ async function build() {
         </div>
       </div>
       <div class="lightbox-details-side">
+        <div class="lightbox-title title-display" id="lightbox-title"></div>
         <div class="lightbox-details">
-          <div class="lightbox-title title-display" id="lightbox-title"></div>
           <div class="lightbox-grid" id="lightbox-grid"></div>
         </div>
       </div>

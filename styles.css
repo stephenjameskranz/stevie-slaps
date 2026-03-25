@@ -307,8 +307,10 @@ h1 {
 .lightbox-details-side {
   width: 372px;
   flex-shrink: 0;
-  overflow-y: auto;
+  overflow-y: hidden;
   background: var(--color-card);
+  display: flex;
+  flex-direction: column;
 }
 .lightbox-close, .lightbox-nav {
   position: absolute;
@@ -382,12 +384,17 @@ h1 {
   color: var(--color-muted);
   font-size: 1.2rem;
 }
-.lightbox-details { padding: 24px 24px 32px; }
+.lightbox-details {
+  padding: 0 24px 32px;
+  overflow-y: auto;
+  flex: 1;
+}
 .lightbox-title {
   font-size: 2.5rem;
   text-align: left;
-  margin-top: 32px;
-  margin-bottom: 20px;
+  padding: 32px 24px 20px;
+  background: var(--color-card);
+  flex-shrink: 0;
 }
 .chip-section-title {
   flex-basis: 100%;
@@ -427,8 +434,8 @@ h1 {
   .lightbox { margin: 0; border-radius: 0; min-height: 100vh; max-width: 100vw; }
   .lightbox-image { max-height: 50vh; }
   .lightbox-image-wrap { padding: var(--spacing-md); }
-  .lightbox-details { padding: 16px 16px 24px; }
-  .lightbox-title { font-size: 1.5rem; margin-top: 16px; }
+  .lightbox-details { padding: 0 16px 24px; }
+  .lightbox-title { font-size: 1.5rem; padding: 16px 16px 12px; }
   .lightbox-nav { width: 36px; height: 36px; font-size: 1.2rem; }
   .lightbox-close { top: 8px; right: 8px; }
 }
