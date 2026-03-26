@@ -57,7 +57,7 @@ jobs:
         run: node build.js
 
       - name: Prepare deploy
-        run: mkdir -p _site && cp index.html styles.css app.js about.html CNAME _site/
+        run: mkdir -p _site/about && cp index.html styles.css app.js CNAME _site/ && cp about/index.html _site/about/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
