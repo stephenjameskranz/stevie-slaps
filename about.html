@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — SLAP Art Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ysabeau:wght@1..1000&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .about-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 20px 0 60px;
+    }
+    .about-back {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      text-decoration: none;
+      margin-bottom: 32px;
+      letter-spacing: 0.02em;
+    }
+    .about-back:hover { color: var(--color-text); }
+    .about-section {
+      background: var(--color-card);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      margin-bottom: 24px;
+    }
+    .about-section h2 {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin: 0 0 20px 0;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-border-dark);
+    }
+    .about-section p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--color-text);
+      margin: 0 0 14px 0;
+    }
+    .about-section p:last-child { margin-bottom: 0; }
+    .tag-group {
+      margin-bottom: 24px;
+    }
+    .tag-group:last-child { margin-bottom: 0; }
+    .tag-group-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-subtle);
+      margin: 0 0 12px 0;
+    }
+    .tag-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      align-items: baseline;
+    }
+    .tag-row:last-child { margin-bottom: 0; }
+    .tag-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-tag-text);
+      background: var(--color-tag-bg);
+      border-radius: var(--radius-xs);
+      padding: 3px 7px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .tag-desc {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--color-muted);
+    }
+    .rarity-formula {
+      background: var(--color-tag-bg);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--color-text);
+      margin: 14px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="about-wrap">
+    <a class="about-back" href="/">← Back to Gallery</a>
+
+    <h1 style="text-align:left; margin-bottom: 6px;">About</h1>
+    <p class="subtitle" style="text-align:left; margin-bottom: 32px;">SLAP Art Collection</p>
+
+    <!-- Artist Statement -->
+    <div class="about-section">
+      <h2>Artist Statement</h2>
+      <p>
+        SLAP is an ongoing series of hand-made collages built around a single recurring element: the Magical Flag of Peace. Each piece is assembled by hand — stickers placed deliberately on paper, cardstock, or other substrates — and no two are identical.
+      </p>
+      <p>
+        The project began as an exploration of repetition and variation: what happens when the same image is placed in slightly different configurations, on different surfaces, with different numbers of copies? What emerges from constraint? The flag is fixed. Everything else is open.
+      </p>
+      <p>
+        Over time the collection has grown into something closer to a body of research — a catalog of combinations, a meditation on symmetry and chance, and a record of moments when a piece was given away and went on to live somewhere else.
+      </p>
+      <p style="color: var(--color-subtle); font-size: 0.85rem; font-style: italic;">
+        [Placeholder — replace with your own statement]
+      </p>
+    </div>
+
+    <!-- Tag Explanations -->
+    <div class="about-section">
+      <h2>Tag Guide</h2>
+
+      <div class="tag-group">
+        <div class="tag-group-title">Surface</div>
+
+        <div class="tag-row">
+          <span class="tag-label">Size</span>
+          <span class="tag-desc">Physical dimensions of the substrate, width × height in inches.</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Orientation</span>
+          <span class="tag-desc">Whether the substrate is wider than tall (horizontal), taller than wide (vertical), or equal (square).</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Material</span>
+          <span class="tag-desc">The physical material the stickers are applied to — paper, cardstock, canvas board, etc.</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Color</span>
+          <span class="tag-desc">Background color of the substrate.</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Border</span>
+          <span class="tag-desc">Whether the substrate has a pre-printed decorative border.</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Laminate</span>
+          <span class="tag-desc">Whether the finished piece has been laminated for protection.</span>
+        </div>
+      </div>
+
+      <div class="tag-group">
+        <div class="tag-group-title">Design</div>
+
+        <div class="tag-row">
+          <span class="tag-label">Stickers</span>
+          <span class="tag-desc">The number of flag stickers used in the piece.</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Symmetry</span>
+          <span class="tag-desc">The 2D point group symmetry of the overall arrangement. <em>360°</em> means rotationally symmetric at any angle. <em>180°</em> looks the same when rotated by half. <em>1 Mirror</em> and <em>2 Mirrors</em> indicate reflective symmetry across one or two axes.</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Pattern</span>
+          <span class="tag-desc">The compositional arrangement of the stickers — e.g. grid, unit, scatter, border.</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Pattern Orientation</span>
+          <span class="tag-desc">How the pattern is oriented relative to the substrate — horizontal, vertical, or diagonal.</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Flag Orientation</span>
+          <span class="tag-desc">Which direction the flag faces within the sticker — self (as printed), or mirrored/rotated.</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Spin</span>
+          <span class="tag-desc">Rotation applied to the sticker(s) relative to upright. Positive values are clockwise, negative counter-clockwise. 0 is flat. Undefined means rotation was not recorded.</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Shape</span>
+          <span class="tag-desc">The overall silhouette formed by the arrangement of stickers — convex, concave, linear, etc.</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Flag Version</span>
+          <span class="tag-desc">Which edition or print run of the flag sticker was used. Different versions have subtle design variations.</span>
+        </div>
+      </div>
+
+      <div class="tag-group">
+        <div class="tag-group-title">Recipient</div>
+
+        <div class="tag-row">
+          <span class="tag-label">Recipient</span>
+          <span class="tag-desc">The person this piece was given or sold to, if it has left the artist's collection.</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Transfer Date</span>
+          <span class="tag-desc">The date the piece was transferred to its recipient.</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Transfer Price</span>
+          <span class="tag-desc">Sale price, if applicable. Gifted pieces have no price recorded.</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">Note</span>
+          <span class="tag-desc">Any additional context about the transfer.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rarity -->
+    <div class="about-section">
+      <h2>Rarity Index</h2>
+      <p>
+        Each SLAP is assigned a Rarity Index — a score reflecting how statistically unusual its combination of design attributes is across the entire collection.
+      </p>
+      <p>
+        The index is calculated from the Design attributes: number of stickers, symmetry, pattern, pattern orientation, flag orientation, spin, shape, and flag version. For each attribute, the frequency of that value across all SLAPs is calculated. The rarity of a given piece is derived from the product of these individual frequencies — rarer combinations of attributes produce a higher score.
+      </p>
+      <div class="rarity-formula">
+        [Placeholder — add your exact formula here]
+      </div>
+      <p>
+        The <strong>Percentile</strong> expresses where a piece falls relative to the full collection — a piece at the 99th percentile has a rarer combination of attributes than 99% of all SLAPs. The <strong>Rank</strong> is its ordinal position when sorted by rarity index.
+      </p>
+      <p style="color: var(--color-subtle); font-size: 0.85rem; font-style: italic;">
+        Rarity is recalculated automatically whenever the collection grows, so scores shift over time as new pieces are added.
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>

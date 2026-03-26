@@ -176,6 +176,7 @@ async function build() {
   <script>if(window.location.hash.startsWith('#slap-')){document.body.style.visibility='hidden';setTimeout(function(){document.body.style.visibility='';},2000);}</script>
   <h1>SLAP Art Collection</h1>
   <p class="subtitle">${slaps.length} hand-made art pieces featuring the Magical Flag of Peace</p>
+  <p class="subtitle" style="margin-top:6px;"><a href="about.html" style="color:var(--color-muted);font-size:0.85rem;text-decoration:none;letter-spacing:0.04em;">About this collection</a></p>
 
   <div class="controls">
     <div class="filters">
