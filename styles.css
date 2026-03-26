@@ -155,11 +155,7 @@ h1 {
   font-size: 0.93rem;
 }
 .reset-btn:hover { background: var(--color-border-dark); }
-.reset-btn.filter-active { font-weight: 600; border: 1px solid rgb(120, 120, 120); animation: reset-pulse 2s ease-in-out infinite; }
-@keyframes reset-pulse {
-  0%, 100% { background: rgb(185, 185, 185); }
-  50% { background: rgb(130, 130, 130); }
-}
+.reset-btn.filter-active { background: rgb(185, 185, 185); font-weight: 600; border: 1px solid rgb(120, 120, 120); }
 
 /* Shared typography */
 .title-display {
