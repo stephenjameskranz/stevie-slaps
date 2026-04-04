@@ -261,7 +261,7 @@ h1 {
 .gallery.compact { grid-template-columns: repeat(auto-fill, minmax(max(160px, calc((100% - 50px) / 6)), 1fr)); gap: 5px; }
 .gallery.compact .slap-meta { display: none; }
 .gallery.compact .slap-title { font-size: 1.61rem; }
-.gallery.compact .slap-card { padding-top: 4px; }
+.gallery.compact .slap-card { padding-top: 4px; border-radius: 6px; }
 .gallery.compact .slap-image-wrap { padding: 4px 6px 6px; }
 .gallery.compact .slap-card.has-recipient::before { display: none; }
 
