@@ -229,7 +229,7 @@ async function build() {
 
   <div class="view-toggle-bar">
     <label class="toggle-label">
-      <span class="toggle-text">Compact</span>
+      <span class="toggle-text">Compact view</span>
       <span class="toggle-switch">
         <input type="checkbox" id="compact-toggle">
         <span class="toggle-slider"></span>
