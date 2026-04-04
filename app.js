@@ -167,7 +167,7 @@ function openLightbox(index) {
   lightboxTitle.innerHTML = '<span class="label-light">SLAP</span> <span class="num-bold">' + (data.slapNum || '?') + '</span>';
 
   var sections = [
-    { title: 'Recipient', fields: ['Recipient', 'Transfer Date', 'Transfer Price', 'Note'], condition: function(d) { return !!d.display['Recipient']; }, dark: true },
+    { title: 'Owner', fields: ['Owner', 'Date', 'Price', 'Note'], condition: function(d) { return !!d.display['Owner']; }, dark: true },
     { title: null, fields: ['Date', 'Signature'] },
     { title: 'Surface', fields: ['Size', 'Orientation', 'Material', 'Color', 'Border', 'Laminate'] },
     { title: 'Design', fields: ['Stickers', 'Symmetry', 'Pattern', 'Pattern Orientation', 'Flag Orientation', 'Spin', 'Shape', 'Flag Version'] },

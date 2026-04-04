@@ -262,7 +262,7 @@ async function build() {
       <div class="slap-info">
         <div class="slap-title title-display">${slap['slap_#'] ? `<span class="label-light">SLAP</span> <span class="num-bold">${slap['slap_#']}</span>` : '<span class="label-light">SLAP</span>'}</div>
         <div class="slap-meta">
-          ${slap.recipient ? `<span class="meta-tag meta-tag--recipient"><span class="meta-key">recipient </span><span class="meta-val">${slap.recipient}</span></span>` : ''}
+          ${slap.recipient ? `<span class="meta-tag meta-tag--recipient"><span class="meta-key">owner </span><span class="meta-val">${slap.recipient}</span></span>` : ''}
           ${slap.recipient
             ? `${slap.transfer_date ? `<span class="meta-tag meta-tag--recipient"><span class="meta-key">date </span><span class="meta-val">${fmtDate(slap.transfer_date)}</span></span>` : ''}
                ${slap.transfer_note ? `<span class="meta-tag meta-tag--recipient"><span class="meta-key">note </span><span class="meta-val">${slap.transfer_note}</span></span>` : ''}`
@@ -323,9 +323,9 @@ async function build() {
         'percentile': 'Percentile',
         'rarity_index': 'Rarity Index',
         'notes': 'Notes',
-        'recipient': 'Recipient',
-        'transfer_date': 'Transfer Date',
-        'transfer_price': 'Transfer Price',
+        'recipient': 'Owner',
+        'transfer_date': 'Date',
+        'transfer_price': 'Price',
         'transfer_note': 'Note',
       };
       const dateKeys = new Set(['date', 'transfer_date']);
