@@ -218,17 +218,17 @@ h1 {
 .slap-card.has-recipient::before {
   content: 'SOLD';
   position: absolute;
-  top: -8px;
-  left: -130px;
-  width: 300px;
+  top: -10px;
+  left: -80px;
+  width: 260px;
   background: rgb(30, 30, 30);
   color: white;
   font-size: 1rem;
   font-weight: 800;
   letter-spacing: 0.15em;
   text-align: center;
-  padding: 22px 0 10px;
-  transform: rotate(-45deg);
+  line-height: 2.4;
+  transform: rotate(-30deg);
   z-index: 2;
 }
 .chip-divider {
