@@ -218,8 +218,8 @@ h1 {
 .slap-card.has-recipient::before {
   content: 'SOLD';
   position: absolute;
-  top: -8px;
-  left: -130px;
+  top: 20px;
+  left: -110px;
   width: 300px;
   background: rgb(30, 30, 30);
   color: white;
