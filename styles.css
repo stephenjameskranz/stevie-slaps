@@ -218,16 +218,16 @@ h1 {
 .slap-card.has-recipient::before {
   content: 'SOLD';
   position: absolute;
-  top: 28px;
-  left: -48px;
-  width: 160px;
+  top: 38px;
+  left: -62px;
+  width: 210px;
   background: rgb(30, 30, 30);
   color: white;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 800;
   letter-spacing: 0.15em;
   text-align: center;
-  line-height: 3;
+  line-height: 3.5;
   transform: rotate(-45deg);
   z-index: 2;
 }
