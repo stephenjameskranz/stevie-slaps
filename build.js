@@ -227,6 +227,7 @@ async function build() {
     </div>
   </div>
 
+  <div id="pagination-top" class="pagination"></div>
   <div class="gallery" id="gallery">
     ${slaps.map((slap, i) => `
     <div class="slap-card${slap.recipient ? ' has-recipient' : ''}"
@@ -275,6 +276,7 @@ async function build() {
     </div>
     `).join('')}
   </div>
+  <div id="pagination-bottom" class="pagination"></div>
 
   <!-- Lightbox -->
   <div class="lightbox-overlay" id="lightbox">

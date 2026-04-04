@@ -40,6 +40,37 @@ function cardMatches(card, filters, query) {
   return true;
 }
 
+var currentPage = 1;
+var PAGE_SIZE = 60;
+
+function renderPagination(total, totalPages) {
+  var html = '';
+  if (totalPages > 1) {
+    html += '<button class="page-btn"' + (currentPage === 1 ? ' disabled' : '') + ' onclick="goPage(' + (currentPage - 1) + ')">\u2039</button>';
+    for (var p = 1; p <= totalPages; p++) {
+      var near = Math.abs(p - currentPage) <= 2;
+      var edge = p === 1 || p === totalPages;
+      if (near || edge) {
+        html += '<button class="page-btn' + (p === currentPage ? ' page-active' : '') + '" onclick="goPage(' + p + ')">' + p + '</button>';
+      } else if (Math.abs(p - currentPage) === 3) {
+        html += '<span class="page-ellipsis">\u2026</span>';
+      }
+    }
+    html += '<button class="page-btn"' + (currentPage === totalPages ? ' disabled' : '') + ' onclick="goPage(' + (currentPage + 1) + ')">\u203a</button>';
+  }
+  ['pagination-top', 'pagination-bottom'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.innerHTML = html;
+  });
+}
+
+window.goPage = function(p) {
+  currentPage = p;
+  applyFilters();
+  updateOptionAvailability();
+  document.getElementById('pagination-top').scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
 function applyFilters() {
   const activeFilters = {};
   filterSelects.forEach(sel => {
@@ -47,14 +78,20 @@ function applyFilters() {
   });
   const query = searchInput.value.toLowerCase().trim();
 
-  let visible = 0;
-  cards.forEach(card => {
-    const show = cardMatches(card, activeFilters, query);
-    card.classList.toggle('hidden', !show);
-    if (show) visible++;
-  });
+  const orderedCards = Array.from(gallery.querySelectorAll('.slap-card'));
+  const matching = orderedCards.filter(card => cardMatches(card, activeFilters, query));
+  const totalPages = Math.max(1, Math.ceil(matching.length / PAGE_SIZE));
+  if (currentPage > totalPages) currentPage = totalPages;
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const end = start + PAGE_SIZE;
+
+  orderedCards.forEach(card => card.classList.add('hidden'));
+  matching.forEach((card, i) => card.classList.toggle('hidden', i < start || i >= end));
+
+  const visible = matching.length;
   var pct = cards.length ? parseFloat((visible / cards.length * 100).toPrecision(2)) : 0;
   resultCount.innerHTML = '<span class="count-num">' + visible + '</span><span class="count-label"> of ' + cards.length + ' (</span><span class="count-num">' + pct + '%</span><span class="count-label">)</span>';
+  renderPagination(visible, totalPages);
 }
 
 function updateOptionAvailability() {
@@ -106,11 +143,12 @@ function updateSelectStyles() {
   filterSelects.forEach(sel => sel.classList.toggle('filter-active', sel.value !== ''));
   resetBtn.classList.toggle('filter-active', anyActive || searchInput.value.trim() !== '');
 }
-filterSelects.forEach(sel => sel.addEventListener('change', () => { updateSelectStyles(); update(); }));
-sortSelect.addEventListener('change', update);
-sortOrder.addEventListener('change', update);
-searchInput.addEventListener('input', () => { updateSelectStyles(); update(); });
+filterSelects.forEach(sel => sel.addEventListener('change', () => { currentPage = 1; updateSelectStyles(); update(); }));
+sortSelect.addEventListener('change', () => { currentPage = 1; update(); });
+sortOrder.addEventListener('change', () => { currentPage = 1; update(); });
+searchInput.addEventListener('input', () => { currentPage = 1; updateSelectStyles(); update(); });
 resetBtn.addEventListener('click', () => {
+  currentPage = 1;
   filterSelects.forEach(sel => { sel.value = ''; sel.classList.remove('filter-active'); });
   resetBtn.classList.remove('filter-active');
   searchInput.value = '';
