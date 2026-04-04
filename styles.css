@@ -263,7 +263,7 @@ h1 {
 .gallery.compact .slap-title { font-size: 1.61rem; }
 .gallery.compact .slap-card { padding-top: 4px; }
 .gallery.compact .slap-image-wrap { padding: 4px 6px 6px; }
-.gallery.compact .slap-card.has-recipient::before { font-size: 0.6rem; line-height: 1.25; top: 10px; left: -55px; width: 150px; }
+.gallery.compact .slap-card.has-recipient::before { display: none; }
 
 /* Gallery */
 .gallery {
