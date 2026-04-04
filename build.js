@@ -227,6 +227,15 @@ async function build() {
     </div>
   </div>
 
+  <div class="view-toggle-bar">
+    <label class="toggle-label">
+      <span class="toggle-text">Compact</span>
+      <span class="toggle-switch">
+        <input type="checkbox" id="compact-toggle">
+        <span class="toggle-slider"></span>
+      </span>
+    </label>
+  </div>
   <div id="pagination-top" class="pagination"></div>
   <div class="gallery" id="gallery">
     ${slaps.map((slap, i) => `

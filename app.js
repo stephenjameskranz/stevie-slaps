@@ -159,6 +159,12 @@ resetBtn.addEventListener('click', () => {
 
 update();
 
+// Compact toggle
+const compactToggle = document.getElementById('compact-toggle');
+compactToggle.addEventListener('change', () => {
+  gallery.classList.toggle('compact', compactToggle.checked);
+});
+
 // Lightbox
 const lightbox = document.getElementById('lightbox');
 const lightboxTitle = document.getElementById('lightbox-title');
