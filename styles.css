@@ -214,10 +214,26 @@ h1 {
 .meta-tag--recipient .meta-val {
   color: #fff;
 }
+.slap-card { position: relative; }
 .slap-card.has-recipient {
   border: 2px solid rgb(80, 80, 80);
-  background: rgb(225, 225, 225);
   box-shadow: inset 0 0 36px rgba(255, 255, 255, 0.65), 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.slap-card.has-recipient::before {
+  content: 'SOLD';
+  position: absolute;
+  top: 16px;
+  left: -22px;
+  width: 80px;
+  background: rgb(30, 30, 30);
+  color: white;
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding: 3px 0;
+  transform: rotate(-45deg);
+  z-index: 2;
 }
 .chip-divider {
   flex-basis: 100%;

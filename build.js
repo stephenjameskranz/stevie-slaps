@@ -107,9 +107,9 @@ async function build() {
       ]
     },
     {
-      title: 'Recipient',
+      title: 'Owner',
       fields: [
-        { key: 'recipient', label: 'Recipient', special: 'recipient' },
+        { key: 'recipient', label: 'Owner', special: 'recipient' },
       ]
     },
   ];
@@ -190,8 +190,8 @@ async function build() {
             ${f.special === 'recipient' ? `
             <select data-filter="recipient">
               <option value="">All</option>
-              <option value="has">Has recipient</option>
-              <option value="no">No recipient</option>
+              <option value="has">Has owner</option>
+              <option value="no">Available</option>
             </select>` : `
             <select data-filter="${f.key}">
               <option value="">All</option>
