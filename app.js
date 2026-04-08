@@ -136,7 +136,7 @@ function applySort() {
   sorted.forEach(card => gallery.appendChild(card));
 }
 
-function update() { applyFilters(); applySort(); updateOptionAvailability(); }
+function update() { applySort(); applyFilters(); updateOptionAvailability(); }
 
 function updateSelectStyles() {
   const anyActive = Array.from(filterSelects).some(sel => sel.value !== '');
