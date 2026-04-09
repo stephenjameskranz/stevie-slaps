@@ -234,7 +234,7 @@ function openLightbox(index) {
       var valCls = 'meta-val';
       if (label === 'Symmetry' || label === 'Notes' || label === 'Signature') valCls += ' no-capitalize';
       var pctHtml = '';
-      if (false && section.title === 'Design' && fieldStats[label] && fieldStats[label][val] != null) {
+      if (false && section.title === 'Design' && fieldStats[label] && fieldStats[label][val] !== null && fieldStats[label][val] !== undefined) {
         var count = fieldStats[label][val];
         var total = slapData.length;
         var p = count / total * 100;
