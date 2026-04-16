@@ -251,7 +251,7 @@ function openLightbox(index) {
       if (section.dark) cls += ' meta-tag--recipient';
       if (label === 'Notes') cls += ' lightbox-notes';
       var valCls = 'meta-val';
-      if (label === 'Symmetry' || label === 'Notes' || label === 'Signature') valCls += ' no-capitalize';
+      if (label === 'Symmetry' || label === 'Notes' || label === 'Signature' || label === 'Note') valCls += ' no-capitalize';
       var pctHtml = '';
       if (false && section.title === 'Design' && fieldStats[label] && fieldStats[label][val] !== null && fieldStats[label][val] !== undefined) {
         var count = fieldStats[label][val];
