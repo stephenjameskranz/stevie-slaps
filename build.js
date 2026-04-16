@@ -104,6 +104,7 @@ async function build() {
         { key: 'spin', label: 'Spin' },
         { key: 'shape', label: 'Shape' },
         { key: 'flag_version', label: 'Flag Version' },
+        { key: 'signature', label: 'Signature' },
       ]
     },
     {
@@ -256,6 +257,7 @@ async function build() {
       data-spin="${mapSpin(slap.spin || '')}"
       data-shape="${slap.shape || ''}"
       data-flag_version="${slap.flag_version || ''}"
+      data-signature="${esc(slap.signature || '')}"
       data-recipient="${slap.recipient || ''}"
       data-rarity="${slap.rarity_index || ''}"
       data-date="${slap['date_(mdy)'] || slap.date || ''}"

@@ -22,6 +22,7 @@ const filterMap = {
   'spin': 'data-spin',
   'shape': 'data-shape',
   'flag_version': 'data-flag_version',
+  'signature': 'data-signature',
   'recipient': 'data-recipient',
 };
 
@@ -40,6 +41,7 @@ const labelToFilterKey = {
   'Spin': 'spin',
   'Shape': 'shape',
   'Flag Version': 'flag_version',
+  'Signature': 'signature',
 };
 
 function cardMatches(card, filters, query) {
@@ -266,7 +268,7 @@ function openLightbox(index) {
       var filterKey = labelToFilterKey[label];
       if (filterKey) {
         cls += ' meta-tag--clickable';
-        var escapedVal = val.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+        var escapedVal = val.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
         sectionHtml += '<div class="' + cls + '" onclick="applyTagFilter(\'' + filterKey + '\',\'' + escapedVal + '\')">' + inner + '</div>';
       } else {
         sectionHtml += '<div class="' + cls + '">' + inner + '</div>';
