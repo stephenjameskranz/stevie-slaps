@@ -25,6 +25,23 @@ const filterMap = {
   'recipient': 'data-recipient',
 };
 
+const labelToFilterKey = {
+  'Size': '_size',
+  'Orientation': 'substrate_orientation',
+  'Material': 'substrate',
+  'Color': 'substrate_color',
+  'Border': 'border_color',
+  'Laminate': 'laminate',
+  'Stickers': '#_of_slaps',
+  'Symmetry': '2d_point_group_(entire_piece)',
+  'Pattern': 'pattern',
+  'Pattern Orientation': 'pattern_orientation',
+  'Flag Orientation': 'flag_orientation',
+  'Spin': 'spin',
+  'Shape': 'shape',
+  'Flag Version': 'flag_version',
+};
+
 function cardMatches(card, filters, query) {
   for (const [key, val] of Object.entries(filters)) {
     const attr = filterMap[key];
@@ -246,7 +263,14 @@ function openLightbox(index) {
       var inner = pctHtml
         ? '<div><span class="meta-key">' + label + ' </span><span class="' + valCls + '">' + val + '</span></div>' + pctHtml
         : '<span class="meta-key">' + label + ' </span><span class="' + valCls + '">' + val + '</span>';
-      sectionHtml += '<div class="' + cls + '">' + inner + '</div>';
+      var filterKey = labelToFilterKey[label];
+      if (filterKey) {
+        cls += ' meta-tag--clickable';
+        var escapedVal = val.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+        sectionHtml += '<div class="' + cls + '" onclick="applyTagFilter(\'' + filterKey + '\',\'' + escapedVal + '\')">' + inner + '</div>';
+      } else {
+        sectionHtml += '<div class="' + cls + '">' + inner + '</div>';
+      }
     }
     if (!sectionHtml) continue;
     if (s > 0) html += '<div class="chip-divider"></div>';
@@ -267,6 +291,16 @@ function closeLightbox() {
   history.replaceState(null, '', window.location.pathname);
   currentIndex = -1;
 }
+
+window.applyTagFilter = function(filterKey, val) {
+  closeLightbox();
+  filterSelects.forEach(sel => { sel.value = ''; });
+  var target = Array.from(filterSelects).find(sel => sel.dataset.filter === filterKey);
+  if (target) target.value = val;
+  currentPage = 1;
+  updateSelectStyles();
+  update();
+};
 
 function navigateLightbox(dir) {
   var visible = getVisibleCards();

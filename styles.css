@@ -214,6 +214,14 @@ h1 {
 .meta-tag--recipient .meta-val {
   color: #fff;
 }
+.meta-tag--clickable {
+  cursor: pointer;
+  transition: background 0.15s, outline 0.15s;
+}
+.meta-tag--clickable:hover {
+  background: rgb(170,170,170);
+  outline: 1.5px solid rgb(100,100,100);
+}
 .slap-card { position: relative; }
 .slap-card.has-recipient::before {
   content: 'SOLD';
