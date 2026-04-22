@@ -42,32 +42,14 @@
       border-bottom: 1px solid var(--color-border-dark);
     }
     .about-section p {
-      font-size: 0.95rem;
-      line-height: 1.7;
+      font-size: 1.05rem;
+      line-height: 1.75;
       color: var(--color-text);
       margin: 0 0 14px 0;
     }
     .about-section p:last-child { margin-bottom: 0; }
-    .tag-group {
-      margin-bottom: 24px;
-    }
-    .tag-group:last-child { margin-bottom: 0; }
-    .tag-group-title {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--color-subtle);
-      margin: 0 0 12px 0;
-    }
-    .tag-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-      align-items: baseline;
-    }
-    .tag-row:last-child { margin-bottom: 0; }
     .tag-label {
+      display: inline-block;
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -77,13 +59,41 @@
       border-radius: var(--radius-xs);
       padding: 3px 7px;
       white-space: nowrap;
-      flex-shrink: 0;
     }
-    .tag-desc {
-      font-size: 0.88rem;
-      line-height: 1.5;
+    .tag-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .tag-table td {
+      vertical-align: top;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.95rem;
+      line-height: 1.6;
       color: var(--color-muted);
     }
+    .tag-table tr:last-child td { border-bottom: none; }
+    .tag-table .tag-name-cell {
+      white-space: nowrap;
+      padding-right: 20px;
+      width: 1%;
+    }
+    .tag-table-group td {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-subtle);
+      padding-top: 24px;
+      padding-bottom: 2px;
+      border-bottom: none;
+    }
+    .tag-table-group:first-child td { padding-top: 4px; }
+    .tag-values {
+      margin: 6px 0 0 0;
+      padding-left: 18px;
+    }
+    .tag-values li { margin-bottom: 4px; }
     .rarity-formula {
       background: var(--color-tag-bg);
       border-radius: var(--radius-sm);
@@ -120,115 +130,163 @@
     <div class="about-section">
       <h2>Tag Guide</h2>
 
-      <div class="tag-group">
-        <div class="tag-group-title">Surface</div>
+      <table class="tag-table">
+        <colgroup>
+          <col class="tag-name-cell">
+          <col>
+        </colgroup>
+        <tbody>
 
-        <div class="tag-row">
-          <span class="tag-label">Size</span>
-          <span class="tag-desc">Physical dimensions of the substrate, width × height in inches.</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Orientation</span>
-          <span class="tag-desc">Whether the substrate is wider than tall (horizontal), taller than wide (vertical), or equal (square).</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Material</span>
-          <span class="tag-desc">The physical material the stickers are applied to — paper, cardstock, canvas board, etc.</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Color</span>
-          <span class="tag-desc">Background color of the substrate.</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Border</span>
-          <span class="tag-desc">Whether the substrate has a pre-printed decorative border.</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Laminate</span>
-          <span class="tag-desc">Whether the finished piece has been laminated for protection.</span>
-        </div>
-      </div>
+          <tr class="tag-table-group"><td colspan="2">Surface</td></tr>
 
-      <div class="tag-group">
-        <div class="tag-group-title">Design</div>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Size</span></td>
+            <td>Physical dimensions of the substrate, width &times; height in inches.</td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Orientation</span></td>
+            <td>Whether the substrate is wider than tall (horizontal), taller than wide (vertical), or equal (square).</td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Material</span></td>
+            <td>The physical material the stickers are applied to — paper, cardstock, canvas board, etc.</td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Color</span></td>
+            <td>Background color of the surface.</td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Border</span></td>
+            <td>If the surface has a border, its color is recorded. If not, it's recorded as "none."</td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Laminate</span></td>
+            <td>Some SLAPs have a transparent laminate applied over the whole piece. If it does, the pattern of the laminate is recorded.</td>
+          </tr>
 
-        <div class="tag-row">
-          <span class="tag-label">Stickers</span>
-          <span class="tag-desc">The number of flag stickers used in the piece.</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Symmetry</span>
-          <span class="tag-desc">The 2D point group symmetry of the overall arrangement. <em>360°</em> means rotationally symmetric at any angle. <em>180°</em> looks the same when rotated half a turn. <em>1 Mirror</em> and <em>2 Mirrors</em> indicate reflective symmetry across one or two axes.</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Pattern</span>
-          <span class="tag-desc">The compositional arrangement of the stickers — stack, offset, linear, unit, or none.</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Pattern Orientation</span>
-          <span class="tag-desc">How the pattern is oriented relative to the substrate surface — horizontal, vertical, or diagonal.</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Flag Orientation</span>
-          <span class="tag-desc">The direction the flag faces within each sticker — <em>aligned</em> (as printed), <em>flipped</em> (mirrored), or <em>self</em> (orientation inherent to the sticker itself).</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Spin</span>
-          <span class="tag-desc">A measure of total sticker orientation — the sum of rotation angles applied across all stickers in the piece. Positive values are clockwise, negative counter-clockwise, 0 is upright. Undefined means spin was not recorded.</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Shape</span>
-          <span class="tag-desc">The overall silhouette formed by the arrangement of stickers — <em>convex</em>, <em>concave</em>, or <em>infinite</em>.</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Flag Version</span>
-          <span class="tag-desc">Which print run of the flag sticker was used. V1, V2, and V3 have subtle design differences.</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Signature</span>
-          <span class="tag-desc">The artist's signature style used on this piece.</span>
-        </div>
-      </div>
+          <tr class="tag-table-group"><td colspan="2">Design</td></tr>
 
-      <div class="tag-group">
-        <div class="tag-group-title">Owner</div>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Stickers</span></td>
+            <td>The number of flag stickers used in the piece. If stickers extend beyond edges and wrap around, the whole sticker is counted even though only a fraction may be visible.</td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Symmetry</span></td>
+            <td>
+              The two-dimensional symmetry of the overall arrangement. The design elements on the Magical Flag of Peace (the stars and wreath) are ignored, and only the black and white halves are considered. The signature, date and number are ignored as well.
+              <ul class="tag-values">
+                <li><strong>360°</strong> — A piece with 360° symmetry only looks the same when rotated a full turn. This is the least symmetric classification.</li>
+                <li><strong>180°</strong> — A piece with 180° symmetry has the same pattern when rotated by half a turn.</li>
+                <li><strong>1 Mirror</strong> — A piece with 1 Mirror symmetry indicates reflective symmetry across one axis.</li>
+                <li><strong>2 Mirrors</strong> — A piece with 2 Mirrors symmetry indicates reflective symmetry across two axes. Pieces with 2 Mirrors symmetry also have 180°.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Pattern</span></td>
+            <td>
+              The pattern category describes the position of the stickers relative to each other.
+              <ul class="tag-values">
+                <li><strong>stack</strong> — Stickers are arranged in a rectangular grid with one stacked on top or beside another.</li>
+                <li><strong>offset</strong> — Stickers are arranged in a brick-like layout with stickers above or below each other offset by half a sticker width.</li>
+                <li><strong>linear</strong> — Stickers are arranged in a single line along the long axis.</li>
+                <li><strong>unit</strong> — There is only a single sticker on the SLAP.</li>
+                <li><strong>none</strong> — There is a non-regular patterning of stickers.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Pattern Orientation</span></td>
+            <td>
+              The pattern orientation describes how the stickers are oriented relative to the substrate.
+              <ul class="tag-values">
+                <li><strong>horizontal</strong> — The long axis of the stickers are oriented along the same axis as the bottom (or top) of the surface.</li>
+                <li><strong>vertical</strong> — The long axis of the stickers are oriented along the same axis as the sides of the surface.</li>
+                <li><strong>angle (+)</strong> — The long axis of the stickers are oriented with a positive angle relative to the bottom of the surface. That is, the right side of the sticker is more towards the top of the surface than the left side.</li>
+                <li><strong>angle (&minus;)</strong> — The long axis of the stickers are oriented with a negative angle relative to the bottom of the surface.</li>
+                <li><strong>no pattern</strong> — The stickers are arranged in such a way that there are multiple angles and there is not a clear classification.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Flag Orientation</span></td>
+            <td>
+              The flag orientation is determined by how the black and white sides of the stickers are oriented relative to the other stickers in the pattern.
+              <ul class="tag-values">
+                <li><strong>aligned</strong> — All the stickers are aligned in the same direction.</li>
+                <li><strong>flipped</strong> — At least one sticker is aligned opposite to another.</li>
+                <li><strong>self</strong> — There is only one sticker in the SLAP.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Spin</span></td>
+            <td>The "spin" of the piece is a way of quantifying the total orientation of the stickers relative to their surface. A sticker that is oriented horizontally with the black on the right and the white on the left counts as a +1 spin. Every other sticker with the same orientation on that piece will add +1 to the total spin count of that piece. A sticker with the opposite orientation counts as a &minus;1 spin. For stickers that are vertically oriented, they are counted as +1 when the black half is on top, and &minus;1 when the black half is on the bottom. Spin is recorded as undefined or "und" when stickers are not in a regular pattern or are in an "infinite" shape.</td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Shape</span></td>
+            <td>The shape is classified by imagining a polygon drawn around the edges of the stickers on the surface. If a line drawn from any vertex of the polygon to any other vertex would only cross within the polygon, then it is defined as "convex." If any vertex to vertex line would extend outside the polygon it is defined as "concave." If any portion of a sticker extends beyond the boundary of the surface, the shape is defined as "infinite."</td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Flag Version</span></td>
+            <td>
+              The Magical Flag of Peace design used on the stickers in the SLAPs project has some subtle variations.
+              <ul class="tag-values">
+                <li><strong>V1</strong> — The original design of the MFOP.</li>
+                <li><strong>V2</strong> — This is the current official design of the MFOP. The only difference is that the stars in the corners are slightly bigger than in the previous version.</li>
+                <li><strong>V3</strong> — This version replaces two of the leaves of the wreath with "w4vp" and ".com".</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Signature</span></td>
+            <td>"sjk" is the most common signature because it is the quickest.</td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Date</span></td>
+            <td>The date is simply the day that I made the SLAP.</td>
+          </tr>
 
-        <div class="tag-row">
-          <span class="tag-label">Owner</span>
-          <span class="tag-desc">The person this piece was given or sold to, if it has left the artist's collection.</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Date</span>
-          <span class="tag-desc">The date the piece was transferred to its owner.</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Price</span>
-          <span class="tag-desc">Sale price, if applicable. Gifted pieces have no price recorded.</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag-label">Note</span>
-          <span class="tag-desc">Any additional context about the transfer.</span>
-        </div>
-      </div>
+          <tr class="tag-table-group"><td colspan="2">Owner</td></tr>
+
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Owner</span></td>
+            <td>The person this piece was given or sold to, if it has left my collection. Pieces on display are owned by S.J. Kranz. Pieces without an owner are available.</td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Date</span></td>
+            <td>The date the piece was transferred to its owner.</td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Price</span></td>
+            <td>Sale price. Gifted pieces have a zero value.</td>
+          </tr>
+          <tr>
+            <td class="tag-name-cell"><span class="tag-label">Note</span></td>
+            <td>Any additional context about the transfer.</td>
+          </tr>
+
+        </tbody>
+      </table>
     </div>
 
     <!-- Rarity -->
     <div class="about-section">
-      <h2>Rarity Index</h2>
+      <h2>Rarity</h2>
       <p>
-        Each SLAP is assigned a Rarity Index — a score reflecting how statistically unusual its combination of design attributes is across the entire collection.
+        The rarity calculation is a way to determine how rare or common a particular piece is compared to other pieces in the SLAP collection. The calculation takes into account all the tags listed above (excepting the tags in the "owner" section).
       </p>
       <p>
-        The score is calculated by dividing the total SLAP count by the number of pieces sharing each tag value, then summing those quotients across all design attributes. Attributes with fewer matching pieces contribute a larger amount to the score — rarer combinations produce higher totals.
+        For each tag, the total number of SLAPs that have that particular value are counted. Then the total number of all SLAPs is divided by that number. These numbers calculated for each tag are summed to give a "rarity score." SLAPs are then ranked by their rarity score with the highest score being ranked first and the lowest score being ranked last. The percentile indicates the rank relative to the total number of SLAPs.
       </p>
       <div class="rarity-formula">
-        Rarity Index = Σ ( total SLAPs ÷ pieces sharing that value ) for each design attribute
+        Rarity Score = &Sigma; ( total SLAPs &divide; pieces sharing that tag value ) across all tags
       </div>
       <p>
-        The <strong>Percentile</strong> expresses where a piece falls relative to the full collection — a piece at the 99th percentile has a rarer combination of attributes than 99% of all SLAPs. The <strong>Rank</strong> is its ordinal position when sorted by rarity index.
+        As of April 22, 2026, there are 638 total SLAPs. SLAP 116 has a size of 17 in. by 11 in. There are 9 SLAPs with that size (11 in &times; 17 in is considered a different size). The rarity score part determined by "size" is 638 divided by 9, which is about 70.9. The total rarity score is about 250, making it the 97th most rare SLAP in the 85th percentile for rarity.
       </p>
-      <p style="color: var(--color-subtle); font-size: 0.85rem; font-style: italic;">
-        As the collection grows, scores automatically recalibrate — shifting individual rankings and percentiles accordingly.
+      <p style="color: var(--color-subtle); font-size: 0.92rem; font-style: italic;">
+        Rarity is recalculated automatically whenever the collection grows, so scores shift over time as new pieces are added.
       </p>
     </div>
 
