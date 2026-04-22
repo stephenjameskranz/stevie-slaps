@@ -57,7 +57,6 @@
       background: var(--color-tag-bg);
       border-radius: var(--radius-xs);
       padding: 4px 9px;
-      white-space: nowrap;
     }
     .tag-table {
       width: 100%;
@@ -73,9 +72,8 @@
     }
     .tag-table tr:last-child td { border-bottom: none; }
     .tag-table .tag-name-cell {
-      white-space: nowrap;
       padding-right: 20px;
-      width: 1%;
+      width: 130px;
     }
     .tag-table-group td {
       font-size: 1rem;
@@ -88,6 +86,33 @@
       border-bottom: none;
     }
     .tag-table-group:first-child td { padding-top: 4px; }
+    @media (max-width: 580px) {
+      .tag-table, .tag-table tbody, .tag-table tr, .tag-table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .tag-table td {
+        border-bottom: none;
+        padding: 2px 0;
+      }
+      .tag-table .tag-name-cell {
+        width: auto;
+        padding-right: 0;
+        padding-top: 10px;
+        padding-bottom: 5px;
+      }
+      .tag-table tr {
+        border-bottom: 1px solid var(--color-border);
+      }
+      .tag-table tr:last-child { border-bottom: none; }
+      .tag-table-group { border-bottom: none; }
+      .tag-table-group td {
+        padding-top: 20px;
+        padding-bottom: 2px;
+      }
+      .tag-table-group:first-child td { padding-top: 8px; }
+    }
     .tag-values {
       margin: 6px 0 0 0;
       padding-left: 18px;
