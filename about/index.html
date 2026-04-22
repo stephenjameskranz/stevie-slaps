@@ -32,11 +32,10 @@
     }
     .about-section h2 {
       font-family: var(--font-display);
-      font-size: 0.75rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--color-muted);
+      letter-spacing: 0.04em;
+      color: var(--color-text);
       margin: 0 0 20px 0;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--color-border-dark);
@@ -50,14 +49,14 @@
     .about-section p:last-child { margin-bottom: 0; }
     .tag-label {
       display: inline-block;
-      font-size: 0.72rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--color-tag-text);
       background: var(--color-tag-bg);
       border-radius: var(--radius-xs);
-      padding: 3px 7px;
+      padding: 4px 9px;
       white-space: nowrap;
     }
     .tag-table {
@@ -79,13 +78,13 @@
       width: 1%;
     }
     .tag-table-group td {
-      font-size: 0.7rem;
+      font-size: 1rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--color-subtle);
-      padding-top: 24px;
-      padding-bottom: 2px;
+      color: var(--color-muted);
+      padding-top: 28px;
+      padding-bottom: 4px;
       border-bottom: none;
     }
     .tag-table-group:first-child td { padding-top: 4px; }
@@ -240,7 +239,7 @@
           </tr>
           <tr>
             <td class="tag-name-cell"><span class="tag-label">Signature</span></td>
-            <td>"sjk" is the most common signature because it is the quickest.</td>
+            <td>I have changed my signature over the years and the use of one or another is largely dependent on my mood that day. "sjk" is the most common signature because it is the quickest.</td>
           </tr>
           <tr>
             <td class="tag-name-cell"><span class="tag-label">Date</span></td>
@@ -274,19 +273,19 @@
     <div class="about-section">
       <h2>Rarity</h2>
       <p>
-        The rarity calculation is a way to determine how rare or common a particular piece is compared to other pieces in the SLAP collection. The calculation takes into account all the tags listed above (excepting the tags in the "owner" section).
+        The rarity calculation is a fun way to determine how rare or common a particular piece is compared to other pieces in the SLAP collection. The calculation takes into account all the tags listed above (excepting the tags in the "owner" section). It should be noted that the rarity could be calculated many different ways, but for this collection I calculate the rarity of each SLAP as follows:
       </p>
       <p>
-        For each tag, the total number of SLAPs that have that particular value are counted. Then the total number of all SLAPs is divided by that number. These numbers calculated for each tag are summed to give a "rarity score." SLAPs are then ranked by their rarity score with the highest score being ranked first and the lowest score being ranked last. The percentile indicates the rank relative to the total number of SLAPs.
+        For each tag the total number of SLAPs that have that particular value are counted. Then the total number of all SLAPs is divided by that number. This yields a number between 1 and the total number of SLAPs. These numbers calculated for each tag are summed. This gives a "rarity score" which is a very arbitrary number.
       </p>
-      <div class="rarity-formula">
-        Rarity Score = &Sigma; ( total SLAPs &divide; pieces sharing that tag value ) across all tags
-      </div>
       <p>
-        As of April 22, 2026, there are 638 total SLAPs. SLAP 116 has a size of 17 in. by 11 in. There are 9 SLAPs with that size (11 in &times; 17 in is considered a different size). The rarity score part determined by "size" is 638 divided by 9, which is about 70.9. The total rarity score is about 250, making it the 97th most rare SLAP in the 85th percentile for rarity.
+        Then, the SLAPs are ranked by their rarity score with the highest score being ranked first and the lowest score being ranked last. The percentile is simply an indication of the rank relative to the total number of SLAPs.
       </p>
-      <p style="color: var(--color-subtle); font-size: 0.92rem; font-style: italic;">
-        Rarity is recalculated automatically whenever the collection grows, so scores shift over time as new pieces are added.
+      <p>
+        For example, as of 2026 April 22, there are 638 total SLAPs. SLAP 116 has a size of 17 in. by 11 in. There are 9 SLAPs in the collection with that size (11 in &times; 17 in is considered a different size). So the part of the rarity score determined by the "size" tag is 638 divided by 9 which is about 70.9. When this calculation is done for all other tags and summed, it gets a total score of about 250. This makes it the 97th most rare SLAP, and is in the 85th percentile for rarity (100% &minus; 97/638 = 85%).
+      </p>
+      <p>
+        Please note, rarity is recalculated automatically whenever the collection grows, so scores shift over time as new pieces are added.
       </p>
     </div>
 
