@@ -286,7 +286,7 @@ async function build() {
           ${slap.recipient ? `<span class="meta-tag meta-tag--recipient"><span class="meta-key">owner </span><span class="meta-val">${slap.recipient}</span></span>` : ''}
           ${slap.recipient
             ? `${slap.transfer_date ? `<span class="meta-tag meta-tag--recipient"><span class="meta-key">date </span><span class="meta-val">${fmtDate(slap.transfer_date)}</span></span>` : ''}
-               ${slap.transfer_note ? `<span class="meta-tag meta-tag--recipient"><span class="meta-key">note </span><span class="meta-val">${slap.transfer_note}</span></span>` : ''}`
+               ${slap.transfer_note ? `<span class="meta-tag meta-tag--recipient"><span class="meta-key">note </span><span class="meta-val no-capitalize">${slap.transfer_note}</span></span>` : ''}`
             : `${slap['width_(in)'] && slap['height_(in)'] ? `<span class="meta-tag"><span class="meta-key">size </span><span class="meta-val">${slap['width_(in)']}" x ${slap['height_(in)']}"</span></span>` : ''}
                ${slap['#_of_slaps'] ? `<span class="meta-tag"><span class="meta-key">stickers </span><span class="meta-val">${slap['#_of_slaps']}</span></span>` : ''}
                ${slap.percentile ? `<span class="meta-tag"><span class="meta-key">rarity percentile </span><span class="meta-val">${slap.percentile}</span></span>` : ''}`
