@@ -104,13 +104,13 @@ async function build() {
         { key: 'spin', label: 'Spin' },
         { key: 'shape', label: 'Shape' },
         { key: 'flag_version', label: 'Flag Version' },
-        { key: 'signature', label: 'Signature' },
-        { key: 'date', label: 'Date' },
       ]
     },
     {
-      title: 'Owner',
+      title: 'Provenance',
       fields: [
+        { key: 'signature', label: 'Signature' },
+        { key: 'date', label: 'Date' },
         { key: 'recipient', label: 'Owner', special: 'recipient' },
       ]
     },
