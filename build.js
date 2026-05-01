@@ -72,17 +72,6 @@ async function build() {
     const p = (val || '').trim().split(/\s+/);
     return (p.length === 3 && p[2].length === 4) ? p[2] + ' ' + p[1] + ' ' + p[0] : val;
   }
-  const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  function fmtDateMDY(val) {
-    const parts = (val || '').trim().split('/');
-    if (parts.length === 3) {
-      const m = parseInt(parts[0], 10);
-      const d = parseInt(parts[1], 10);
-      const y = parts[2];
-      if (m >= 1 && m <= 12 && y.length === 4) return y + ' ' + MONTHS_SHORT[m - 1] + ' ' + d;
-    }
-    return '';
-  }
   function sortSpin(vals) {
     return vals.sort((a, b) => {
       if (a === 'Undefined') return 1;
@@ -165,7 +154,7 @@ async function build() {
       : vals;
   });
   filterOptions['date'] = [...new Set(
-    slaps.map(s => fmtDateMDY(s['date_(mdy)'] || s.date || '')).filter(Boolean)
+    slaps.map(s => fmtDate(s.date)).filter(d => /^\d{4} [A-Z][a-z]{2} \d+$/.test(d))
   )].sort((a, b) => {
     const [ay, am, ad] = a.split(' ');
     const [by, bm, bd] = b.split(' ');
@@ -277,7 +266,7 @@ async function build() {
       data-shape="${slap.shape || ''}"
       data-flag_version="${slap.flag_version || ''}"
       data-signature="${esc(slap.signature || '')}"
-      data-date_filter="${fmtDateMDY(slap['date_(mdy)'] || slap.date || '')}"
+      data-date_filter="${fmtDate(slap.date)}"
       data-recipient="${slap.recipient || ''}"
       data-rarity="${slap.rarity_index || ''}"
       data-date="${slap['date_(mdy)'] || slap.date || ''}"
