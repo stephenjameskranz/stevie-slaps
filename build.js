@@ -72,6 +72,17 @@ async function build() {
     const p = (val || '').trim().split(/\s+/);
     return (p.length === 3 && p[2].length === 4) ? p[2] + ' ' + p[1] + ' ' + p[0] : val;
   }
+  const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function fmtDateMDY(val) {
+    const parts = (val || '').trim().split('/');
+    if (parts.length === 3) {
+      const m = parseInt(parts[0], 10);
+      const d = parseInt(parts[1], 10);
+      const y = parts[2];
+      if (m >= 1 && m <= 12 && y.length === 4) return y + ' ' + MONTHS_SHORT[m - 1] + ' ' + d;
+    }
+    return '';
+  }
   function sortSpin(vals) {
     return vals.sort((a, b) => {
       if (a === 'Undefined') return 1;
@@ -105,6 +116,7 @@ async function build() {
         { key: 'shape', label: 'Shape' },
         { key: 'flag_version', label: 'Flag Version' },
         { key: 'signature', label: 'Signature' },
+        { key: 'date', label: 'Date' },
       ]
     },
     {
@@ -146,11 +158,18 @@ async function build() {
 
   const filterOptions = {};
   filterFields.forEach(f => {
-    if (f.special || f.key === '_size') return;
+    if (f.special || f.key === '_size' || f.key === 'date') return;
     const vals = uniqueValues(f.key, f.numeric);
     filterOptions[f.key] = f.key === '2d_point_group_(entire_piece)' ? vals.map(mapSymmetry)
       : f.key === 'spin' ? sortSpin(vals.map(mapSpin))
       : vals;
+  });
+  filterOptions['date'] = [...new Set(
+    slaps.map(s => fmtDateMDY(s['date_(mdy)'] || s.date || '')).filter(Boolean)
+  )].sort((a, b) => {
+    const [ay, am, ad] = a.split(' ');
+    const [by, bm, bd] = b.split(' ');
+    return new Date(`${am} ${ad} ${ay}`).getTime() - new Date(`${bm} ${bd} ${by}`).getTime();
   });
   filterOptions['_size'] = [...new Set(slaps
     .filter(s => s['width_(in)'] && s['height_(in)'])
@@ -258,6 +277,7 @@ async function build() {
       data-shape="${slap.shape || ''}"
       data-flag_version="${slap.flag_version || ''}"
       data-signature="${esc(slap.signature || '')}"
+      data-date_filter="${fmtDateMDY(slap['date_(mdy)'] || slap.date || '')}"
       data-recipient="${slap.recipient || ''}"
       data-rarity="${slap.rarity_index || ''}"
       data-date="${slap['date_(mdy)'] || slap.date || ''}"

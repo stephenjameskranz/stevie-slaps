@@ -23,6 +23,7 @@ const filterMap = {
   'shape': 'data-shape',
   'flag_version': 'data-flag_version',
   'signature': 'data-signature',
+  'date': 'data-date_filter',
   'recipient': 'data-recipient',
 };
 
@@ -42,6 +43,7 @@ const labelToFilterKey = {
   'Shape': 'shape',
   'Flag Version': 'flag_version',
   'Signature': 'signature',
+  'Date': 'date',
 };
 
 function cardMatches(card, filters, query) {
