@@ -96,7 +96,7 @@ async function build() {
     {
       title: 'Design',
       fields: [
-        { key: '#_of_slaps', label: 'Stickers', numeric: true },
+        { key: '#_of_slaps', label: '# of stickers', numeric: true },
         { key: '2d_point_group_(entire_piece)', label: 'Symmetry' },
         { key: 'pattern', label: 'Pattern' },
         { key: 'pattern_orientation', label: 'Pattern Orientation' },
