@@ -346,7 +346,7 @@ async function build() {
         'rarity_index': 'Rarity Index',
         'notes': 'Notes',
         'recipient': 'Owner',
-        'transfer_date': 'Date',
+        'transfer_date': 'Transfer Date',
         'transfer_price': 'Price',
         'transfer_note': 'Note',
       };
