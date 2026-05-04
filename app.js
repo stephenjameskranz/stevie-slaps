@@ -267,7 +267,7 @@ function openLightbox(index) {
       var inner = pctHtml
         ? '<div><span class="meta-key">' + label + ' </span><span class="' + valCls + '">' + val + '</span></div>' + pctHtml
         : '<span class="meta-key">' + label + ' </span><span class="' + valCls + '">' + val + '</span>';
-      var filterKey = labelToFilterKey[label];
+      var filterKey = section.dark ? null : labelToFilterKey[label];
       if (filterKey) {
         cls += ' meta-tag--clickable';
         var escapedVal = val.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
